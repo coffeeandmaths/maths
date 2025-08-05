@@ -1,0 +1,19 @@
+---
+title: "Test Notes"
+format:
+  html:
+    theme: solar
+    css: math-tweaks.css
+  pdf:
+    documentclass: article
+    include-in-header: preamble.tex
+    keep-tex: true
+    toc : false
+---
+
+This is **inline math** using LaTeX delimiters: $x^2 + y^2 = z^2$
+
+And this is **block math**:
+$$
+\int_0^1 x^2 \, dx = \frac{1}{3}
+$$

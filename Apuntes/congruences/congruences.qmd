@@ -1,0 +1,352 @@
+---
+title: ""
+format:
+  html:
+    theme: solar
+    css: math-tweaks.css
+  pdf:
+    documentclass: article
+    include-in-header: preamble.tex
+    keep-tex: true
+    toc : false
+---
+## Preliminaries
+
+## Structured Sets vs Arbitrary Sets
+
+Let $A = \{1, 2, 3, 4, 5\}$ be an arbitrary finite subset of $\mathbb{Z}$. This set is defined purely by selection and carries no inherent structure beyond its elements.
+
+In contrast, consider the quotient:
+$$
+\mathbb{Z}/n\mathbb{Z} = \{[0], [1], \dots, [n-1]\}
+$$
+
+This set arises not by arbitrary choice, but by **partitioning the infinite set $\mathbb{Z}$** using the equivalence relation:
+$$
+a \equiv b \pmod{n} \;\; \Longleftrightarrow \;\; n \mid (a - b)
+$$
+
+Each element $[r]$ in $\mathbb{Z}/n\mathbb{Z}$ represents an **equivalence class**:
+$$
+[n]_r := \{x \in \mathbb{Z} \mid x \equiv r \pmod{n}\}
+$$
+
+Thus:
+
+- The set $\mathbb{Z}/n\mathbb{Z}$ is **finite**, but derived structurally from an **infinite** source.
+- The modulus $n$ acts as a **delimiting framework**, not by exclusion, but by compressing $\mathbb{Z}$ into $n$ structural positions.
+- The result is a set equipped with canonical operations (addition and multiplication of classes), forming a **ring** (or a field if $n$ is prime).
+
+This reflects a shift from thinking of finite sets as *collections* to seeing them as *quotients* — as **compressed structural spaces** derived from deeper algebraic relations.
+
+## Structural Interpretation of Congruence via Divisibility
+
+## First approach
+
+Applying the congruence mod $n$ is structurally equivalent to removing the mask $k$ from an expression of the form $a = b + kn$. What remains after reduction is the underlying component that reveals whether two integers belong to the same structural layer defined by $n$. Congruence identifies elements of $\mathbb{Z}$ whose difference lies entirely in $n\mathbb{Z}$. The multiple $k$ carries no algebraic identity — it is a shift, a disguise.  The operation mod $n$ discards this displacement and retains only the structural residue: the unique representative of the equivalence class in $\mathbb{Z}/n\mathbb{Z}$.
+
+Let $n \in \mathbb{N}$, $n \geq 1$. For $a, b \in \mathbb{Z}$, define:
+$$
+a \equiv b \pmod{n} \;\; \Longleftrightarrow \;\; a - b = kn \text{ for some } k \in \mathbb{Z}
+$$
+
+The number $k$ carries no structural significance; it merely indicates the number of steps between $a$ and $b$ along a fixed scale of $n$. What matters is that the difference between $a$ and $b$ lies entirely within the additive subgroup $n\mathbb{Z}$.
+
+Thus, we treat $a$ and $b$ as equivalent not because of their numerical values, but because they are separated by a quantity constructed entirely from the structural unit $n$. The congruence relation $\equiv \pmod{n}$ classifies elements of $\mathbb{Z}$ according to their position modulo this fixed unit, ignoring how far apart they are along the $n$-grid.
+
+This induces a partition of $\mathbb{Z}$ into equivalence classes:
+$$
+[a]_n = \{ a + kn \mid k \in \mathbb{Z} \}
+$$
+
+Each class captures the set of integers that differ from $a$ by a quantity divisible by $n$. The structure of modular arithmetic arises from identifying such elements and operating directly on their classes. The modulus $n$ determines the grid; the multiples $kn$ merely shift within it.
+
+
+
+Let $n \in \mathbb{N}$, $n \geq 1$. For each $a \in \mathbb{Z}$, the congruence relation $\equiv \pmod{n}$ partitions $\mathbb{Z}$ into disjoint subsets called equivalence classes.
+
+Each class is defined by its representative $r \in \{0, 1, \dots, n - 1\}$, where:
+$$
+[a]_n = \{ x \in \mathbb{Z} \mid x \equiv a \pmod{n} \}
+= \{ a + kn \mid k \in \mathbb{Z} \}
+$$
+
+The set of all such distinct classes forms the quotient:
+$$
+\mathbb{Z}/n\mathbb{Z} = \{ [0], [1], \dots, [n - 1] \}
+$$
+
+Each integer $a \in \mathbb{Z}$ belongs to exactly one class, determined by its remainder when divided by $n$. The congruence relation thus groups together all integers with the same remainder modulo $n$ and assigns them to a unique equivalence class $[r]_n$.
+
+## Structural Interpretation with Indexing
+
+Let $n \in \mathbb{N},\, n \geq 1$. The modulus $n$ defines a structural framework on $\mathbb{Z}$ by partitioning it into $n$ disjoint equivalence classes under the relation:
+$$
+a \equiv b \pmod{n} \;\; \Longleftrightarrow \;\; n \mid (a - b)
+$$
+
+Each class is determined by a unique invariant $r \in \{0, 1, \dots, n-1\}$, which is the remainder of any representative modulo $n$. We denote the class structurally by:
+$$
+[n]_r := \{ x \in \mathbb{Z} \mid x \equiv r \pmod{n} \}
+$$
+
+Here:
+- $n$ acts as the **structural base**, setting the modular framework.
+- $r$ is the **invariant label**, identifying the equivalence class within that structure.
+
+This notation emphasizes that elements of the same class differ only by integer multiples of $n$, and their essential identity within the system is captured entirely by the invariant $r$. The quotient structure $\mathbb{Z}/n\mathbb{Z}$ may then be viewed as the set of all such structurally indexed classes:
+$$
+\mathbb{Z}/n\mathbb{Z} = \{ [n]_0, [n]_1, \dots, [n]_{n-1} \}
+$$
+
+This reframing decouples the class from any arbitrary representative and instead roots it in its defining invariant within the structure imposed by $n$.
+
+
+## 🔧 Solvability Condition for Linear Congruences
+
+Consider the congruence:
+$$
+ax \equiv b \pmod{n}
+$$
+
+This is solvable if and only if:
+$$
+\gcd(a, n) \mid b
+$$
+
+---
+
+## 🎯 Reformulation as a Diophantine Equation
+
+The congruence $ax \equiv b \pmod{n}$ means:
+$$
+n \mid (ax - b)
+\quad \Longleftrightarrow \quad
+ax - b = kn \quad \text{for some } k \in \mathbb{Z}
+$$
+
+Rewriting:
+$$
+ax - kn = b
+$$
+
+This is a **linear Diophantine equation** in the integers $x$ and $k$:
+$$
+a x + (-n)k = b
+$$
+
+---
+
+## 📐 Diophantine Equation: General Form
+
+A linear Diophantine equation is an equation of the form:
+$$
+a x + n y = b
+$$
+where $a, n, b \in \mathbb{Z}$ and we seek **integer solutions** $(x, y)$.
+
+### 🔹 Fundamental Theorem:
+The equation $a x + n y = b$ has integer solutions if and only if:
+$$
+\gcd(a, n) \mid b
+$$
+
+---
+
+## 🧠 Conclusion
+
+Thus, the congruence $ax \equiv b \pmod{n}$ is solvable if and only if the Diophantine equation
+$$
+ax + (-n)k = b
+$$
+has integer solutions. This occurs precisely when:
+$$
+\boxed{\gcd(a, n) \mid b}
+$$
+
+If this condition holds, we may simplify the congruence and solve using modular inverses.
+
+
+## 🔢 Euclidean Algorithm – Formal Shortcut Format
+
+Let $a, b \in \mathbb{Z}$ with $a > b > 0$. Perform successive divisions:
+
+$$
+\begin{array}{rcl}
+a \div b &=& q_1 \Rightarrow r_1 \\
+b \div r_1 &=& q_2 \Rightarrow r_2 \\
+r_1 \div r_2 &=& q_3 \Rightarrow r_3 \\
+&\vdots& \\
+r_{n-2} \div r_{n-1} &=& q_n \Rightarrow r_n \\
+r_{n-1} \div r_n &=& q_{n+1} \Rightarrow 0
+\end{array}
+$$
+
+Then:
+
+$$
+\gcd(a, b) = r_n
+$$
+
+---
+
+### 📘 Example: Compute $\gcd(544,\ 119)$
+
+$$
+\begin{array}{rcl}
+544 \div 119 &=& 4 \Rightarrow 68 \\
+119 \div 68  &=& 1 \Rightarrow 51 \\
+68 \div 51   &=& 1 \Rightarrow 17 \\
+51 \div 17   &=& 3 \Rightarrow 0
+\end{array}
+$$
+
+Therefore:
+
+$$
+\gcd(544,\ 119) = \boxed{17}
+$$
+
+
+## Euclidean Algorithm (Formal)
+
+Let $a, b \in \mathbb{Z}$ with $a \geq b > 0$. Perform successive divisions:
+
+$$
+\begin{aligned}
+a &= bq_1 + r_1,\quad &0 \leq r_1 < b \\
+b &= r_1q_2 + r_2,\quad &0 \leq r_2 < r_1 \\
+r_1 &= r_2q_3 + r_3,\quad &0 \leq r_3 < r_2 \\
+&\vdots \\
+r_{n-2} &= r_{n-1}q_n + r_n,\quad &0 \leq r_n < r_{n-1} \\
+r_{n-1} &= r_n q_{n+1} + 0
+\end{aligned}
+$$
+
+The last non-zero remainder is the greatest common divisor:
+
+$$
+\gcd(a, b) = r_n
+$$
+
+### Example
+
+Compute $\gcd(252, 105)$:
+
+$$
+\begin{aligned}
+252 &= 105 \cdot 2 + 42 \\
+105 &= 42 \cdot 2 + 21 \\
+42 &= 21 \cdot 2 + 0
+\end{aligned}
+$$
+
+Hence:
+
+$$
+\gcd(252, 105) = \boxed{21}
+$$
+
+
+Let $n \in \mathbb{N},\; n \geq 1$. For $a, b \in \mathbb{Z}$, define:
+$$
+a \equiv b \pmod{n} \;\; \Leftrightarrow \;\; n \mid (a - b)
+$$
+
+This defines an equivalence relation on $\mathbb{Z}$. The set of equivalence classes is denoted $\mathbb{Z}/n\mathbb{Z}$. Each class contains all integers congruent modulo $n$:
+$$
+[a]_n = \{ x \in \mathbb{Z} \mid x \equiv a \pmod{n} \}
+$$
+
+We define operations:
+$$
+[a] + [b] := [a + b], \quad [a][b] := [ab]
+$$
+
+These are well-defined. The structure $\mathbb{Z}/n\mathbb{Z}$ is a commutative ring with identity. If $n$ is prime, it is a field.
+
+## Algebraic Rules for Congruences
+
+Let $n \in \mathbb{N}$, $n \geq 1$. Let $a, b, c, d \in \mathbb{Z}$ such that:
+$$
+a \equiv b \pmod{n}, \quad c \equiv d \pmod{n}
+$$
+
+Then:
+
+### Addition:
+$$
+a + c \equiv b + d \pmod{n}
+$$
+
+### Subtraction:
+$$
+a - c \equiv b - d \pmod{n}
+$$
+
+### Multiplication:
+$$
+ac \equiv bd \pmod{n}
+$$
+
+### Exponentiation:
+$$
+a^k \equiv b^k \pmod{n} \quad \text{for all } k \in \mathbb{N}
+$$
+
+### Substitution:
+If $a \equiv b \pmod{n}$, then $a$ may be replaced by $b$ in any modular expression.
+
+### Cancellation:
+If $ac \equiv bc \pmod{n}$ and $\gcd(c, n) = 1$, then:
+$$
+a \equiv b \pmod{n}
+$$
+
+Otherwise, cancellation is not valid.
+
+## Framework and Assumptions
+
+Throughout, fix $n \in \mathbb{N}$, $n \geq 1$. All congruences are understood modulo $n$.
+
+We regard congruence modulo $n$ as a binary relation on $\mathbb{Z}$ defined by:
+$$
+a \equiv b \pmod{n} \iff n \mid (a - b)
+$$
+
+This relation is taken as an equivalence relation. The algebraic rules below are presented without proof, and will be treated as formal properties of the quotient structure $\mathbb{Z}/n\mathbb{Z}$. Their justification will be provided subsequently through direct argument or structural reasoning.
+
+## 🧪 Exercises: Linear Congruences & Solvability
+
+### Level 1: Basic Computation
+
+1. Solve: $3x \equiv 6 \pmod{9}$
+
+2. Solve: $7x \equiv 1 \pmod{26}$
+
+3. Determine if there is a solution to: $4x \equiv 3 \pmod{10}$
+
+4. Solve: $5x \equiv 0 \pmod{15}$
+
+---
+
+### Level 2: Modular Inverse & Multiple Solutions
+
+5. Solve: $14x \equiv 30 \pmod{100}$  
+   _Hint: simplify by $\gcd$ if needed._
+
+6. Find all solutions: $9x \equiv 12 \pmod{21}$  
+   _How many solutions? Justify._
+
+7. Find the smallest positive solution: $22x \equiv 1 \pmod{41}$
+
+---
+
+### Level 3: Structure & Reasoning
+
+8. Show that the congruence $ax \equiv b \pmod{n}$ has a solution if and only if $\gcd(a, n) \mid b$  
+   _[Just state the reasoning; full proof optional later]_
+
+9. Given $a = 8$, $b = 10$, $n = 18$, check whether $ax \equiv b \pmod{n}$ is solvable. If so, find all solutions.
+
+10. Let $a = 21$, $b = 14$, $n = 35$. Find the general solution to $21x \equiv 14 \pmod{35}$ and describe it in set notation.

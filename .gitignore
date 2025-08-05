@@ -1,0 +1,45 @@
+# ---- LaTeX build files ----
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pdfsync
+*.nav
+*.snm
+*.vrb
+*.lof
+*.lot
+*.gz
+*.xdv
+
+# ---- Quarto / Jupyter ----
+_site/
+*.html
+*.pdf
+*.docx
+*.ipynb
+.ipynb_checkpoints/
+*.qmd~
+*.Rproj
+*.DS_Store
+
+# ---- PDF files (OPTIONAL) ----
+# Uncomment the next line if you want to exclude all PDFs
+*.pdf
+
+# ---- Editor and OS junk ----
+*.swp
+*.bak
+*~
+*.tmp
+*.log
+Thumbs.db
+.DS_Store
+
+# ---- VSCode ----
+.vscode/

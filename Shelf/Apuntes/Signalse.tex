@@ -1,0 +1,185 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{titlesec}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection.}{1em}{}
+
+\title{\textbf{Abstract Algebraic Structure of \((\mathbb{R}, +)\) and Characters into \(U(1)\)}}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\section{The Additive Group \((\mathbb{R}, +)\)}
+	
+	We consider the set of real numbers \(\mathbb{R}\) under addition, forming the group \((\mathbb{R}, +)\), which models continuous time shifts in signal theory.
+	
+	\subsection*{Algebraic Structure}
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item \textbf{Set}: \(\mathbb{R}\)
+		\item \textbf{Binary operation}: \(+\colon \mathbb{R} \times \mathbb{R} \to \mathbb{R}\), defined by \((a, b) \mapsto a + b\)
+	\end{itemize}
+	
+	\subsection*{Group Properties}
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item \textbf{Abelian Group}: Commutative: \(a + b = b + a\)
+		\item \textbf{Identity Element}: \(0 \in \mathbb{R}\), such that \(a + 0 = a\) for all \(a\)
+		\item \textbf{Inverse Element}: For every \(a \in \mathbb{R}\), the inverse is \(-a\), with \(a + (-a) = 0\)
+		\item \textbf{Infinite}: \(\mathbb{R}\) is uncountably infinite
+		\item \textbf{Divisible Group}: For all \(a \in \mathbb{R}\), \(n \in \mathbb{Z}^+\), there exists \(x \in \mathbb{R}\) such that \(nx = a\)
+		\item \textbf{Torsion-Free}: \(na = 0\) implies \(a = 0\), for all \(n \in \mathbb{Z}\)
+		\item \textbf{Free \(\mathbb{Q}\)-Module}: Scalar multiplication \(q \cdot a\) is well-defined for \(q \in \mathbb{Q}\), and respects module structure
+	\end{itemize}
+	
+	\subsection*{Functional Role in Signals}
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item Represents \textbf{time translations}: \(x(t) \mapsto x(t + \tau)\)
+		\item Defines \textbf{periodicity} via translation symmetry: \(x(t + T) = x(t)\)
+	\end{itemize}
+	
+	\section{The Unit Circle Group \(U(1)\)}
+	
+	Let us now construct the codomain group for character maps.
+	
+	\subsection*{Definition}
+	
+	\[
+	U(1) := \{ z \in \mathbb{C} \mid |z| = 1 \}
+	\]
+	This is the set of all complex numbers of unit modulus. The operation is complex multiplication:
+	\[
+	\cdot\colon U(1) \times U(1) \to U(1), \quad (z_1, z_2) \mapsto z_1 z_2
+	\]
+	
+	\subsection*{Group Properties}
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item \textbf{Abelian Group}: \(z_1 z_2 = z_2 z_1\)
+		\item \textbf{Identity Element}: \(1 \in \mathbb{C}\), satisfies \(z \cdot 1 = z\)
+		\item \textbf{Inverses}: \(z^{-1} = \overline{z}\), since \(z \cdot \overline{z} = |z|^2 = 1\)
+		\item \textbf{Infinite}: Uncountably infinite, parameterized by angle \(\theta\) via \(e^{j\theta}\)
+	\end{itemize}
+	
+	\subsection*{Relevance to Signal Theory}
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item Represents \textbf{phase}, \textbf{rotation}, and \textbf{frequency content}
+		\item Hosts the values of \textbf{complex exponentials}: \(e^{j \omega t} \in U(1)\)
+	\end{itemize}
+	
+	\section{Characters: Homomorphisms from \((\mathbb{R}, +)\) to \(U(1)\)}
+	
+	We define a family of functions (called \textbf{characters}):
+	
+	\[
+	\chi_\omega\colon \mathbb{R} \to U(1), \quad t \mapsto e^{j \omega t}
+	\]
+	
+	\subsection*{Homomorphism Verification}
+	
+	For all \(t_1, t_2 \in \mathbb{R}\):
+	
+	\[
+	\chi_\omega(t_1 + t_2) = e^{j \omega (t_1 + t_2)} = e^{j \omega t_1} \cdot e^{j \omega t_2} = \chi_\omega(t_1) \cdot \chi_\omega(t_2)
+	\]
+	
+	Thus, each \(\chi_\omega\) is a group homomorphism from \((\mathbb{R}, +)\) into \((U(1), \cdot)\).
+	
+	\subsection*{Interpretation}
+	
+	Each character \(\chi_\omega\) encodes:
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item A rotation on the unit circle at angular frequency \(\omega\)
+		\item A continuous symmetry of time under translation
+		\item A building block for sinusoidal signals via Euler's identity:
+		\[
+		e^{j \omega t} = \cos(\omega t) + j \sin(\omega t)
+		\]
+	\end{itemize}
+	
+	\section*{Conclusion}
+	
+	We have formally described the group \((\mathbb{R}, +)\) as the structure underlying continuous time, and constructed the unit circle group \(U(1)\) as the natural codomain for periodic signal representations. The map \( t \mapsto e^{j \omega t} \) arises canonically as a character (group homomorphism), embedding sinusoidal behavior directly into algebraic structure.
+	
+	Let \( x \colon \mathbb{R} \to U(1) \) be defined by:
+	\[
+	x(t) := e^{j t}
+	\]
+	
+	We claim that \( x \) is a group homomorphism:
+	\[
+	x(t_1 + t_2) = e^{j(t_1 + t_2)} = e^{j t_1} \cdot e^{j t_2} = x(t_1) \cdot x(t_2)
+	\]
+	
+	Therefore, \( x \in \mathrm{Hom}((\mathbb{R}, +), (U(1), \cdot)) \), i.e., a character of \( \mathbb{R} \).
+	
+	\section{The Unit Circle Group \( U(1) \)}
+	
+	\subsection*{Definition}
+	
+	The \textbf{unit circle group} \( U(1) \) is defined as the following subset of the complex numbers:
+	\[
+	U(1) := \{ z \in \mathbb{C} \mid |z| = 1 \}
+	\]
+	Each element \( z \in U(1) \) is a complex number of modulus 1, i.e., it lies on the unit circle in the complex plane. Every such element can be written in polar (Euler) form as:
+	\[
+	z = e^{j \theta} = \cos(\theta) + j \sin(\theta), \quad \theta \in \mathbb{R}
+	\]
+	
+	\subsection*{Group Structure}
+	
+	The group operation is complex multiplication:
+	\[
+	\cdot\colon U(1) \times U(1) \to U(1), \quad (z_1, z_2) \mapsto z_1 z_2
+	\]
+	
+	\begin{itemize}
+		\item \textbf{Closure}: If \( |z_1| = 1 \) and \( |z_2| = 1 \), then \( |z_1 z_2| = |z_1||z_2| = 1 \Rightarrow z_1 z_2 \in U(1) \)
+		\item \textbf{Associativity}: Inherited from complex multiplication
+		\item \textbf{Identity element}: \( 1 \in \mathbb{C} \) satisfies \( z \cdot 1 = z \)
+		\item \textbf{Inverse}: For any \( z \in U(1) \), the inverse is \( z^{-1} = \overline{z} \), since \( z \overline{z} = |z|^2 = 1 \)
+		\item \textbf{Commutativity}: \( z_1 z_2 = z_2 z_1 \)
+	\end{itemize}
+	
+	Thus \( U(1) \) is an \textbf{abelian group} under multiplication.
+	
+	\subsection*{Geometric Interpretation}
+	
+	Each \( z \in U(1) \) represents a unit vector from the origin in the complex plane, forming an angle \( \theta \) with the real axis. The operation of multiplying by \( z \) corresponds to a rotation.
+	
+	\paragraph{Let \( a \in \mathbb{C} \), and \( z = e^{j\theta} \in U(1) \):}
+	\[
+	z \cdot a = e^{j\theta} a
+	\]
+	
+	This operation:
+	\begin{itemize}
+		\item Preserves the magnitude of \( a \): \( |z a| = |z||a| = |a| \)
+		\item Rotates \( a \) by angle \( \theta \): \( \arg(z a) = \arg(a) + \theta \)
+	\end{itemize}
+	
+	Therefore, multiplication by an element of \( U(1) \) is equivalent to a \textbf{rotation transformation} on the complex plane.
+	
+	\subsection*{Application in Homomorphisms}
+	
+	The unit circle group \( U(1) \) is the natural codomain for homomorphisms from \( (\mathbb{R}, +) \), such as:
+	\[
+	x(t) = e^{j t} \in U(1)
+	\]
+	
+	Here, \( t \mapsto e^{j t} \) maps real-valued time to **pure phase rotations** on the unit circle, encoding periodic behavior.
+	
+	
+	
+	
+\end{document}

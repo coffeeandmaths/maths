@@ -1,0 +1,22 @@
+/* Tweak inline math to match text size */
+.katex {
+  font-size: 0.95em;
+  vertical-align: baseline;
+}
+
+/* Make block equations smaller and nicely spaced */
+.katex-display {
+  font-size: 1.05em;
+  margin: 1em auto;
+  text-align: center;
+}
+
+/* Optional: style the body for nicer typography */
+body {
+  font-family: Georgia, serif;
+  font-size: 1.1em;
+  max-width: 800px;
+  margin: auto;
+  padding: 2em;
+  line-height: 1.6;
+}

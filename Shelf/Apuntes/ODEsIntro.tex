@@ -1,0 +1,745 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+\setlength{\parindent}{0pt}
+
+
+\title{Time Dependence in First-Order Ordinary Differential Equations}
+\author{Ramon Armeria}
+\date{July 2025}
+
+\begin{document}
+	
+	\maketitle
+	
+	
+	\section*{Introduction}
+	
+	This document presents a formal and structured approach to Ordinary Differential Equations (ODEs), focusing on their operator behavior and underlying algebraic properties.
+	
+	Rather than beginning with physical modeling or motivation, we analyze the nature of the differential operator:
+	$$
+	D: C^1(\mathbb{R}) \to C^0(\mathbb{R}), \quad f \mapsto f'
+	$$
+	This operator acts on the space of continuously differentiable functions and preserves vector space structure:
+	$$
+	D(\alpha f + \beta g) = \alpha D(f) + \beta D(g)
+	$$
+	Hence, \( D \) is a linear transformation:
+	$$
+	D \in \mathrm{Hom}(C^1(\mathbb{R}), C^0(\mathbb{R}))
+	$$
+	
+	We express an ODE in operator form as:
+	$$
+	Df = g
+	$$
+	Our aim is to study this equation from a structural viewpoint. Rather than merely solving for \( f \), we interpret the solution set in terms of the kernel of \( D \), denoted:
+	$$
+	\ker(D) = \{ f \in C^1(\mathbb{R}) \mid D(f) = 0 \}
+	$$
+	
+	Thus, the general solution takes the form:
+	$$
+	f = f_p + f_h \quad \text{with} \quad f_h \in \ker(D)
+	$$
+	which corresponds to a coset in the quotient space:
+	$$
+	C^1(\mathbb{R}) \big/ \ker(D)
+	$$
+	
+	This algebraic perspective clarifies the structure of the solution space and connects the study of differential equations to the broader theory of homomorphisms, kernels, and linear transformations.
+	
+	
+	\section{Linearity in D}
+	
+	\subsection{Vector Space Structure}
+	
+	
+	The set \( C^\infty(\mathbb{R}) \) consists of all functions \( f: \mathbb{R} \to \mathbb{R} \) that are infinitely differentiable:
+	$$
+	C^\infty(\mathbb{R}) = \left\{ f : \mathbb{R} \to \mathbb{R} \,\middle|\, f \in C^k \text{ for all } k \in \mathbb{N} \right\}
+	$$
+	
+	This set forms a \textbf{vector space over } \( \mathbb{R} \) because it satisfies the vector space axioms:
+	
+	\begin{itemize}
+		\item \textbf{Closure under addition:} If \( f, g \in C^\infty(\mathbb{R}) \), then \( f + g \in C^\infty(\mathbb{R}) \)
+		\item \textbf{Closure under scalar multiplication:} If \( \alpha \in \mathbb{R} \) and \( f \in C^\infty(\mathbb{R}) \), then \( \alpha f \in C^\infty(\mathbb{R}) \)
+		\item \textbf{Associativity, commutativity, identity, inverses, distributivity, etc.} all hold
+	\end{itemize}
+	
+	Therefore, \( C^\infty(\mathbb{R}) \) is a valid vector space. Since the differentiation operator \( D \) satisfies:
+	$$
+	D(\alpha f + \beta g) = \alpha D(f) + \beta D(g)
+	$$
+	it is a \textbf{linear transformation} on this vector space:
+	$$
+	D \in \mathrm{Hom}(C^\infty(\mathbb{R}), C^\infty(\mathbb{R}))
+	$$
+	
+	This justifies discussing the \textbf{kernel, image, and structure} of \( D \) using the language of linear algebra.
+	
+	
+	\subsection{Differentiation Map $D$} 
+	
+	$$
+	D: C^\infty(\mathbb{R}) \to C^\infty(\mathbb{R}), \quad D(f) = f'
+	$$
+	
+	and 
+	
+	$$
+	C^\infty(\mathbb{R}) = \left\{ f : \mathbb{R} \to \mathbb{R} \,\middle|\, f \in C^k \text{ for all } k \in \mathbb{N} \right\}
+	$$
+	
+	
+	This operator acts on the vector space of infinitely differentiable functions.
+	
+	\subsection{Homomorphism $D$} 
+	The structure preserved is the \emph{vector space structure}.
+	
+	\begin{itemize}
+		\item \textbf{Addition is preserved}:
+		$$
+		D(f + g) = f' + g' = D(f) + D(g)
+		$$
+		
+		\item \textbf{Scalar multiplication is preserved}:
+		$$
+		D(\alpha f) = \alpha f' = \alpha D(f)
+		$$
+	\end{itemize}
+	
+	Therefore, \( D \) respects both vector addition and scalar multiplication.  
+	This means \( D \) is a \textbf{homomorphism of vector spaces}, also known as a \textbf{linear transformation}:
+	
+	$$
+	D \in \mathrm{Hom}(C^\infty(\mathbb{R}), C^\infty(\mathbb{R}))
+	$$
+	
+	\subsection{Kernel of a Morphism (General Form)}
+	
+	Let $f: A \to B$ be a morphism in a category where a distinguished identity element \( e_B \in B \) (e.g. the zero element or zero morphism) exists. The \textit{kernel} of \( f \), denoted \( \ker(f) \), is the set of elements in \( A \) that are mapped to the identity element in \( B \):
+	
+	$$
+	\ker(f) = \left\{ a \in A \,\middle|\, f(a) = e_B \right\}
+	$$
+	
+	This definition generalizes across different algebraic structures:
+	\begin{itemize}
+		\item In vector spaces: \( e_B = 0 \) (zero vector)
+		\item In groups: \( e_B \) is the identity element of the group
+		\item In modules: \( e_B = 0 \) (additive identity)
+		\item In abelian categories: \( f(a) = 0 \) means \( f \) factors through the zero morphism
+	\end{itemize}
+	
+	The kernel captures all elements that become "invisible" under the morphism — i.e., those indistinguishable from identity in the codomain structure.
+	
+	\textbf{Remarks:}
+	
+	\begin{itemize}
+		\item \( \ker(f) \subseteq A \), and it is a subobject of \( A \)
+		\item If \( \ker(f) = \{e_A\} \), then \( f \) is injective (in suitable settings)
+	\end{itemize}
+	
+	
+	\subsection{Kernel of a Linear Transformation}
+	
+	Let 
+	$$
+	T: V \to W
+	$$ 
+	be a linear transformation between vector spaces over a field \( \mathbb{F} \).
+	
+	The \textbf{kernel} of \( T \), denoted \( \ker(T) \), is defined as the set of all vectors in \( V \) that are mapped to the zero vector in \( W \):
+	
+	$$
+	\ker(T) = \left\{ v \in V \,\middle|\, T(v) = 0 \right\}
+	$$
+	
+	This means \( \ker(T) \subseteq V \), and consists of all inputs that are "flattened" to zero by \( T \). The kernel measures the extent to which \( T \) fails to be injective.
+	
+	$$
+	\textbf{Properties:}
+	$$
+	
+	\begin{itemize}
+		\item \( \ker(T) \) is a subspace of \( V \)
+		\item \( T \) is injective (one-to-one) if and only if \( \ker(T) = \{0\} \)
+		\item For operator equations of the form \( T(v) = w \), the general solution is given by:
+		$$
+		v = v_p + v_h \quad \text{where} \quad v_h \in \ker(T)
+		$$
+	\end{itemize}
+	
+	
+	\subsubsection{Definition: Kernel of the Derivative Operator}
+	
+	The \textbf{kernel} of an operator is the set of all inputs that are mapped to zero. For the derivative operator:
+	
+	$$
+	\ker D = \{ f \in \mathcal{C}^1(\mathbb{R}) \mid D(f) = 0 \} = \{ \text{constant functions} \}
+	$$
+	
+	This kernel is isomorphic to $\mathbb{R}$, and is the reason why the general solution to an ODE always includes an arbitrary constant $C$.
+	
+	\subsection{Structural Summary}
+	
+	\begin{itemize}
+		\item $D$ maps from $\mathcal{C}^1(\mathbb{R})$ to $\mathcal{C}^0(\mathbb{R})$, but is not injective.
+		\item The kernel of $D$ consists of all constant functions.
+		\item When solving $\frac{dy}{dt} = f(t)$, we must add $C \in \ker D$ to recover the full solution space.
+		\item The solution space forms equivalence classes modulo constants: $y_1 \sim y_2 \iff y_1 - y_2 \in \mathbb{R}$.
+	\end{itemize}
+	
+	\section{Domain of an Ordinary Differential Equation}
+	
+	An ordinary differential equation (ODE) models how a quantity changes with respect to an independent variable. The \textbf{domain} of the ODE is defined by this independent variable, which depends on the nature of the phenomenon being modeled.
+	
+	\begin{itemize}
+		\item \textbf{Time domain} ($t$): 
+		$$
+		\frac{dy}{dt} = f(t, y)
+		$$
+		Models systems evolving dynamically over time. This is the most common domain in physics and engineering.
+		
+		\item \textbf{Spatial domain} ($x$): 
+		$$
+		\frac{dy}{dx} = f(x, y)
+		$$
+		Models steady-state spatial variation (e.g., thermal gradients, beam deflection, optical rays).
+		
+		\item \textbf{Frequency domain} ($\omega$, or $s$ via transforms):
+		\\
+		ODEs are often transformed from the time domain into the frequency domain via the Laplace or Fourier transform to simplify analysis. For example, the Laplace transform of an ODE:
+		$$
+		\mathcal{L} \left\{ \frac{dy}{dt} + ky \right\} \Rightarrow sY(s) + kY(s) = \mathcal{L}\{f(t)\}
+		$$
+		transforms it into an algebraic equation in $s$.
+		
+	\end{itemize}
+	
+	\noindent
+	In summary, the domain of an ODE depends on what aspect of a system we seek to model:
+	\begin{center}
+		\textit{Time models evolution, space models distribution, frequency models response.}
+	\end{center}
+	
+	\section{Autonomous and Non-Autonomous Differential Equations}
+	
+	Consider a first-order ordinary differential equation of the form:  
+	$$
+	\frac{dy}{dt} = f(t, y)
+	$$
+	
+	The equation is said to be \textbf{autonomous} if the right-hand side depends only on the dependent variable $y$, that is:  
+	$$
+	\frac{dy}{dt} = f(y)
+	$$
+	
+	This models a system whose evolution is governed solely by its internal state.
+	
+	In contrast, if the right-hand side explicitly depends on time $t$, the equation is \textbf{non-autonomous}:  
+	$$
+	\frac{dy}{dt} = f(t, y)
+	$$
+	
+	Here, the system’s behavior is modulated by an external clock — time directly influences how the state changes.
+	
+	\section{Time Dependence in Non-Autonomous Systems}
+	
+	We now examine several common time-dependent structures, all involving a real constant $k \in \mathbb{R}$, and interpret their mathematical and physical meaning.
+	
+	\subsection{Additive Time Dependence}
+	$$
+	\frac{dy}{dt} = ky + t
+	$$
+	
+	\textbf{Interpretation:} The system changes under internal feedback ($ky$) plus a steady time-based injection.
+	
+	\textbf{Physical Model:} A system that grows naturally while also being externally forced by a time-driven input (e.g., a tank filling at a steady rate).
+	
+	\textbf{Solution (for $k \neq 0$):}  
+	$$
+	y(t) = Ce^{kt} - \frac{t}{k} - \frac{1}{k^2}
+	$$
+	
+	\subsection{Subtractive Time Dependence}
+	$$
+	\frac{dy}{dt} = ky - t
+	$$
+	
+	\textbf{Interpretation:} Internal growth is counteracted by time-based decay.
+	
+	\textbf{Physical Model:} A process like a growing population slowed down by aging or limited resources.
+	
+	\subsection{Multiplicative Time Dependence}
+	$$
+	\frac{dy}{dt} = kty
+	$$
+	
+	\textbf{Interpretation:} Time amplifies the self-driven growth of the system.
+	
+	\textbf{Physical Model:} An accelerating system such as exponential growth that speeds up as time passes.
+	
+	\textbf{Solution:}  
+	$$
+	y(t) = Ce^{\frac{kt^2}{2}}
+	$$
+	
+	\subsection{Divisive Time Dependence}
+	$$
+	\frac{dy}{dt} = \frac{ky}{t}
+	$$
+	
+	\textbf{Interpretation:} Time weakens the influence of the current state on the rate of change.
+	
+	\textbf{Physical Model:} A process that slows over time due to fatigue, dilution, or dissipation.
+	
+	\textbf{Solution:}  
+	$$
+	y(t) = Ct^k
+	$$
+	
+	\subsection{Time-Only Driven Dynamics}
+	$$
+	\frac{dy}{dt} = \frac{k}{t}
+	$$
+	
+	\textbf{Interpretation:} The evolution is driven purely by time; the state $y$ plays no active role.
+	
+	\textbf{Physical Model:} A passive system recording or accumulating a time-dependent signal (e.g., a sensor integrating ambient input).
+	
+	\textbf{Solution:}  
+	$$
+	y(t) = k \ln |t| + C
+	$$
+	
+	\section{Summary Table}
+	
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textbf{Equation} & \textbf{Type} & \textbf{Interpretation} & \textbf{Solution} \\
+			\hline
+			$ \frac{dy}{dt} = ky $ & Autonomous & Self-driven growth/decay & $ y(t) = Ce^{kt} $ \\
+			\hline
+			$ \frac{dy}{dt} = ky + t $ & Non-autonomous & Growth + time-driven injection & Mixed exponential + linear \\
+			\hline
+			$ \frac{dy}{dt} = ky - t $ & Non-autonomous & Growth with time-induced decay & Mixed exponential + linear \\
+			\hline
+			$ \frac{dy}{dt} = kty $ & Non-autonomous & Time amplifies growth & $ y(t) = Ce^{\frac{kt^2}{2}} $ \\
+			\hline
+			$ \frac{dy}{dt} = \frac{ky}{t} $ & Non-autonomous & Time dampens growth & $ y(t) = Ct^k $ \\
+			\hline
+			$ \frac{dy}{dt} = \frac{k}{t} $ & Non-autonomous & Time-driven only & $ y(t) = k \ln |t| + C $ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\section{The Constant\( C \)}
+	
+	A fundamental property of the derivative operator \( D = \frac{d}{dt} \) is that it is not injective: multiple functions can share the same derivative. 
+	$$
+	D \text{ is not injective} \quad \Longleftrightarrow \quad \exists\, y_1 \ne y_2 \text{ such that } D(y_1) = D(y_2)
+	$$
+	
+	In particular, any two functions that differ by a constant belong to the same equivalence class under differentiation.
+	
+	Suppose
+	$$
+	D(y_1) = D(y_2)
+	$$
+	Then
+	$$
+	\frac{d}{dt}(y_1 - y_2) = 0
+	$$
+	Integrating both sides:
+	$$
+	y_1(t) - y_2(t) = \int 0\,dt = C \in \mathbb{R}
+	$$
+	
+	This shows that the set of functions with the same derivative forms an equivalence class under the relation:
+	$$
+	y_1 \sim y_2 \quad \text{if and only if} \quad y_1 - y_2 \in \mathbb{R}
+	$$
+	
+	In operator terms, the constant arises from the fact that the kernel of the derivative contains all constant functions:
+	$$
+	\ker D = \left\{ f \in \mathcal{C}^1(\mathbb{R}) \,\middle|\, \frac{df}{dt} = 0 \right\} = \text{span}\{1\}
+	$$
+	
+	Therefore, when solving a first-order differential equation of the form
+	$$
+	\frac{dy}{dt} = f(t)
+	$$
+	we obtain the general solution by integrating:
+	$$
+	y(t) = \int f(t)\,dt + C
+	$$
+	The constant \( C \) accounts for the information lost due to the non-injectivity of the derivative operator. It restores the full set of antiderivatives — not just a single function, but the entire family.
+	
+	\subsection{The Role of the Constant $C$ and the Kernel of $D$}
+	
+	Let $D : \mathcal{C}^1(\mathbb{R}) \to \mathcal{C}^0(\mathbb{R})$ be the derivative operator.\\
+	
+	A function $f \in \mathcal{C}^1(\mathbb{R})$ is continuously differentiable: it is continuous, differentiable, and its derivative is continuous. The operator $D$ takes such a function and produces a continuous function:
+	
+	$$
+	D(f) = f' \in \mathcal{C}^0(\mathbb{R})
+	$$
+	
+	Now consider constant functions $f(t) = C \in \mathbb{R}$. These functions are clearly in $\mathcal{C}^1(\mathbb{R})$, but when passed through $D$, we obtain:
+	
+	$$
+	D(C) = \frac{d}{dt}(C) = 0
+	$$
+	
+	This reveals a key structural property:
+	
+	\begin{quote}
+		\textbf{The derivative operator is not injective.} Different functions (that differ by a constant) can be mapped to the same derivative. In other words:
+		
+		$$
+		D(y_1) = D(y_2) \iff y_1 - y_2 \in \ker D
+		$$
+		
+	\end{quote}
+	
+	Thus, all functions that differ only by a constant are considered equivalent under $D$. When we solve a first-order ODE such as:
+	
+	$$
+	\frac{dy}{dt} = f(t)
+	$$
+	
+	we integrate both sides to find:
+	
+	$$
+	y(t) = \int f(t)\,dt + C
+	$$
+	
+	The constant $C$ is added back to recover the full space of possible solutions, accounting for the fact that $D$ loses all information about constant offsets.
+	
+	\section*{Real-World Structural Example: Car Suspension as Operator Equation}
+	
+	We consider a damped spring–mass system, such as a car suspension responding to a road bump. The governing equation is:
+	\[
+	m y''(t) + c y'(t) + k y(t) = F(t)
+	\]
+	with $m = 1$, $c = 4$, $k = 5$, and $F(t) = \delta(t - 1)$ representing a sudden impulse at $t = 1$. Initial conditions are:
+	\[
+	y(0) = 0, \quad y'(0) = 0
+	\]
+	
+	\section*{Generators in Algebraic Structures}
+	
+	\subsection*{Definition (General)}
+	
+	Let $A$ be an algebraic structure (e.g. a group, ring, or module), and let $S \subseteq A$.
+	
+	We say that $S$ \textbf{generates} $A$ if every element of $A$ can be written as a finite expression using:
+	\begin{itemize}
+		\item Elements of $S$
+		\item The operations defined in $A$ (e.g. addition, multiplication, composition)
+		\item Scalar multiplication (if $A$ is defined over a ring or field)
+	\end{itemize}
+	
+	This is denoted:
+	\[
+	A = \langle S \rangle
+	\]
+	
+	\subsection*{Example: Group}
+	
+	Let $G$ be a group and $g \in G$. If:
+	\[
+	G = \{g^n \mid n \in \mathbb{Z}\}
+	\]
+	then $G$ is called a \textbf{cyclic group} and $g$ is a \textbf{generator}. We write: $G = \langle g \rangle$.
+	
+	\subsection*{Example: Ring of Polynomials}
+	
+	In the ring $\mathbb{R}[x]$, the element $x$ is a generator:
+	\[
+	\mathbb{R}[x] = \langle x \rangle_{\text{ring}} = \left\{ \sum_{i=0}^n a_i x^i \mid a_i \in \mathbb{R} \right\}
+	\]
+	
+	\subsection*{Example: Ring of Differential Operators}
+	
+	The ring of differential operators is:
+	\[
+	\mathbb{R}[D] = \left\{ a_0 I + a_1 D + a_2 D^2 + \dots + a_n D^n \,\middle|\, a_i \in \mathbb{R} \right\}
+	\]
+	Here:
+	\begin{itemize}
+		\item $D$ is the differentiation operator: $D[f] = f'$
+		\item $I$ is the identity operator
+	\end{itemize}
+	
+	We say that $\mathbb{R}[D]$ is the ring \textbf{generated} by $D$ over $\mathbb{R}$.
+	
+	\vspace{1em}
+	\noindent
+	\emph{Interpretation:} $D$ is the structural seed — from it, all elements of $\mathbb{R}[D]$ are built via addition and composition.
+		
+	\vspace{1em}
+	
+	\subsection*{Abstract Operator Form}
+	
+	We treat this as an operator equation:
+	\[
+	(D^2 + 4D + 5I)\,y = \delta(t - 1)
+	\]
+	where $D$ is the differentiation operator. This formulation allows us to study the system through its algebraic structure, focusing on the operator's behavior rather than the physical implementation.
+	
+	\vspace{1em}
+	\subsection*{Laplace Transform as Algebraic Mapping}
+	
+	Applying the Laplace Transform (symbolically, as an algebra homomorphism):
+	\[
+	\mathcal{L}\{y'' + 4y' + 5y\} = (s^2 + 4s + 5)Y(s)
+	\]
+	\[
+	\mathcal{L}\{\delta(t - 1)\} = e^{-s}
+	\]
+	We obtain the algebraic equation:
+	\[
+	Y(s) = \frac{e^{-s}}{s^2 + 4s + 5}
+	\]
+	
+	\vspace{1em}
+	\subsection*{Solution via Inverse Transform}
+	
+	Rewrite the denominator:
+	\[
+	s^2 + 4s + 5 = (s + 2)^2 + 1
+	\]
+	Then:
+	\[
+	Y(s) = e^{-s} \cdot \frac{1}{(s + 2)^2 + 1}
+	\]
+	Using the known inverse:
+	\[
+	\mathcal{L}^{-1} \left\{ \frac{1}{(s + a)^2 + \omega^2} \right\} = e^{-at} \sin(\omega t)
+	\]
+	we find:
+	\[
+	y(t) = u(t - 1)\, e^{-2(t - 1)} \sin(t - 1)
+	\]
+	
+	\vspace{1em}
+	\subsection*{Interpretation}
+	
+	The response starts at $t = 1$ and exhibits a damped sinusoidal behavior. This result is not obtained by simulating the system physically, but rather by inverting an algebraically transformed operator equation.
+	
+	\begin{center}
+		\emph{The impulse acts not as a physical action, but as a structural generator of the system's response.}
+	\end{center}
+	
+	This example illustrates how viewing differential equations through the lens of abstract algebra allows us to solve and understand systems based on structural transformations and symbolic mappings.
+	
+\section*{Generators in Algebraic Structures: Expanded View}
+
+\subsection*{1. Generator in a Group}
+
+Let $G$ be a group and $g \in G$.
+
+We say $g$ \textbf{generates} $G$ if:
+\[
+G = \langle g \rangle = \{g^n \mid n \in \mathbb{Z} \}
+\]
+
+\textbf{Structure:}
+\begin{itemize}
+	\item Identity element: $e$ (neutral element)
+	\item $g^0 = e$
+	\item $g^1 = g,\quad g^2 = g \cdot g, \quad g^{-1} = g^{-1}, \quad g^{-2} = g^{-1} \cdot g^{-1}$
+\end{itemize}
+
+This structure is symmetric around $e$ due to the existence of inverses. The powers of $g$ form a cyclic group.
+
+---
+
+\subsection*{2. Generator in a Ring (e.g., $\mathbb{R}[x]$)}
+
+Let $\mathbb{R}[x]$ be the ring of polynomials in one variable with real coefficients.
+
+\[
+\mathbb{R}[x] = \langle x \rangle_{\text{ring}} = \left\{ \sum_{i=0}^n a_i x^i \mid a_i \in \mathbb{R} \right\}
+\]
+
+\textbf{Structure:}
+\begin{itemize}
+	\item Identity element: $1$ (multiplicative)
+	\item $x^0 = 1$
+	\item $x^1 = x,\quad x^2 = x \cdot x, \quad \text{etc.}$
+	\item No negative powers allowed (this is not a field or Laurent ring)
+\end{itemize}
+
+Here, $x$ is a generator: all ring elements are built from $x$ using addition and multiplication by scalars from $\mathbb{R}$.
+
+---
+
+\subsection*{3. Generator in the Ring of Differential Operators ($\mathbb{R}[D]$)}
+
+Let $D$ be the differentiation operator: $D[f] = f'$. Define:
+
+\[
+\mathbb{R}[D] = \left\{ a_0 I + a_1 D + a_2 D^2 + \dots + a_n D^n \mid a_i \in \mathbb{R} \right\}
+\]
+
+\textbf{Structure:}
+\begin{itemize}
+	\item Identity element: $I$ (identity operator, acts as $I[f] = f$)
+	\item $D^0 = I$
+	\item $D^1 = D$, $D^2 = D \circ D$, and so on
+	\item Elements are operators, not numbers: they act on a function space $\mathcal{F}$
+\end{itemize}
+
+This ring is generated by $D$, just as $\mathbb{R}[x]$ is generated by $x$. But here, $D$ acts via composition (not multiplication), and the ring acts on a module of functions.
+
+---
+
+\subsection*{Summary Table}
+
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{Structure} & \textbf{Generator} & \textbf{Neutral Element} & \textbf{Operation} & \textbf{Meaning of $g^0$ or $D^0$} \\\hline
+		Group ($G$) & $g$ & $e$ & Group product & $g^0 = e$ \\\hline
+		Ring ($\mathbb{R}[x]$) & $x$ & $1$ & Polynomial multiplication & $x^0 = 1$ \\\hline
+		Ring of Ops ($\mathbb{R}[D]$) & $D$ & $I$ & Operator composition & $D^0 = I$ \\\hline
+	\end{tabular}
+\end{center}
+
+---
+
+\subsection*{Personal Note}
+
+In my case, $D$ is not just a symbol — it's the seed of a system. I view it algebraically as a generator of a ring that acts structurally on differentiable functions. This perspective blends naturally with my study of abstract algebra and operator-based differential equations.
+
+\subsection*{How I See \boldmath$D$: Generator of a Structural Space}
+
+I treat $D$ as a \textbf{basic structural element} — a generator — in a mathematical space (a ring) that has two operations: addition and composition.
+
+This space, denoted $\mathbb{R}[D]$, contains expressions like $D^2 + 4D + 5I$, which are built by combining $D$ with scalars from $\mathbb{R}$.
+
+I'm not interested here in fully exploring the properties of this ring, but only in the idea that \textbf{all the operator expressions I use in differential equations come from this one basic element: $D$}.
+
+That is, \emph{$D$ is the seed — from it, the whole structure grows}.
+
+\subsection*{Structure Summary: From Group to Ring with Generator}
+
+We begin with an abelian group $(G, +)$.
+
+Adding a second binary operation $\cdot$ that is associative and distributes over $+$, we obtain a ring:
+\[
+(G, +, \cdot)
+\]
+
+In the case of the ring of differential operators $\mathbb{R}[D]$:
+\begin{itemize}
+	\item The ring is built from the generator $D$ and the scalars $\mathbb{R}$.
+	\item The underlying group $(\mathbb{R}[D], +)$ is the abelian group of operators under addition.
+	\item The multiplication $\cdot$ is defined by operator composition: $D^2 = D \circ D$, etc.
+	\item The scalars $\mathbb{R}$ are embedded as multiples of the identity operator $I$.
+\end{itemize}
+
+Thus, $D$ is not an element of the original group $G$, but rather a generator in the ring $\mathbb{R}[D]$ which itself has an underlying abelian group structure and is closed under composition.
+
+\subsection*{\boldmath$\mathbb{R}[D]$: Raw Derivatives with Structure}
+
+The ring $\mathbb{R}[D]$ consists of symbolic expressions built from the differentiation operator $D$ and real scalars:
+\[
+a_0 I + a_1 D + a_2 D^2 + \dots + a_n D^n, \quad a_i \in \mathbb{R}
+\]
+
+We think of $\mathbb{R}[D]$ as the space of all \emph{raw derivatives} — formal combinations of derivative actions, not yet applied to any function.
+
+The operations in the ring are:
+\begin{itemize}
+	\item \textbf{Addition} ($+$): combines operators linearly, term by term
+	\item \textbf{Multiplication} ($\cdot$ or $\circ$): composition of operators, such as $D^2 = D \circ D$
+\end{itemize}
+
+With these two operations, $\mathbb{R}[D]$ becomes a ring: a structured space where raw derivatives can be manipulated algebraically.
+
+
+\subsection*{Scalars as Builders of the Universe \boldmath$\mathbb{R}[D]$}
+
+The ring $\mathbb{R}[D]$ is constructed from the generator $D$ and the scalars in $\mathbb{R}$:
+\[
+\mathbb{R}[D] = \left\{ \sum_{i=0}^n a_i D^i \mid a_i \in \mathbb{R} \right\}
+\]
+
+Here:
+\begin{itemize}
+	\item $D^i$ defines the \textbf{structural level} of differentiation
+	\item $a_i \in \mathbb{R}$ defines the \textbf{strength or weight} of that level
+\end{itemize}
+
+Thus, the real numbers $\mathbb{R}$ act as scalars that “handle the subindices” of the generator $D$, assigning magnitude to each derivative component. This is how the full universe of $\mathbb{R}[D]$ is built: a combination of algebraic structure and scalar weight.
+
+\subsection*{Framing the Solution: Kernel and Transformation}
+
+Let $L \in \mathbb{R}[D]$ be a differential operator, and consider the equation:
+\[
+L[y] = f
+\]
+
+We view $L$ as a linear map:
+\[
+L: \mathcal{F} \to \mathcal{F}, \quad y \mapsto L[y]
+\]
+where $\mathcal{F}$ is a space of differentiable functions.
+
+\textbf{Step 1: Study the Kernel}
+
+The kernel of $L$ captures the homogeneous solution space:
+\[
+\ker(L) = \{ y \in \mathcal{F} \mid L[y] = 0 \}
+\]
+This space is typically finite-dimensional, with dimension equal to the order of $L$.
+
+\textbf{Step 2: Use Transformation to Solve}
+
+Applying the Laplace Transform:
+\[
+\mathcal{L}\{L[y]\} = P(s)Y(s), \quad \mathcal{L}\{f\} = F(s)
+\]
+We reduce the equation to:
+\[
+P(s)Y(s) = F(s) \quad \Rightarrow \quad Y(s) = \frac{F(s)}{P(s)}
+\]
+and recover $y(t)$ via the inverse Laplace transform.
+
+\textit{Thus, we frame the solution space abstractly through the kernel, and we realize the specific solution concretely through transformation.}
+
+\subsection*{Framing the Equation Gives Me Control}
+
+By writing a differential equation as an element $L \in \mathbb{R}[D]$, I immediately know what kind of object I’m dealing with: a linear operator built from the generator $D$ and scalars in $\mathbb{R}$.
+
+Once I recognize this structure, I can:
+\begin{itemize}
+	\item Frame the full space of solutions via the kernel: $\ker(L)$
+	\item Interpret the system symbolically, before applying anything
+	\item Transform the equation into a simple algebraic form using the Laplace transform
+\end{itemize}
+
+This approach removes uncertainty. The solution doesn’t feel like a trick or a guess — I know where it lives, I know what space I’m working in, and I know the transformation is preserving structure. This clarity feels solid. It gives me confidence that I haven’t missed anything.
+
+\subsection*{On the Discomfort with Applied Mathematics}
+
+I often feel a structural discomfort when working through applied mathematics. The steps may “work,” but they feel disconnected, chopped, or forced into place. There’s a lack of precision about what kind of object is being manipulated, and what space it lives in.
+
+It’s not that applied methods are wrong — it’s that they often operate pragmatically, using what has worked historically, without always acknowledging the underlying algebraic or analytical structure.
+
+By framing equations in terms of operators, rings, and transformations, I reclaim this structure. I don't need to guess. I know the space. I know what kind of object I'm touching. I’m not forcing — I’m unfolding.
+
+This discomfort becomes a compass. It leads me to study mathematics not just as a set of tools, but as a language whose grammar I want to speak fluently.
+
+
+	
+\end{document}

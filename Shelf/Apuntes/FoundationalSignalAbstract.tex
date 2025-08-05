@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{mathtools}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection.}{1em}{}
+
+\title{\textbf{From Geometry to Structure: A Canonical View of \( U(1) \) and Characters}}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\section{Objective}
+	
+	This foundational note records the shift from a geometric interpretation of periodic signals to a purely algebraic and structural view. We eliminate diagrams and focus on the abstract relationships between objects and operations in group theory.
+	
+	\section{Algebraic Objects}
+	
+	\subsection*{1. The Time Group \((\mathbb{R}, +)\)}
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item Infinite abelian group under addition
+		\item Divisible, torsion-free, uncountably infinite
+		\item Canonical object modeling continuous time
+	\end{itemize}
+	
+	\subsection*{2. The Unit Circle Group \( U(1) \)}
+	
+	\[
+	U(1) := \{ z \in \mathbb{C} \mid |z| = 1 \}, \quad \text{under complex multiplication}
+	\]
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item Abelian group: \( z_1 z_2 = z_2 z_1 \)
+		\item Identity: \( 1 \), inverse: \( \overline{z} \)
+		\item Isomorphic to the quotient group:
+		\[
+		U(1) \cong \mathbb{R} / 2\pi\mathbb{Z}
+		\]
+		\item No geometric circle needed — it is a **compact abelian group**
+	\end{itemize}
+	
+	\section{Homomorphisms: Characters of \((\mathbb{R}, +)\)}
+	
+	We define the map:
+	\[
+	\chi_\omega\colon \mathbb{R} \to U(1), \quad t \mapsto e^{j\omega t}
+	\]
+	
+	\subsection*{Verification}
+	
+	\[
+	\chi_\omega(t_1 + t_2) = e^{j\omega(t_1 + t_2)} = e^{j\omega t_1} \cdot e^{j\omega t_2} = \chi_\omega(t_1) \cdot \chi_\omega(t_2)
+	\]
+	
+	Therefore:
+	\[
+	\chi_\omega \in \mathrm{Hom}((\mathbb{R}, +), (U(1), \cdot))
+	\]
+	
+	Each such homomorphism corresponds to a **frequency** \( \omega \in \mathbb{R} \). The set of all such homomorphisms is denoted:
+	\[
+	\widehat{\mathbb{R}} := \mathrm{Hom}((\mathbb{R}, +), U(1))
+	\]
+	
+	This is the **dual group** of \( \mathbb{R} \), but we omit topological structure at this level.
+	
+	\section{Structural Reinterpretation}
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item A signal becomes a function: \( x \colon G \to \mathbb{C} \), where \( G \) is a group (e.g., \( \mathbb{R} \), \( \mathbb{Z} \))
+		\item Time translation is a group action: \( x(t) \mapsto x(t + \tau) \)
+		\item Periodicity corresponds to kernel structure of \( \chi \): \( \chi(t + T) = \chi(t) \iff \omega T \in 2\pi \mathbb{Z} \)
+		\item Frequency becomes the **parameter indexing group morphisms**
+	\end{itemize}
+	
+	\section{the morphism between groups ( intro )}
+	Let \( G \) and \( H \) be groups with binary operations \( \cdot_G \) and \( \cdot_H \). A function \( \varphi \colon G \to H \) is a \textbf{group homomorphism} if:
+	\[
+	\forall a, b \in G,\quad \varphi(a \cdot_G b) = \varphi(a) \cdot_H \varphi(b)
+	\]
+	
+	This defines a morphism in the category of groups. It generalizes the concept of a function between sets by adding structure preservation.
+	
+	
+	\section{Summary}
+	
+	\begin{itemize}[leftmargin=1.5em]
+		\item The exponential \( e^{j\omega t} \) is not merely a rotating point or sinusoidal formula
+		\item It is a **character** — a group homomorphism from continuous time \( (\mathbb{R}, +) \) into the group of phase rotations \( (U(1), \cdot) \)
+		\item The unit circle is abstractly defined as a group: \( U(1) \cong \mathbb{R} / 2\pi \mathbb{Z} \)
+		\item This structure reveals that all of signal theory — phase, frequency, periodicity — is rooted in canonical group theory
+	\end{itemize}
+	
+	
+	
+\end{document}

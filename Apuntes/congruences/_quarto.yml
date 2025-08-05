@@ -1,0 +1,11 @@
+project:
+  type: default
+
+format:
+  html:
+    theme: litera
+    css: math-tweaks.css
+  # pdf:
+  #   documentclass: article
+  #   include-in-header: preamble.tex
+  #   keep-tex: true

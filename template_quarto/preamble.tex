@@ -1,0 +1,50 @@
+% === Aluffi-style preamble for academic notes ===
+
+% Font and spacing
+\usepackage{mathpazo}           % Palatino with math support
+\linespread{1.1}                % Slightly looser line spacing
+
+% Geometry
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+% Section and numbering style
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+% Roman section numbering (optional)
+%\renewcommand{\thesection}{\Roman{section}}
+
+% Header and footer (simple page number footer)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}                      % Clear header/footer
+\fancyfoot[C]{\thepage}         % Page number centered
+
+% Math packages
+\usepackage{amsmath,amssymb,amsthm}
+
+% No paragraph indentation
+\usepackage{parskip}
+\setlength{\parskip}{0.5em}
+
+% Theorem styles (for definitions, propositions, etc.)
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}[definition]{Example}
+\newtheorem{remark}[definition]{Remark}
+
+\theoremstyle{plain}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+% Symbols
+\usepackage{stmaryrd}           % For \llbracket and \rrbracket, etc.
+
+% Microtypography (for aesthetics)
+\usepackage{microtype}
+
+% Avoid overfull hboxes
+\sloppy

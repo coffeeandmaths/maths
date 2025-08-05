@@ -1,0 +1,703 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\subsection{Basic Definition}\label{basic-definition}
+
+Let \(a, b \in \mathbb{Z}\) and \(n \in \mathbb{N}\), \(n \geq 2\).\\
+We say:
+
+\[
+a \equiv b \pmod{n} \quad \Leftrightarrow \quad n \mid (a - b)
+\]
+
+That is, \(a\) and \(b\) leave the same remainder when divided by \(n\).
+
+\subsection{Constructing Classes from
+Division}\label{constructing-classes-from-division}
+
+For any \(a \in \mathbb{Z}\), by the Division Algorithm, there exist
+unique \(q, r \in \mathbb{Z}\) such that:
+
+\[
+a = nq + r, \quad 0 \leq r < n
+\]
+
+Then:
+
+\[
+a \equiv r \pmod{n} \quad \Rightarrow \quad \overline{a} = \overline{r}, \quad [a] = [r]
+\]
+
+So any integer \(a\) belongs to the same congruence class as its
+remainder mod \(n\).
+
+\subsection{Congruence Classes = Equivalence Classes
+}\label{congruence-classes-equivalence-classes}
+
+The relation \(\equiv \pmod{n}\) is an \textbf{equivalence relation} on
+\(\mathbb{Z}\):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Reflexive}: \(a \equiv a\)
+\item
+  \textbf{Symmetric}: \(a \equiv b \Rightarrow b \equiv a\)
+\item
+  \textbf{Transitive}: \(a \equiv b\) and
+  \(b \equiv c \Rightarrow a \equiv c\)
+\end{itemize}
+
+Therefore, each congruence class (written \(\overline{a}\) or \([a]\))
+is an \textbf{equivalence class}.
+
+\subsection{Notations}\label{notations}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1569}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3922}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4510}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Notation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Author / Context
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Example
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\overline{a}\) & Dummit \& Foote (group and ring theory) &
+\(\overline{7} = \overline{2} \in \mathbb{Z}_5\) \\
+\([a]\) or \([a]_n\) & Aluffi (category and structural algebra) &
+\([7] = [2] \in \mathbb{Z}/5\mathbb{Z}\) \\
+\end{longtable}
+
+\subsection{\texorpdfstring{Construction of
+\(\mathbb{Z}/n\mathbb{Z}\)}{Construction of \textbackslash mathbb\{Z\}/n\textbackslash mathbb\{Z\}}}\label{construction-of-mathbbznmathbbz}
+
+\subsubsection{Dummit's Approach
+(Group-Theoretic):}\label{dummits-approach-group-theoretic}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Define relation on \(\mathbb{Z}\):\\
+  \(a \sim b\) if \(a \equiv b \pmod{n}\)
+\item
+  This partitions \(\mathbb{Z}\) into \(n\) equivalence classes:\\
+  \(\overline{0}, \overline{1}, \dots, \overline{n-1}\)
+\item
+  Define:
+
+  \[
+  \mathbb{Z}_n = \mathbb{Z}/n\mathbb{Z} = \{ \overline{0}, \overline{1}, \dots, \overline{n-1} \}
+  \]
+\item
+  Define operations:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\overline{a} + \overline{b} := \overline{a + b}\)
+  \item
+    \(\overline{a} \cdot \overline{b} := \overline{ab}\)
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Aluffi's Approach (Categorical / Quotient
+Object):}\label{aluffis-approach-categorical-quotient-object}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Start from the ring \(\mathbb{Z}\) and the ideal \((n) = n\mathbb{Z}\)
+\item
+  Define:
+
+  \[
+  [a]_n = a + n\mathbb{Z} = \{ a + nk \mid k \in \mathbb{Z} \}
+  \]
+\item
+  The quotient ring is:
+
+  \[
+  \mathbb{Z}/n\mathbb{Z} = \{ [0], [1], \dots, [n-1] \}
+  \]
+\item
+  Operations are defined via coset representatives:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \([a] + [b] := [a + b]\)
+  \item
+    \([a] \cdot [b] := [ab]\)
+  \end{itemize}
+\end{enumerate}
+
+Both approaches define \textbf{the same ring} --- the ring of integers
+modulo \(n\).
+
+\subsection{Modular Operations}\label{modular-operations}
+
+For \(\overline{a}, \overline{b} \in \mathbb{Z}_n\) or
+\([a], [b] \in \mathbb{Z}/n\mathbb{Z}\):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Addition}:
+  $\overline{a} + \overline{b} = \overline{a + b}\), \([a] + [b] = [a + b]$
+\item
+  \textbf{Multiplication}:
+  \(\overline{a} \cdot \overline{b} = \overline{ab}\), \([a] \cdot [b] = [ab]\)
+\item
+  \textbf{Exponentiation}:
+  \(\overline{a}^k = \overline{a^k}\), \([a]^k = [a^k]\)
+\item
+  \textbf{Inverses}: \(\overline{a}^{-1}\) exists iff \(\gcd(a, n) = 1\)
+\end{itemize}
+
+\subsection{\texorpdfstring{Example:
+\(\mathbb{Z}_5\)}{Example: \textbackslash mathbb\{Z\}\_5}}\label{example-mathbbz_5}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\overline{2} = \{ ..., -8, -3, 2, 7, 12, ... \} = [2]\)
+\item
+  \(\overline{3} + \overline{4} = \overline{7} = \overline{2}\)
+\end{itemize}
+
+\subsection{\texorpdfstring{Algebraic Structures in
+\(\mathbb{Z}_n\)}{Algebraic Structures in \textbackslash mathbb\{Z\}\_n}}\label{algebraic-structures-in-mathbbz_n}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5619}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3524}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Structure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Properties
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Group} & \((\mathbb{Z}_n, +)\) & Finite abelian group \\
+\textbf{Ring} & \((\mathbb{Z}_n, +, \cdot)\) & Commutative ring with
+identity \\
+\textbf{Field} & \(\mathbb{Z}_p\) if \(p\) is prime & All nonzero
+\(\overline{a}\) invertible \\
+\textbf{Units} &
+\(\mathbb{Z}_n^\times = \{ \overline{a} \mid \gcd(a,n)=1 \}\) &
+Multiplicative group \\
+\end{longtable}
+
+\subsection{Worked Examples}\label{worked-examples}
+
+\subsubsection{\texorpdfstring{1. In
+\(\mathbb{Z}_6\):}{1. In \textbackslash mathbb\{Z\}\_6:}}\label{in-mathbbz_6}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\overline{4} + \overline{5} = \overline{9} = \overline{3}\)
+\item
+  \([2] \cdot [4] = [8] = [2]\)
+\end{itemize}
+
+\subsubsection{\texorpdfstring{2. Inverse in
+\(\mathbb{Z}_7\):}{2. Inverse in \textbackslash mathbb\{Z\}\_7:}}\label{inverse-in-mathbbz_7}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\overline{3} \cdot \overline{5} = \overline{1} \Rightarrow \overline{5}^{-1} = \overline{3}\)
+\end{itemize}
+
+\subsection{Modular Arithmetic as Set
+Limiter}\label{modular-arithmetic-as-set-limiter}
+
+Modular arithmetic \textbf{wraps} \(\mathbb{Z}\) into a finite cycle:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbb{Z} \to\) infinite
+\item
+  \(\mathbb{Z}_n = \{ \overline{0}, \dots, \overline{n-1} \}\)
+\end{itemize}
+
+Useful for: - Clocks → \(\mathbb{Z}_{12}\) - Days of the week →
+\(\mathbb{Z}_7\) - Binary logic → \(\mathbb{Z}_2\) \#\# 🚀 Fast Modular
+Exponentiation
+
+To compute \(7^{222} \mod 13\):
+
+Use \textbf{binary exponentiation}:
+
+\begin{itemize}
+\tightlist
+\item
+  \(7^2 \equiv 10\), \(7^4 \equiv 9\), \(7^8 \equiv 3\), etc.
+\item
+  Reduce mod 13 at each step to avoid overflow \#\# 🧰 Applications
+\end{itemize}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2529}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7471}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Area
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Use
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Cryptography} & RSA, ECC → operations in \(\mathbb{Z}_n\) and
+\(\mathbb{Z}_p^\times\) \\
+\textbf{Hashing} & Use \(h(x) = x \mod m\) to map data \\
+\textbf{Computer Systems} & Integers wrap mod \(2^n\) (overflow) \\
+\textbf{Number Theory} & Fermat's little theorem, Chinese Remainder
+Theorem \\
+\textbf{Time/Calendars} & Model cyclic behavior with \(\mod n\) \\
+\textbf{Digital Signatures} & Use exponentiation in mod fields \\
+\end{longtable}
+
+\subsection{💡 Final Insight}\label{final-insight}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\overline{a}\) (Dummit) and \([a]\) (Aluffi) both describe
+  \textbf{equivalence classes} in \(\mathbb{Z}/n\mathbb{Z}\)
+\item
+  Modular arithmetic is more than remainders: it's about working in
+  \textbf{quotient structures}, a key idea across all of abstract
+  algebra.
+\end{itemize}
+
+\section{🧮 Quotient Groups --- Aluffi's Definition and Core
+Concepts}\label{quotient-groups-aluffis-definition-and-core-concepts}
+
+\subsection{🔧 What Is a Quotient?}\label{what-is-a-quotient}
+
+A \textbf{quotient} is a way to build a new structure by:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Identifying} elements that are declared equivalent (via an
+  equivalence relation)
+\item
+  Then \textbf{collapsing} each group of equivalent elements into a
+  single object in the new structure
+\end{itemize}
+
+\subsubsection{🔁 Clarifying the Terms:}\label{clarifying-the-terms}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.1379}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.8621}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Term
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Meaning
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Identify} & Declare two elements ``equivalent'' under a
+relation \\
+\textbf{Collapse} & Replace a whole class of equivalent elements with
+one object (e.g.~a coset) \\
+\end{longtable}
+
+In quotient groups, we \textbf{identify} elements using a rule, then
+\textbf{collapse} those into \textbf{cosets}, which form the elements of
+the new group. \#\# 📘 Aluffi's Definition
+
+Let \(G\) be a group and \(N \trianglelefteq G\) (a \textbf{normal
+subgroup}).\\
+Define a relation on \(G\) by:
+
+\[
+a \sim b \quad \text{if and only if} \quad a^{-1}b \in N
+\]
+
+This is an \textbf{equivalence relation} on \(G\), and each equivalence
+class is the \textbf{left coset}:
+
+\[
+[a] = aN = \{ an \mid n \in N \}
+\]
+
+Then:
+
+\[
+G / N = \{ aN \mid a \in G \}
+\]
+
+with group operation:
+
+\[
+(aN)(bN) = (ab)N
+\]
+
+This is the \textbf{quotient group} \(G/N\).
+
+\subsection{🔒 What Is a Normal
+Subgroup?}\label{what-is-a-normal-subgroup}
+
+A subgroup \(N \subseteq G\) is called \textbf{normal} if:
+
+\[
+gN = Ng \quad \text{for all } g \in G
+\]
+
+Equivalently:
+
+\[
+gng^{-1} \in N \quad \text{for all } g \in G,\ n \in N
+\]
+
+Why we need normality: - It ensures that the coset product
+\((aN)(bN) = (ab)N\) is \textbf{well-defined} - Without normality, this
+multiplication \textbf{depends on the representatives}
+
+\subsection{\texorpdfstring{🧮 Example:
+\(\mathbb{Z} / n\mathbb{Z}\)}{🧮 Example: \textbackslash mathbb\{Z\} / n\textbackslash mathbb\{Z\}}}\label{example-mathbbz-nmathbbz}
+
+Let \(G = \mathbb{Z}\) and \(N = n\mathbb{Z}\).
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\mathbb{Z}\) is a subgroup (and normal, since \(\mathbb{Z}\) is
+  abelian)
+\item
+  Define \(a \sim b\) if \(a - b \in n\mathbb{Z}\) (i.e.,
+  \(a \equiv b \mod n\))
+\item
+  The equivalence class of \(a\) is: \[
+  [a] = a + n\mathbb{Z} = \{ a + kn \mid k \in \mathbb{Z} \}
+  \]
+\item
+  The quotient group is: \[
+  \mathbb{Z} / n\mathbb{Z} = \{ [0], [1], \dots, [n - 1] \}
+  \]
+\item
+  With group operation: \([a] + [b] = [a + b]\)
+\end{itemize}
+
+This is the familiar \textbf{modular arithmetic group} \(\mathbb{Z}_n\).
+\#\# ✅ Summary
+
+\begin{itemize}
+\tightlist
+\item
+  A \textbf{quotient group} \(G/N\) is formed by identifying elements
+  via a normal subgroup \(N\) and collapsing them into \textbf{cosets}
+\item
+  \textbf{Aluffi's definition} uses equivalence: \(a \sim b\) if
+  \(a^{-1}b \in N\)
+\item
+  \textbf{Cosets} become the elements of the new group
+\item
+  \textbf{Normality} is essential for the quotient to behave like a
+  group
+\item
+  Example: \(\mathbb{Z}/n\mathbb{Z}\) collapses all integers congruent
+  mod \(n\)
+\end{itemize}
+
+\subsection{Preliminaries}\label{preliminaries}
+
+\textbf{Modular Congruence}:
+
+Formal Mathematical Definition
+
+We define:
+
+\[a \equiv b \pmod{n} \iff n \mid (a - b)\]
+
+This means: the difference between \(a\) and \(b\) is divisible by
+\(n\), there exists some integer \(k\) such that: \[ a - b = kn\]
+
+\textbf{Alternate Definition (\(a\) and \(b\) \(\pmod n\) have same
+remainder)}
+
+Often defined :
+
+\[a \equiv b \pmod{n}\] interpreted as: \(a\) and \(b\) , both leave the
+\textbf{same remainder} when divided by \(n\), that is: \[
+a \pmod{n} = b \pmod{n}
+\]
+
+\subsubsection{Why These Definitions Are
+Equivalent}\label{why-these-definitions-are-equivalent}
+
+Suppose:
+
+\[a = q_1 n + r \quad \text{and} \quad b = q_2 n + r\]
+
+Then:
+
+\[a - b = (q_1 - q_2)n\] So:
+
+\[n \mid (a - b) \Rightarrow a \equiv b \pmod{n}\] Thus: having the same
+remainder mod \(n\) implies \[a \equiv b \pmod{n}\] And conversely, if
+\[a \equiv b \pmod{n}\]then \(a\) and \(b\) have the same remainder.
+
+\subsubsection{Why We Sometimes Just
+Compute}\label{why-we-sometimes-just-compute}
+
+\[a \mod n\]
+
+When you compute: \[a \mod n = r\] You're finding the
+\textbf{representative} of the equivalence class \([a]\): computing
+\[a \mod n\]gives the \textbf{least non-negative} value in this class
+\#\#\# Summary Table
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3043}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6957}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Statement
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Formal definition & \(a \equiv b \pmod{n} \iff n \mid (a - b)\) \\
+School interpretation &
+\(a \equiv b \pmod{n} \iff a \mod n = b \mod n\) \\
+Class representative & \(a \mod n\) gives the label of \([a]\) \\
+\end{longtable}
+
+\textbf{Formal Structure} \[a \mod n\] For any integer \(a\) and any
+natural number\(n \geq 1\), there exist \textbf{unique integers} \(q\)
+and \(r\) such that:
+
+\[ a = qn + r \quad \text{with} \quad 0 \leq r < n\]
+
+where \(q\) is the quotient (how many full times \(n\) fits into \(a\))
+ans \(r\) the \textbf{remainder} --- this is what we call \[a \mod n\]
+\#\#\# Example: \[a = 17, \ n = 5\]
+
+\[
+17 = 3 \cdot 5 + 2 \quad \Rightarrow \quad 17 \mod 5 = 2
+\]
+
+So: \[q = 3\] \[r = 2\] \#\#\# Example with Negative Number:
+\[a = -7, \ n = 4\]
+
+\[
+-7 = (-2) \cdot 4 + 1 \quad \Rightarrow \quad -7 \mod 4 = 1
+\]
+
+We choose \[q = -2\] so that the remainder \[r = 1\] satisfies
+\[0 \leq r < 4\] \#\#\# Summary
+
+The value of \(a \mod n\) is always the \textbf{least non-negative
+remainder} after dividing \(a\) by \(n\). It determines which
+\textbf{equivalence class} \(a\) belongs to modulo \(n\)
+
+First, we begin with a set \(S\). We propose a relation \(\sim\) on
+\(S\). For illustrative purposes, we define: \[
+a \equiv r \mod 4 \iff a - r \in 4\mathbb{Z}
+\]
+
+We then \textbf{prove} that this relation is:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Reflexive}
+\item
+  \textbf{Symmetric}
+\item
+  \textbf{Transitive}
+\end{itemize}
+
+This confirms that \(\sim\) is an \textbf{equivalence relation}. To
+analyze the structure, we compute for each element: \[
+a \mod 4
+\] This value (the \textbf{datum}, or \textbf{tag}) tells us which other
+elements \[a\]is related to, and is used to \textbf{label} the
+equivalence class:
+
+\[
+[a] = \{ x \in S \mid x \equiv a \mod 4 \}
+\] We then group all such related elements into \textbf{equivalence
+classes}. Finally, the set of all these disjoint classes forms a
+\textbf{partition} \(\mathcal{P}_\sim\) of \(S\).
+
+\section{\texorpdfstring{🧮 Example: Constructing
+\(\mathbb{Z}/4\mathbb{Z}\) via Equivalence
+Classes}{🧮 Example: Constructing \textbackslash mathbb\{Z\}/4\textbackslash mathbb\{Z\} via Equivalence Classes}}\label{example-constructing-mathbbz4mathbbz-via-equivalence-classes}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{🔧 Equivalence Relation}\label{equivalence-relation}
+
+We define a relation on \(\mathbb{Z}\):
+
+\[
+a \sim b \iff 4 \mid (b - a)
+\]
+
+That is, \(a\) and \(b\) are equivalent if they differ by a multiple of
+4.\\
+This is the same as saying:
+
+\[
+a \equiv b \pmod{4}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Step 1: Compute Equivalence
+Classes}\label{step-1-compute-equivalence-classes}
+
+Each equivalence class \([a]\) contains all integers congruent to \(a\)
+mod 4.
+
+\begin{itemize}
+\tightlist
+\item
+  \[ [0] = \{ ..., -8, -4, 0, 4, 8, 12, ... \} \]
+\item
+  \[ [1] = \{ ..., -7, -3, 1, 5, 9, 13, ... \} \]
+\item
+  \[ [2] = \{ ..., -6, -2, 2, 6, 10, 14, ... \} \]
+\item
+  \[ [3] = \{ ..., -5, -1, 3, 7, 11, 15, ... \} \]
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Step 2: Define the Quotient
+Set}\label{step-2-define-the-quotient-set}
+
+The quotient group is:
+
+\[
+\mathbb{Z}/4\mathbb{Z} = \{ [0], [1], [2], [3] \}
+\]
+
+These are the \textbf{distinct equivalence classes} under the relation
+\(\sim\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Step 3: Define the Group
+Operation}\label{step-3-define-the-group-operation}
+
+The group operation is addition of classes:
+
+\begin{itemize}
+\tightlist
+\item
+  \[ [1] + [2] = [3] \]
+\item
+  \[ [2] + [3] = [5] = [1] \]
+\item
+  \[ [3] + [3] = [6] = [2] \]
+\item
+  \[ [1] + [1] = [2] \]
+\end{itemize}
+
+All arithmetic is performed modulo 4.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Conclusion}\label{conclusion}
+
+We constructed \(\mathbb{Z}/4\mathbb{Z}\) using the equivalence
+relation:
+
+\[
+a \sim b \iff a \equiv b \pmod{4}
+\]
+
+Each element in the quotient group is an equivalence class of integers
+modulo 4, and the group operation is addition modulo 4.
+
+\end{document}

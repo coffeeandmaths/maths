@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+\setlength{\parindent}{0pt}
+
+
+\title{Canonical Decomposition}
+\author{Ramon Armeria}
+\date{July 2025}
+
+%--- footnotes 
+\newcommand{\canonicalnote}{\footnote{A map is said to be \emph{canonical} when it is naturally determined by the structure of the objects involved, with no arbitrary choices.}}
+
+
+\begin{document}
+	
+	\maketitle
+Let \( A \) and \( B \) be sets, and let \( f \) be a rule
+\[
+f: A \to B
+\]
+mapping each \( a \in A \) to a unique element \( f(a) \in B \).\canonicalnote{}  
+This rule is \textit{canonical}: once \( f \) is defined, the output for each \( a \) is completely determined.
+
+\medskip
+
+The function does not construct new elements. It \textit{maps} \( a \in A \) to an element in \( B \). The map \( f \) is the mechanism of this pointing.
+
+\medskip
+
+The totality of all such assignments defines the graph of \( f \):
+\[
+\Gamma_f = \{ (a, f(a)) \mid a \in A \} \subseteq A \times B
+\]
+
+This subset \( \Gamma_f \) captures the function entirely:  
+it lives inside the Cartesian product \( A \times B \),  
+but includes only the pairs \( (a, f(a)) \) where \( f \) assigns a unique output to each input.
+
+In this sense, \( A \times B \) contains all possible input-output combinations,  
+and the function \( f \) **selects** exactly one for each \( a \in A \).
+
+
+\end{document}
