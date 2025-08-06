@@ -1,8 +1,7 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\documentclass[
-]{article}
+\documentclass[]{article}
 \usepackage{xcolor}
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
@@ -210,13 +209,13 @@ For \(\overline{a}, \overline{b} \in \mathbb{Z}_n\) or
 \tightlist
 \item
   \textbf{Addition}:
-  $\overline{a} + \overline{b} = \overline{a + b}\), \([a] + [b] = [a + b]$
+  $\overline{a} + \overline{b} = \overline{a + b}$, $[a] + [b] = [a + b]$
 \item
   \textbf{Multiplication}:
-  \(\overline{a} \cdot \overline{b} = \overline{ab}\), \([a] \cdot [b] = [ab]\)
+  \( \overline{a} \cdot \overline{b} = \overline{ab}\), \([a] \cdot [b] = [ab]\)
 \item
   \textbf{Exponentiation}:
-  \(\overline{a}^k = \overline{a^k}\), \([a]^k = [a^k]\)
+  \( \overline{a}^k = \overline{a^k}\), \([a]^k = [a^k]\)
 \item
   \textbf{Inverses}: \(\overline{a}^{-1}\) exists iff \(\gcd(a, n) = 1\)
 \end{itemize}
@@ -297,7 +296,7 @@ Modular arithmetic \textbf{wraps} \(\mathbb{Z}\) into a finite cycle:
 \end{itemize}
 
 Useful for: - Clocks → \(\mathbb{Z}_{12}\) - Days of the week →
-\(\mathbb{Z}_7\) - Binary logic → \(\mathbb{Z}_2\) \#\# 🚀 Fast Modular
+\(\mathbb{Z}_7\) - Binary logic → \(\mathbb{Z}_2\) \#\# Fast Modular
 Exponentiation
 
 To compute \(7^{222} \mod 13\):
@@ -309,7 +308,7 @@ Use \textbf{binary exponentiation}:
 \item
   \(7^2 \equiv 10\), \(7^4 \equiv 9\), \(7^8 \equiv 3\), etc.
 \item
-  Reduce mod 13 at each step to avoid overflow \#\# 🧰 Applications
+  Reduce mod 13 at each step to avoid overflow \#\# Applications
 \end{itemize}
 
 \begin{longtable}[]{@{}
@@ -335,7 +334,7 @@ Theorem \\
 \textbf{Digital Signatures} & Use exponentiation in mod fields \\
 \end{longtable}
 
-\subsection{💡 Final Insight}\label{final-insight}
+\subsection{Final Insight}\label{final-insight}
 
 \begin{itemize}
 \tightlist
@@ -348,10 +347,10 @@ Theorem \\
   algebra.
 \end{itemize}
 
-\section{🧮 Quotient Groups --- Aluffi's Definition and Core
+\section{Quotient Groups --- Aluffi's Definition and Core
 Concepts}\label{quotient-groups-aluffis-definition-and-core-concepts}
 
-\subsection{🔧 What Is a Quotient?}\label{what-is-a-quotient}
+\subsection{What Is a Quotient?}\label{what-is-a-quotient}
 
 A \textbf{quotient} is a way to build a new structure by:
 
@@ -365,7 +364,7 @@ A \textbf{quotient} is a way to build a new structure by:
   single object in the new structure
 \end{itemize}
 
-\subsubsection{🔁 Clarifying the Terms:}\label{clarifying-the-terms}
+\subsubsection{Clarifying the Terms:}\label{clarifying-the-terms}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.1379}}
@@ -388,7 +387,7 @@ one object (e.g.~a coset) \\
 
 In quotient groups, we \textbf{identify} elements using a rule, then
 \textbf{collapse} those into \textbf{cosets}, which form the elements of
-the new group. \#\# 📘 Aluffi's Definition
+the new group. \#\# Aluffi's Definition
 
 Let \(G\) be a group and \(N \trianglelefteq G\) (a \textbf{normal
 subgroup}).\\
@@ -419,7 +418,7 @@ with group operation:
 
 This is the \textbf{quotient group} \(G/N\).
 
-\subsection{🔒 What Is a Normal
+\subsection{ What Is a Normal
 Subgroup?}\label{what-is-a-normal-subgroup}
 
 A subgroup \(N \subseteq G\) is called \textbf{normal} if:
@@ -438,8 +437,8 @@ Why we need normality: - It ensures that the coset product
 \((aN)(bN) = (ab)N\) is \textbf{well-defined} - Without normality, this
 multiplication \textbf{depends on the representatives}
 
-\subsection{\texorpdfstring{🧮 Example:
-\(\mathbb{Z} / n\mathbb{Z}\)}{🧮 Example: \textbackslash mathbb\{Z\} / n\textbackslash mathbb\{Z\}}}\label{example-mathbbz-nmathbbz}
+\subsection{\texorpdfstring{Example:
+\(\mathbb{Z} / n\mathbb{Z}\)}{Example: \textbackslash mathbb\{Z\} / n\textbackslash mathbb\{Z\}}}\label{example-mathbbz-nmathbbz}
 
 Let \(G = \mathbb{Z}\) and \(N = n\mathbb{Z}\).
 
@@ -464,7 +463,7 @@ Let \(G = \mathbb{Z}\) and \(N = n\mathbb{Z}\).
 \end{itemize}
 
 This is the familiar \textbf{modular arithmetic group} \(\mathbb{Z}_n\).
-\#\# ✅ Summary
+\#\# Summary
 
 \begin{itemize}
 \tightlist
@@ -609,13 +608,13 @@ equivalence class:
 classes}. Finally, the set of all these disjoint classes forms a
 \textbf{partition} \(\mathcal{P}_\sim\) of \(S\).
 
-\section{\texorpdfstring{🧮 Example: Constructing
+\section{\texorpdfstring{Example: Constructing
 \(\mathbb{Z}/4\mathbb{Z}\) via Equivalence
-Classes}{🧮 Example: Constructing \textbackslash mathbb\{Z\}/4\textbackslash mathbb\{Z\} via Equivalence Classes}}\label{example-constructing-mathbbz4mathbbz-via-equivalence-classes}
+Classes}{Example: Constructing \textbackslash mathbb\{Z\}/4\textbackslash mathbb\{Z\} via Equivalence Classes}}\label{example-constructing-mathbbz4mathbbz-via-equivalence-classes}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{🔧 Equivalence Relation}\label{equivalence-relation}
+\subsection{Equivalence Relation}\label{equivalence-relation}
 
 We define a relation on \(\mathbb{Z}\):
 

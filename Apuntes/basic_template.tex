@@ -1,0 +1,46 @@
+\documentclass[10pt]{article}
+
+% --------- Minimal page and spacing setup ---------
+\usepackage[margin=2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.05} % tighter than default
+\usepackage{parskip}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+
+% --------- Math and Fonts ----------
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathrsfs}  % for script letters
+\usepackage{eucal}     % elegant calligraphic fonts
+\usepackage{microtype} % better spacing
+
+% --------- Section Style ----------
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+% --------- Header (optional) ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\small Notes}
+\fancyhead[R]{\small \today}
+\fancyfoot[C]{\thepage}
+
+% --------- Document Starts ----------
+\begin{document}
+
+\section*{Introduction: From Sets to Mappings as Structure}
+
+A mapping is not merely a process — it is structure, encoded as a subset of a Cartesian product subject to a rule of uniqueness.
+
+Let \( S \) and \( T \) be sets. A mapping \( \tau : S \to T \) may be identified with a subset \( M \subseteq S \times T \) such that for every \( s \in S \), there exists a unique \( t \in T \) with \( (s, t) \in M \). This subset is the \emph{graph} of the mapping, and the condition of uniqueness defines it as a function.
+
+If \( s \tau = t \), we interpret this as: “\( s \) passes through \( \tau \) to yield image \( t \).” This notation emphasizes structure over evaluation, aligning naturally with algebraic and categorical viewpoints.
+
+\vspace{1em}
+
+\textbf{Injectivity} holds when \( s_1 \neq s_2 \) implies \( s_1 \tau \neq s_2 \tau \). \\
+\textbf{Surjectivity} means \( \text{Im}(\tau) = T \). \\
+\textbf{Bijectivity} combines both — the mapping is invertible.
+
+\end{document}
