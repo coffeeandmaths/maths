@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+\input{preamble}
+
+% --------- Document Starts ----------
+\begin{document}
+
+When a function $f:G \Rightarrow H$ between two \textit{groups} preserves the group operation of each of the two groups it's called \textbf{homoforphism}.
+It is irrelevant whether the operations in the each  groups are the same or not, the homomorphism \textit{transforms} them.
+\\
+\textbf{Definition} : Let the \textit{group homomorphism} $f:G \Rightarrow H$ and $a \in G$, $b \in H$ then
+$$f(ab)=f(a)+f(b) \quad \forall a,b \in G$$
+The full idea is that 
+$$f:(G,*) \rightarrow (H,\cdot)$$
+presetves structure but simply written as $f:G \Rightarrow H$ as the homomorphism uses $G$ and $H$
+\begin{itemize}
+	\item In group $G$
+	$$m_G : G \times G, \quad m_g(a,b) := a*b$$
+	\item In group $H$
+	$$m_H : H \times H, \quad m_h(x,y) := x \cdot y$$
+\end{itemize}
+\vspace{1cm}
+$$
+\input{homo_sq.tex}
+$$
+\vspace{1cm} \\
+$f \times f : G \times G \rightarrow H \times H$ is function defined as $(f \times f)(a,b) := (f(a),f(b))$ which takes a \textit{pair} of elements from $G \times G$ and then applies the function $f$ \textbf{to each component} and returns the corresponding pair in $H \times H$. Both paths starting at $G \times G$ arrive at $H$, that is preserving the structure.
+
+
+
+
+\end{document}

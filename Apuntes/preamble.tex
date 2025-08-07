@@ -1,0 +1,44 @@
+% --------- Minimal page and spacing setup ---------
+\usepackage[margin=2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.05} % tighter than default
+\usepackage{parskip}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+\usepackage{import} % required to include external TeX
+
+% --------- Math and Fonts ----------
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathrsfs}  % for script letters
+\usepackage{eucal}     % elegant calligraphic fonts
+\usepackage{microtype} % better spacing
+\usepackage{tikz}
+\usetikzlibrary{cd} % for commutative diagrams
+
+% --------- Section Style ----------
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+% --------- Header (optional) ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\small Notes}
+\fancyhead[R]{\small \today}
+\fancyfoot[C]{\thepage}
+
+%---------- Centered Section Titles ----------
+% Center section titles
+\usepackage{titlesec}
+\titleformat{\section}[block]{\centering\bfseries\Large}{\thesection}{1em}{}
+\titleformat{\subsection}[block]{\centering\bfseries\large}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[block]{\centering\bfseries\normalsize}{\thesubsubsection}{1em}{}
+
+%---------- Basic Symbols ----------
+% Blackboard bold number sets
+\newcommand{\N}{\mathbb{N}}  % Natural numbers
+\newcommand{\Z}{\mathbb{Z}}  % Integers
+\newcommand{\Q}{\mathbb{Q}}  % Rationals
+\newcommand{\R}{\mathbb{R}}  % Reals
+\newcommand{\C}{\mathbb{C}}  % Complex numbers
+\newcommand{\F}{\mathbb{F}}  % Finite field or generic field

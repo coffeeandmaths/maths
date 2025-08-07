@@ -60,7 +60,7 @@ This transforms differential equations into **polynomial algebra** in $s$:
 
 Given:
 
-y′′+3y′+2y=u(t),y(0)=0, y′(0)=0y'' + 3y' + 2y = u(t),\quad y(0) = 0,\ y'(0) = 0
+$y′′+3y′+2y=u(t),y(0)=0$,  $y'(0)=0y'' + 3y' + 2y = u(t)$,$y(0) = 0,\ y'(0) = 0$
 
 Apply Laplace:
 

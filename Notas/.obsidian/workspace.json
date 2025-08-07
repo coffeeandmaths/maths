@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "algebra/congruences.md",
+                "file": "ODE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "congruences"
+              "title": "ODE"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "acb48a639d439327",
@@ -170,20 +171,25 @@
   },
   "active": "6e99947ac019c9b4",
   "lastOpenFiles": [
-    "algebra/algebramot.md",
-    "algebra/congruences.md",
-    "algebra/symmetricg.md",
-    "Notes.md",
+    "control/Theory Control Syllabus.md",
     "control/Control.md",
-    "Raw-Diehdral.md",
+    "control/Control Theory and signal theory.md",
+    "ODE.md",
+    "Quotient.md",
+    "algebra/Types of relation.md",
+    "algebra/relations.md",
+    "algebra/congruences.md",
+    "algebra/New Conceptual Framework.md",
+    "algebra/Canonical Updated.md",
     "algebra/Canonical FInal.md",
     "algebra/Canonical Decomposition (Group view).md",
+    "algebra/Canonical Decomposition.md",
+    "algebra/algebramot.md",
+    "algebra/symmetricg.md",
+    "Raw-Diehdral.md",
     "notes/Future Goal.md",
     "notes/Proofs ch1.md",
     "notes/proofabbot.md",
-    "control/Theory Control Syllabus.md",
-    "algebra/Types of relation.md",
-    "This Week Schedule.md",
-    "Untitled.md"
+    "This Week Schedule.md"
   ]
 }
