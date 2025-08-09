@@ -1,21 +1,21 @@
 ## 🚩 Foundational Principle: Canonical Decomposition of a Function
 
-Let \( f : G \to H \) be a function between algebraic structures (e.g. groups or rings).
+Let $f : G \to H$ be a function between algebraic structures (e.g. groups or rings).
 
-We begin not by analyzing \(f\) point-by-point, but by **structurally decomposing it**:
+We begin not by analyzing $f$ point-by-point, but by **structurally decomposing it**:
 
 $$
 f = f^{\sim} \circ \pi
 $$
 
 Where:
-- \( \pi : G \to G/\ker(f) \) is the canonical projection (collapsing elements that map to the identity)
-- \( f^{\sim} : G/\ker(f) \to \operatorname{im}(f) \) is **injective**, and preserves the operation
+- $\pi : G \to G/\ker(f)$ is the canonical projection (collapsing elements that map to the identity)
+- $f^{\sim} : G/\ker(f) \to \operatorname{im}(f)$ is **injective**, and preserves the operation
 - The image is then included in \(H\)
 
 This decomposition only works when:
-- \(f\) is a **homomorphism** (operation-preserving), and
-- The **kernel** \( \ker(f) \subseteq G \) is a subgroup (or ideal)
+- $f$ is a **homomorphism** (operation-preserving), and
+- The **kernel** $\ker(f) \subseteq G$ is a subgroup (or ideal)
 
 ---
 
@@ -85,7 +85,7 @@ projects each integer onto its residue class modulo 2. This collapses infinitely
 
 ---
 
-### 📤 Step 3: Define the induced function \( f^{\sim} \)
+### 📤 Step 3: Define the induced function $f^{\sim}$
 
 If \( f \) is **compatible** with the equivalence relation, i.e.,
 
@@ -107,34 +107,34 @@ This function operates at the **class level**, not on individual elements. It mu
 
 We test whether \( f \) behaves equally on equivalent inputs:
 
-#### Case 1: \( f(n) = n^2 + 3n + 1 \)
+#### Case 1: $f(n) = n^2 + 3n + 1$
 
-Suppose \( a \equiv b \mod 2 \Rightarrow a = b + 2k \) for some \( k \in \mathbb{Z} \). Then:
+Suppose $a \equiv b \mod 2 \Rightarrow a = b + 2k$ for some $k \in \mathbb{Z}$. Then:
 
 $$
 f(a) = (b + 2k)^2 + 3(b + 2k) + 1 = b^2 + 4bk + 4k^2 + 3b + 6k + 1
 $$
 
-This depends on \( k \), so \( f(a) \ne f(b) \) in general.
+This depends on $k$, so $f(a) \ne f(b)$ in general.
 
-**Conclusion**: This \( f \) is **not compatible**, and does **not** induce a valid \( f^{\sim} \) on \( \mathbb{Z}/2\mathbb{Z} \).
+**Conclusion**: This $f$ is **not compatible**, and does **not** induce a valid $f^{\sim}$ on $\mathbb{Z}/2\mathbb{Z}$.
 
 ---
 
-#### Case 2: \( f(n) = n \bmod 2 \)
+#### Case 2: $f(n) = n \bmod 2$
 
 This function depends only on the class:
 
-- If \( a \equiv b \mod 2 \), then \( a \bmod 2 = b \bmod 2 \)
-- So \( f(a) = f(b) \)
+- If $a \equiv b \mod 2$, then $a \bmod 2 = b \bmod 2$
+- So $f(a) = f(b)$
 
-**Conclusion**: This \( f \) **is compatible**, and does induce a well-defined \( f^{\sim} \).
+**Conclusion**: This $f$ **is compatible**, and does induce a well-defined $f^{\sim}$.
 
 ---
 
 ### 🎯 Step 5: Image structure
 
-Once \( f^{\sim} \) is well-defined, its image is a **subset** of the codomain:
+Once $f^{\sim}$ is well-defined, its image is a **subset** of the codomain:
 
 $$
 \operatorname{im}(f^{\sim}) \subseteq \mathbb{Z}
@@ -168,4 +168,4 @@ $$
 f = f^{\sim} \circ \pi
 $$
 
-Which means: we can **lift from \(\mathbb{Z}\)** to classes, apply \(f^{\sim}\), and embed the result back into \(\mathbb{Z}\).
+Which means: we can **lift from $\mathbb{Z}$** to classes, apply $f^{\sim}$, and embed the result back into $\mathbb{Z}$.

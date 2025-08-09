@@ -4,9 +4,76 @@
 % --------- Document Starts ----------
 \begin{document}
 
-When a function $f:G \Rightarrow H$ between two \textit{groups} preserves the group operation of each of the two groups it's called \textbf{homoforphism}.
+\section*{Injective, Surjective, Bijective in the Context of Homomorphisms}
+
+\subsection*{Domain, Codomain, and Image}
+
+\begin{itemize}
+	\item \textbf{Domain}: The group from which the homomorphism takes its input elements.
+	\item \textbf{Codomain}: The group to which the homomorphism sends its outputs.
+	\item \textbf{Image}: The subgroup of the codomain consisting of all elements of the form \( f(g) \) with \( g \in G \).
+\end{itemize}
+
+\bigskip
+
+\begin{center}
+	\begin{tabular}{| >{\raggedright\arraybackslash}m{2.8cm} 
+			| >{\raggedright\arraybackslash}m{4.8cm} 
+			| >{\raggedright\arraybackslash}m{6.5cm} 
+			| >{\raggedright\arraybackslash}m{4.5cm} |}
+		\hline
+		\textbf{Property} & \textbf{Definition} & \textbf{Concrete Meaning} & \textbf{Example (Group Homomorphism)} \\
+		\hline
+		
+		\textbf{Injective} & The kernel contains only the identity: \( \ker f = \{e_G\} \). 
+		& No two distinct elements of the domain map to the same element of the codomain. 
+		& \( f : \mathbb{Z} \to \mathbb{Z},\ f(n) = 2n \) under addition. \\
+		
+		\hline
+		
+		\textbf{Surjective} & \( \operatorname{im} f = H \) (the image equals the whole codomain). 
+		& Every element of the codomain is hit by some element of the domain. 
+		& \( f : \mathbb{Z} \to \mathbb{Z}_n,\ f(k) = k \ (\mathrm{mod}\ n) \) under addition. \\
+		
+		\hline
+		
+		\textbf{Bijective} & Both injective and surjective. 
+		& A one-to-one correspondence between domain and codomain; \( f \) is an isomorphism of groups. 
+		& \( f : \mathbb{Z}_n \to \langle g \rangle \subset G,\ f(k) = g^k \) where \( g \) has order \( n \). \\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\section*{Homomorphisms and Related Morphisms}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|p{7cm}|}
+		\hline
+		\textbf{Concept} & \textbf{In Groups} & \textbf{Key Property} \\
+		\hline
+		\textbf{Morphism} & Homomorphism \( f : G \to H \) & Preserves the group operation: \( f(a \cdot b) = f(a) \cdot f(b) \). \\
+		\hline
+		\textbf{Monomorphism} & Injective homomorphism & Left-cancellable: \( f \circ g_1 = f \circ g_2 \Rightarrow g_1 = g_2 \). Equivalent to \( \ker f = \{e_G\} \). \\
+		\hline
+		\textbf{Epimorphism} & Surjective homomorphism & Right-cancellable: \( h_1 \circ f = h_2 \circ f \Rightarrow h_1 = h_2 \). Image equals codomain. \\
+		\hline
+		\textbf{Isomorphism} & Bijective homomorphism & There exists \( g : H \to G \) such that \( g \circ f = \mathrm{id}_G \) and \( f \circ g = \mathrm{id}_H \). \\
+		\hline
+		\textbf{Automorphism} & Isomorphism \( f : G \to G \) & A bijective homomorphism from a group to itself (a symmetry of the group). \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection*{Symmetry of Structure}
+An \textbf{automorphism} of a group is a bijective homomorphism from the group to itself, representing a structural symmetry. Examples include inner automorphisms in group theory, which conjugate every element by a fixed group element.
+
+
+\section*{Homomorphism properties}
+When a function $f:G \Rightarrow H$ between two \textit{groups} preserves the group operation of each of the two groups it's called \textbf{homomorphism}.
 It is irrelevant whether the operations in the each  groups are the same or not, the homomorphism \textit{transforms} them.
-\\
+\vspace{1cm}\\
 \textbf{Definition} : Let the \textit{group homomorphism} $f:G \Rightarrow H$ and $a \in G$, $b \in H$ then
 $$f(ab)=f(a)+f(b) \quad \forall a,b \in G$$
 The full idea is that 
@@ -24,6 +91,430 @@ $$
 $$
 \vspace{1cm} \\
 $f \times f : G \times G \rightarrow H \times H$ is function defined as $(f \times f)(a,b) := (f(a),f(b))$ which takes a \textit{pair} of elements from $G \times G$ and then applies the function $f$ \textbf{to each component} and returns the corresponding pair in $H \times H$. Both paths starting at $G \times G$ arrive at $H$, that is preserving the structure.
+\vspace{1cm} \\
+\textbf{Definition} : a \textit{group homomorphism} preserves the identity element 
+$$
+f(e_G)=e_H
+$$
+\textit{proof :}
+
+Since for any $a \in G$:
+
+$$
+e_G * a = a
+$$
+
+Apply $f$ to both sides:
+
+$$
+f(e_G * a) = f(a)
+$$
+
+Using the homomorphism property:
+
+$$
+f(e_G) \cdot f(a) = f(a)
+$$
+
+Cancel $f(a)$ (possible since $H$  is a group), and conclude:
+
+$$
+f(e_G) = e_H
+$$
+its commutative diagram :
+
+$$
+\begin{tikzcd}
+	G \arrow[rr, "f"] & & H \\
+	& G \arrow[ul, "e_G"'] \arrow[ur, "e_H"']
+\end{tikzcd}
+$$
+
+\textbf{Definition}: a $group$ homomorphism also preserves inverses
+
+$$
+f(a^{-1}) = f(a)^{-1}
+$$
+
+\textit{proof}
+
+From $group$ identity: 
+
+$$
+a * a^{-1} = e_G
+$$
+
+Apply $f$:
+
+$$
+f(a * a^{-1}) = f(e_G)
+$$
+
+By the homomorphism property:
+
+$$
+f(a) \cdot f(a^{-1}) = e_H
+$$
+
+So $f(a^{-1})$ is the inverse of $f(a)$, which gives:
+
+$$
+f(a^{-1}) = f(a)^{-1}
+$$
+the commutative diagram then is 
+$$
+\begin{tikzcd}
+	G \arrow[r, "f"] \arrow[d, "\mathrm{inv}_G"'] & H \arrow[d, "\mathrm{inv}_H"] \\
+	G \arrow[r, "f"] & H
+\end{tikzcd}
+$$
+
+\section*{Canonical decompostition}
+\subsection*{Subgroup}
+Let $(G,*)$ be a group and $H \subseteq G$ a \textbf{subset} if only if :
+\begin{itemize}
+	\item Closure: $\forall a,b \in H, \quad a*b \in H$
+	\item Identity : $e_g \in H$
+	\item Inverse : $\forall a \in H, \quad a^{-1} \in H$
+\end{itemize}
+The \textbf{associativity} of the operation $*$ is also inherited from $G$
+\subsection*{Cosets}
+Because $H$ is inside $G$ to translate the whole subset through the group $G$ by multiplying a fixed element $g \in G$. Because in gneral , group multiplication \textit{may not be commutative} 
+$$
+gh \neq hg
+$$
+They are only equial in abelian groups.
+
+
+$\textbf{Example: Left vs Right Cosets in a Non-Abelian Group}$
+
+Let  
+$$
+G = S_3 = \{ e, (12), (13), (23), (123), (132) \}
+$$
+be the symmetric group on 3 elements, with the operation being permutation composition.  
+Consider the subgroup:  
+$$
+H = \{ e, (12) \}.
+$$
+
+Let $g = (13)$.
+
+$$
+\text{Left coset: } gH = (13)H = \{ (13)e, \ (13)(12) \}.
+$$
+We compute:
+$$
+(13)e = (13), \quad (13)(12) = (132),
+$$
+so:
+$$
+gH = \{ (13), (132) \}.
+$$
+
+
+$$
+\text{Right coset: } Hg = H(13) = \{ e(13), \ (12)(13) \}.
+$$
+We compute:
+$$
+e(13) = (13), \quad (12)(13) = (123),
+$$
+so:
+$$
+Hg = \{ (13), (123) \}.
+$$
+
+$\textbf{Comparison:}$  
+$$
+gH = \{ (13), (132) \} \quad \neq \quad Hg = \{ (13), (123) \}.
+$$
+
+Since $gH \neq Hg$, we see that in the non-abelian group $S_3$, left and right cosets of the same subgroup can differ.  
+In an abelian group, we would always have $gH = Hg$.
+
+\subsection*{Kernel}
+
+Let $f: G \to H$ be a group homomorphism between groups $(G, *)$ and $(H, \cdot)$.  
+The **kernel** of $f$ is defined as:
+$$
+\ker(f) = \{ g \in G \mid f(g) = e_H \}
+$$
+where $e_H$ is the identity element of $H$.
+
+\textbf{Theorem}
+
+The kernel $\ker(f)$ is a subgroup of $G$.
+
+
+\textit{proof}
+
+\textbf{Identity in the kernel} 
+Let $e_G$ and $e_H$ be the identities of $G$ and $H$.  
+Since $f$ is a homomorphism:
+$$
+f(e_G) = f(e_G * e_G) = f(e_G) \cdot f(e_G)
+$$
+Cancelling $f(e_G)$ : $f(e_G) = e_H$
+
+Start from the homomorphism property and the identity law in \(G\):
+$$
+e_G * e_G = e_G \quad \Rightarrow \quad f(e_G * e_G) = f(e_G).
+$$
+Since \(f\) is a homomorphism,
+$$
+f(e_G * e_G) = f(e_G)\cdot f(e_G).
+$$
+Thus we have the equation in \(H\):
+$$
+f(e_G) = f(e_G)\cdot f(e_G).
+$$
+
+We know that in $G$:
+$$
+e_G * e_G = e_G.
+$$
+Applying $f$ to both sides:
+$$
+f(e_G * e_G) = f(e_G).
+$$
+Since $f$ is a homomorphism:
+$$
+f(e_G * e_G) = f(e_G) \cdot f(e_G).
+$$
+Thus in $H$ we have:
+$$
+f(e_G) = f(e_G) \cdot f(e_G).
+$$
+Multiply on the left by $f(e_G)^{-1}$ (which exists because $H$ is a group):
+$$
+f(e_G)^{-1} \cdot f(e_G) = f(e_G)^{-1} \cdot \big(f(e_G) \cdot f(e_G)\big).
+$$
+By associativity in $H$:
+$$
+e_H = \big(f(e_G)^{-1} \cdot f(e_G)\big) \cdot f(e_G) = e_H \cdot f(e_G) = f(e_G).
+$$
+Therefore:
+$$
+f(e_G) = e_H.
+$$
+
+$$
+f(e_G) = e_H.
+$$
+
+(Equivalently, you could multiply \textit{on the right} by $f(e_g)^{-1}$ and reach the same conclusion.), thus 
+$$
+e_G \in \ker(f)
+. The$$
+
+
+\textbf{Closure under the group operation}  
+
+Let $a, b \in \ker(f)$. Then:
+$$
+f(a) = e_H, \quad f(b) = e_H
+$$
+Using the homomorphism property:
+$$
+f(a * b) = f(a) \cdot f(b) = e_H \cdot e_H = e_H
+$$
+Thus $a * b \in \ker(f)$.
+
+\textbf{Closure under inverses}
+  
+Let $a \in \ker(f)$. Then $f(a) = e_H$.  
+Using the property for inverses:
+$$
+f(a^{-1}) = f(a)^{-1} = e_H^{-1} = e_H
+$$
+Thus $a^{-1} \in \ker(f)$.
+
+Since $\ker(f)$ contains the identity, is closed under the group operation, and is closed under inverses, we conclude:
+$$
+\ker(f) \leq G
+$$
+$\square$
+
+\textit{One-Line Subgroup Test}
+
+A quicker proof uses the subgroup test:  
+If $a, b \in \ker(f)$ then:
+$$
+f(a b^{-1}) = f(a) \cdot f(b^{-1}) = f(a) \cdot f(b)^{-1} = e_H \cdot e_H^{-1} = e_H
+$$
+Thus $a b^{-1} \in \ker(f)$, so $\ker(f) \leq G$.
+
+\subsection*{Partition $G /ker(f)$}
+
+
+Let  $f : G \to H$ be a group homomorphism and define the relation on $G$ by: $g_1 \sim g_2 \; \Longleftrightarrow \; g_1^{-1} g_2 \in \ker(f)$
+$$
+g_1 \sim g_2 \iff f(g_1) = f(g_2).
+$$
+
+The equivalence class of $g \in G$ is $$[g] = g \ker(f) = \{ gk \mid k \in \ker(f) \}$$
+and the set of all the $[g]$ partitions is
+$$
+G / \ker(f) \;=\; \{ [g] \mid g \in G \} \;=\; G / \!\sim,
+$$
+
+and since  $\ker(f) \trianglelefteq G, \; G / \ker(f)$  is a group with:
+
+$$
+(g_1 \ker(f)) \cdot (g_2 \ker(f)) \;=\; (g_1 g_2) \ker(f).
+$$
+
+
+\textit{Example} $\quad f : (\mathbb{Z}, +) \ \longrightarrow \ (\mathbb{Z}_6, +_6)$, 
+$f(k) = 2k \ (\mathrm{mod}\ 6)$
+
+where:
+\begin{itemize}
+	\item $(\mathbb{Z}, +)$ is the group of integers under usual addition.
+	\item $(\mathbb{Z}_6, +_6)$ is the group of integers modulo $6$ under addition mod $6$.
+\end{itemize}
+
+
+\textbf{Homomorphism property:} 
+$$
+\forall k, \ell \in \mathbb{Z}, \ 
+f(k + \ell) = 2(k + \ell) \ (\mathrm{mod}\ 6) 
+= (2k + 2\ell) \ (\mathrm{mod}\ 6) 
+= f(k) +_6 f(\ell)
+$$
+
+\textbf{Kernel:}
+
+$$\ker f = \{ k \in \mathbb{Z} \ : \ 2k \equiv 0 \ (\mathrm{mod}\ 6) \}
+= \{ k \in \mathbb{Z} \ : \ 3 \mid k \}
+= 3\mathbb{Z}
+$$
+
+
+\textbf{Partition of } $G = \mathbb{Z} \ \text{by } \ker f:$
+
+$$
+0 + 3\mathbb{Z}, \quad 1 + 3\mathbb{Z}, \quad 2 + 3\mathbb{Z}
+$$
+$$
+\begin{aligned}
+	0 + 3\mathbb{Z} &= \{\dots,-6,-3,0,3,6,\dots\}, \\
+	1 + 3\mathbb{Z} &= \{\dots,-5,-2,1,4,7,\dots\}, \\
+	2 + 3\mathbb{Z} &= \{\dots,-4,-1,2,5,8,\dots\}.
+\end{aligned}
+$$
+
+These cosets are pairwise disjoint and their union is $\mathbb{Z}$.
+
+
+\textbf{Quotient group:} 
+$$
+\mathbb{Z} / \ker f = \mathbb{Z} / 3\mathbb{Z} 
+= \{ \ 0 + 3\mathbb{Z}, \ 1 + 3\mathbb{Z}, \ 2 + 3\mathbb{Z} \ \}
+$$
+
+
+\textbf{Image:}
+$$
+\operatorname{im} f = \{0, 2, 4\} \subseteq \mathbb{Z}_6
+$$
+which is the subgroup generated by $2$ in $\mathbb{Z}_6$, isomorphic to $\mathbb{Z}_3$.
+
+\textbf{Induced isomorphism:}
+$$
+\pi : \mathbb{Z} \to \mathbb{Z} / 3\mathbb{Z}, \ 
+\pi(k) = k + 3\mathbb{Z}
+$$
+Define
+$$
+\tilde{f} : \mathbb{Z} / 3\mathbb{Z} \ \longrightarrow \ \operatorname{im} f, 
+\quad \tilde{f}(r + 3\mathbb{Z}) = 2r \ (\mathrm{mod}\ 6)
+$$
+This is a well-defined bijective homomorphism, so:
+$$
+\mathbb{Z} / \ker f \ \cong \ \operatorname{im} f
+$$
+the commutative diagrame is
+
+$$
+\begin{tikzcd}[row sep=large, column sep=large]
+	(\mathbb{Z}, +) \arrow[r, "f"] \arrow[d, "\pi"'] 
+	& (\mathbb{Z}_6, +_6) \\
+	\mathbb{Z}/3\mathbb{Z} \arrow[r, "\tilde{f}"] 
+	& \operatorname{im}(f) \arrow[u, hook, "\iota"]
+\end{tikzcd}
+$$
+
+Example: Let $ \operatorname{sgn} : S_3 \longrightarrow \{\pm 1\}$ be the sign homomorphism from the symmetric group on three elements to the multiplicative group $\{\pm 1\}$.
+\vspace{0.5cm} \\
+\textbf{Homomorphism property}: For all $\sigma, \tau \in S_3$,
+
+$$
+\operatorname{sgn}(\sigma \tau) = \operatorname{sgn}(\sigma) \cdot \operatorname{sgn}(\tau).
+$$
+
+\textbf{Kernel:}
+$$
+\ker(\operatorname{sgn}) = A_3 = \{ e,\ (123),\ (132) \}.
+$$
+
+\textbf{Partition }of $S_3$ by $\ker(\operatorname{sgn})$:
+$$
+A_3 = \{ e, (123), (132) \}, \quad (12)A_3 = \{ (12), (13), (23) \}.
+$$
+These two cosets are disjoint and their union is $S_3$.
+
+\textbf{Quotient group:}
+$$
+S_3 / A_3 = \{\, A_3,\ (12)A_3 \,\} \cong \mathbb{Z}_2.
+$$
+
+\textbf{Image}
+$$
+\operatorname{im}(\operatorname{sgn}) = \{\pm 1\} \cong \mathbb{Z}_2.
+$$
+
+\textbf{Induced isomorphism:} Let $\pi : S_3 \to S_3/A_3$ be the natural projection
+
+$$
+\pi(\sigma) = \sigma A_3.
+$$
+Define
+
+$$
+\widetilde{\operatorname{sgn}} : S_3 / A_3 \longrightarrow \{\pm 1\}, \quad 
+\widetilde{\operatorname{sgn}}(A_3) = +1, \quad \widetilde{\operatorname{sgn}}((12)A_3) = -1.
+$$
+This is a well-defined bijective homomorphism, so
+$$
+S_3 / \ker(\operatorname{sgn}) \ \cong \ \operatorname{im}(\operatorname{sgn}).
+$$
+
+$$
+\begin{tikzcd}[row sep=large, column sep=large]
+	S_3 \arrow[r, "\operatorname{sgn}"] \arrow[d, "\pi"'] 
+	& \{\pm 1\} \\
+	S_3 / A_3 \arrow[r, "\widetilde{\operatorname{sgn}}"] 
+	& \operatorname{im}(\operatorname{sgn}) \arrow[u, hook, "\iota"]
+\end{tikzcd}
+$$
+
+
+The full decomposition of a \textit{morphism} 
+
+$$
+G \xrightarrow{\pi} G/\ker(f) \xrightarrow{f^{\sim}} \operatorname{im}(f) \hookrightarrow H
+$$
+
+
+
+
+
+
+
+
+
 
 
 
