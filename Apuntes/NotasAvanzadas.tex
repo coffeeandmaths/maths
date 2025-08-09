@@ -186,7 +186,7 @@ $$
 They are only equial in abelian groups.
 
 
-$\textbf{Example: Left vs Right Cosets in a Non-Abelian Group}$
+Example: Left vs Right Cosets in a Non-Abelian Group
 
 Let  
 $$
@@ -232,6 +232,8 @@ $$
 
 Since $gH \neq Hg$, we see that in the non-abelian group $S_3$, left and right cosets of the same subgroup can differ.  
 In an abelian group, we would always have $gH = Hg$.
+
+
 
 \subsection*{Kernel}
 
@@ -507,7 +509,61 @@ $$
 G \xrightarrow{\pi} G/\ker(f) \xrightarrow{f^{\sim}} \operatorname{im}(f) \hookrightarrow H
 $$
 
+\section*{Example: From Subgroup to Partition}
 
+Let the parent group be 
+$$
+G = \mathbb{Z}_6 = \{0,1,2,3,4,5\}
+$$
+under addition modulo $6$.
+
+\subsection*{Step 1: Subgroup}
+Consider the subset
+$$
+H = \{0,3\} \subseteq G .
+$$
+We check:
+\begin{itemize}
+	\item $0 \in H$ (identity is included),
+	\item If $a,b \in H$, then $a+b \pmod{6} \in H$ (closure),
+	\item If $a \in H$, then $-a \pmod{6} \in H$ (inverses).
+\end{itemize}
+Thus $H \leq G$.
+
+\subsection*{Step 2: Cosets (Equivalence Classes)}
+For $g \in G$, the \textbf{left coset} of $H$ containing $g$ is
+$$
+g + H = \{ g + h \pmod{6} \mid h \in H \}.
+$$
+Explicitly:
+\[
+\begin{aligned}
+	0 + H &= \{0,3\}, \\
+	1 + H &= \{1,4\}, \\
+	2 + H &= \{2,5\}.
+\end{aligned}
+\]
+No new cosets appear after this.
+
+\subsection*{Step 3: Partition of $G$}
+The set of cosets forms a partition:
+$$
+G = \underbrace{\{0,3\}}_{0+H} \; \cup \;
+\underbrace{\{1,4\}}_{1+H} \; \cup \;
+\underbrace{\{2,5\}}_{2+H}.
+$$
+Each element of $G$ lies in exactly one coset.
+
+\subsection*{Step 4: Normality and Quotient Group}
+Since $G$ is abelian, $H$ is a normal subgroup:
+$$
+g + H = H + g \quad \forall g \in G.
+$$
+The set of cosets $G/H$ is a group under
+$$
+(a+H) + (b+H) = (a+b) + H,
+$$
+and is isomorphic to $\mathbb{Z}_3$.
 
 
 
