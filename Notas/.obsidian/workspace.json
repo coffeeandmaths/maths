@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "Canonical FInal"
             }
+          },
+          {
+            "id": "134bfb9fc8193eae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Categories.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Categories"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -169,11 +184,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6e99947ac019c9b4",
+  "active": "134bfb9fc8193eae",
   "lastOpenFiles": [
+    "algebra/Canonical FInal.md",
+    "Categories.md",
     "algebra/Canonical Decomposition (Group view).md",
     "algebra/Canonical Decomposition.md",
-    "algebra/Canonical FInal.md",
     "algebra/Canonical Updated.md",
     "algebra/New Conceptual Framework.md",
     "ODE.md",
