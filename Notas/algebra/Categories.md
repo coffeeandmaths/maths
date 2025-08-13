@@ -20,3 +20,41 @@ The following will treat a set and relation categorically : let $\sim$ be the re
 
 * Objects : the elements of $S$
 * Morphisms: let $a,b \in S$ then $Hom(a,b)$ be the set of pair elements $(a,b) \in S \times S$ if $a \sim b$ and let $Hom(a,b)= \emptyset$ otherwise 
+
+---
+## Class of Objects in a Category
+
+A **category** $$\mathcal{C}$$ consists of:
+
+1. **Class of objects** $$\mathrm{Obj}(\mathcal{C})$$  
+   - This is the collection of all “objects” of the category.  
+   - It is usually a **class** (possibly proper), not necessarily a set, to avoid set-theoretic paradoxes.  
+
+2. **Morphisms**  
+   - For each ordered pair $$(A, B)$$ of objects in $$\mathrm{Obj}(\mathcal{C})$$, there is a **set of morphisms**  
+     $$
+     \mathrm{Hom}_{\mathcal{C}}(A, B)
+     $$
+     whose elements are called **morphisms from $$A$$ to $$B$$**.
+
+3. **Composition law**  
+   - A rule that assigns to each $$f \in \mathrm{Hom}_{\mathcal{C}}(A, B)$$ and  
+     $$g \in \mathrm{Hom}_{\mathcal{C}}(B, C)$$ a morphism  
+     $$
+     g \circ f \in \mathrm{Hom}_{\mathcal{C}}(A, C)
+     $$
+     satisfying **associativity** and **identity** axioms.
+
+---
+
+### Examples of $$\mathrm{Obj}(\mathcal{C})$$
+
+- $$\mathcal{C} = \mathbf{Set}$$: $$\mathrm{Obj}(\mathcal{C})$$ = class of all sets.
+- $$\mathcal{C} = \mathbf{Grp}$$: $$\mathrm{Obj}(\mathcal{C})$$ = class of all groups.
+- $$\mathcal{C} = \mathbf{Top}$$: $$\mathrm{Obj}(\mathcal{C})$$ = class of all topological spaces.
+
+---
+
+**Summary:**  
+$$\mathrm{Obj}(\mathcal{C})$$ is simply the “universe” of objects for the category $$\mathcal{C}$$.  
+It names *what* the category is about, while $$\mathrm{Hom}_{\mathcal{C}}(A,B)$$ describes *how* those objects are related.

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ODE.md",
+                "file": "algebra/Categories.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ODE"
+              "title": "Categories"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "acb48a639d439327",
@@ -168,15 +169,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f373754066bcd829",
+  "active": "a50a9f81c1ecd25e",
   "lastOpenFiles": [
+    "ODE.md",
     "algebra/Categories.md",
     "algebra/Canonical FInal.md",
     "algebra/Canonical Decomposition (Group view).md",
     "algebra/Canonical Decomposition.md",
     "algebra/Canonical Updated.md",
     "algebra/New Conceptual Framework.md",
-    "ODE.md",
     "control/Theory Control Syllabus.md",
     "control/Control.md",
     "control/Control Theory and signal theory.md",
