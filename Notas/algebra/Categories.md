@@ -26,7 +26,8 @@ The following will treat a set and relation categorically : let $\sim$ be the re
 
 A **category** $$\mathcal{C}$$ consists of:
 
-1. **Class of objects** $$\mathrm{Obj}(\mathcal{C})$$  
+1. **Class of objects** $$\mathrm{Obj}(\mathcal{C})$$ (would be like a sets of sets)
+  
    - This is the collection of all “objects” of the category.  
    - It is usually a **class** (possibly proper), not necessarily a set, to avoid set-theoretic paradoxes.  
 
@@ -57,4 +58,82 @@ A **category** $$\mathcal{C}$$ consists of:
 
 **Summary:**  
 $$\mathrm{Obj}(\mathcal{C})$$ is simply the “universe” of objects for the category $$\mathcal{C}$$.  
-It names *what* the category is about, while $$\mathrm{Hom}_{\mathcal{C}}(A,B)$$ describes *how* those objects are related.
+It names *what* the category is about, while $$\mathrm{Hom}_{\mathcal{C}}(A,B)$$ describes *how* those objects are related. One must be careful, **homomorphism** recall that is a strcture preserving map (group homomorphism) whereas in *category theory* there isn't any algebraic structure and it's just arrows ( or paths if you will ) between ojects of the categoty . it is the neutral category term.
+
+**Every homomorphism is a morphism, but not every morphism is a homomorphism.**
+
+## Morphisms in a Category
+
+In a **category** $$\mathcal{C}$$:
+
+- A **morphism** (sometimes called an *arrow*) is the abstract **bridge** or **map** between two objects.  
+- If $$A, B \in \mathrm{Obj}(\mathcal{C})$$, then a morphism from $$A$$ to $$B$$ is written
+  $$
+  f : A \to B , \quad f \in \mathrm{Hom}_{\mathcal{C}}(A, B).
+  $$
+
+---
+
+### Properties
+
+1. **Identity Morphisms**  
+   For each object $$A \in \mathrm{Obj}(\mathcal{C})$$, there exists an identity morphism  
+   $$
+   \mathrm{id}_A : A \to A
+   $$
+   which acts as a neutral element for composition.
+
+2. **Composition**  
+   For morphisms
+   $$
+   f : A \to B, \quad g : B \to C,
+   $$
+   there exists a composite morphism
+   $$
+   g \circ f : A \to C
+   $$
+   such that:
+   - **Associativity**: $$h \circ (g \circ f) = (h \circ g) \circ f.$$
+   - **Identity**: $$f \circ \mathrm{id}_A = f = \mathrm{id}_B \circ f.$$
+
+---
+
+### Examples of Morphisms
+
+- In $$\mathbf{Set}$$: morphisms are **functions** between sets.  
+- In $$\mathbf{Grp}$$: morphisms are **group homomorphisms**.  
+- In $$\mathbf{Ring}$$: morphisms are **ring homomorphisms**.  
+- In $$\mathbf{Top}$$: morphisms are **continuous maps**.  
+
+---
+
+**Summary:**  
+Morphisms in category theory are not geometric “arrows” but abstract **maps/bridges** that connect objects, defined by their role in composition and identity.
+
+## Objects vs Elements in a Category
+
+- Objects of a category $$\mathcal{C}$$ are the members of the class  
+  $$
+  \mathrm{Obj}(\mathcal{C}).
+  $$
+  Example: in $$\mathbf{Set}$$, objects are sets.
+
+- Morphisms are the members of  
+  $$
+  \mathrm{Hom}_{\mathcal{C}}(A, B),
+  $$
+  i.e. the **maps/bridges** between objects.
+
+- Internal elements (like $$x \in X$$ when $$X$$ is a set) belong to the **structure of an object**, not to the category itself.  
+  Category theory abstracts away from internal elements and focuses only on **objects** and **morphisms**.
+
+---
+
+**Example:**  
+- $$\mathcal{C} = \mathbf{Set}$$:  
+  - Objects: sets $$X, Y \in \mathrm{Obj}(\mathbf{Set})$$.  
+  - Morphisms: functions $$f: X \to Y$$.  
+  - Internal elements: $$x \in X$$ (not part of the categorical data).
+
+
+Always use : _“Object of the category $\mathcal{C} = $\mathcal{C}$  formal, standard phrasing.
