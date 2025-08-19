@@ -137,3 +137,8 @@ Morphisms in category theory are not geometric “arrows” but abstract **maps/
 
 
 Always use : _“Object of the category $\mathcal{C} = $\mathcal{C}$  formal, standard phrasing.
+
+**ISOMORPHISM**
+
+Recalling from $Set$ that an *isomorphism* is a map that  $f : A \rightarrow B$  and $g: B \rightarrow A$ then $$gf = id_A \quad \text{and} \quad fg= id_B$$
+this means that $f$ is both *injective* and *surjective* ( a bijection ) and has two sided inverse. The same applies to *categories*. Let $\text{C}$ be a category and $f \in \text{Hom}_C(A,B)$ . As in $Set$ there exists a map    

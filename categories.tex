@@ -1,0 +1,44 @@
+\documentclass[10pt]{article}
+
+% --------- Minimal page and spacing setup ---------
+\usepackage[margin=2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.05} % tighter than default
+\usepackage{parskip}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+
+% --------- Math and Fonts ----------
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathrsfs}  % for script letters
+\usepackage{eucal}     % elegant calligraphic fonts
+\usepackage{microtype} % better spacing
+
+% --------- Section Style ----------
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+% --------- Header (optional) ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\small Notes}
+\fancyhead[R]{\small \today}
+\fancyfoot[C]{\thepage}
+
+% --------- Document Starts ----------
+\begin{document}
+
+\section*{Categories}
+
+A category is an abstraction composed by 
+\begin{itemize}
+	\item A class of objects denoted by $\text{Obj}(\mathrm{C})$. Objects on a \textit{category} $\mathrm{C}$ are the members of the \textit{class} $\text{Obj}(\mathrm{C})$ that is, the collection of all \textit{objects} of the \textit{category}. It is simply the \textbf{universe} of objects for the category $\mathrm{C}$. \textbf{Category} theory abstracts away from internal elements and focuses only on \textit{objects} and \textit{morphisms}.
+	
+	\item \textit{Morphism} are continuos maps and one must be careful on recalling that \textbf{homomorphisms} are \textbf{structure preserving} whereas in category theory there isn't any algebraic structure. They are just maps and every homomorphism is a morphism, but not every morphism is a homomorphism.
+\end{itemize}	
+\textbf{Example:}\\
+\vspace{0.5cm}
+In $\text{Obj}(\mathrm{C})=Set$
+
+\end{document}
