@@ -9,3 +9,12 @@ https://www.1answer.co.uk/
 https://www.1acetraining.co.uk/careers/
 1 Bishops Avenue Limited
 https://companyjobs.co.uk/blog/acadp_listings/1-bishops-avenue-limited/
+1000 Trades Limited
+https://www.google.com/search?client=firefox-b-d&channel=entpr&q=1000+Trades+Limited
+101 Studios UK Limited
+https://101studiosco.com/
+105 West Architects Ltd
+https://105west.co.uk/
+
+
+
