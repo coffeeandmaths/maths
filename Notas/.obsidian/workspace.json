@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Done.md",
+                "file": "control/Control Theory and signal theory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Done"
+              "title": "Control Theory and signal theory"
             }
           }
         ],
@@ -200,12 +200,14 @@
   },
   "active": "ae988df0b82d63ac",
   "lastOpenFiles": [
+    "control/Control.md",
+    "algebra/Canonical Decomposition.md",
+    "Done.md",
     "real/Peano Axiom.md",
     "real/div.md",
     "real/realmot.md",
     "real/rananalysis.md",
     "algebra/Types of relation.md",
-    "Done.md",
     "algebra/congruences.md",
     "algebra/Categories.md",
     "algebra/relations.md",
@@ -213,10 +215,8 @@
     "ODE.md",
     "algebra/Canonical FInal.md",
     "algebra/Canonical Decomposition (Group view).md",
-    "algebra/Canonical Decomposition.md",
     "algebra/Canonical Updated.md",
     "control/Theory Control Syllabus.md",
-    "control/Control.md",
     "control/Control Theory and signal theory.md",
     "Quotient.md",
     "algebra/algebramot.md",
