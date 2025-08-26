@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "control/Control Theory and signal theory.md",
+                "file": "Done.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Control Theory and signal theory"
+              "title": "Done"
             }
           }
         ],
@@ -200,6 +200,8 @@
   },
   "active": "ae988df0b82d63ac",
   "lastOpenFiles": [
+    "eNGA/Personal Statement.md",
+    "control/Control Theory and signal theory.md",
     "control/Control.md",
     "algebra/Canonical Decomposition.md",
     "Done.md",
@@ -217,14 +219,12 @@
     "algebra/Canonical Decomposition (Group view).md",
     "algebra/Canonical Updated.md",
     "control/Theory Control Syllabus.md",
-    "control/Control Theory and signal theory.md",
     "Quotient.md",
     "algebra/algebramot.md",
     "algebra/symmetricg.md",
     "Raw-Diehdral.md",
     "notes/Future Goal.md",
     "notes/Proofs ch1.md",
-    "notes/proofabbot.md",
-    "This Week Schedule.md"
+    "notes/proofabbot.md"
   ]
 }

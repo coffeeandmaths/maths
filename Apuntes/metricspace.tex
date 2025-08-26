@@ -1,0 +1,83 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Metric Spaces: Definition, Example, and Mental Map}
+\author{}
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section*{Definition of a Metric Space}
+	
+	A \emph{metric space} is a pair $(X,d)$ where:
+	\begin{itemize}
+		\item $X$ is a set,
+		\item $d: X \times X \to \mathbb{R}_{\geq 0}$ is a function, called a \emph{metric},
+	\end{itemize}
+	such that for all $a,b,c \in X$ the following conditions hold:
+	
+	\begin{enumerate}
+		\item \textbf{Non-negativity and identity of indiscernibles:}
+		$$
+		d(a,b) \geq 0, \quad \text{and} \quad d(a,b) = 0 \iff a=b.
+		$$
+		
+		\item \textbf{Symmetry:}
+		$$
+		d(a,b) = d(b,a).
+		$$
+		
+		\item \textbf{Triangle inequality:}
+		$$
+		d(a,c) \leq d(a,b) + d(b,c).
+		$$
+	\end{enumerate}
+	
+	---
+	
+	\section*{Example: The Real Line}
+	
+	Consider the set $X=\mathbb{R}$ with the function
+	$$
+	d(x,y) = |x-y|.
+	$$
+	
+	This satisfies the metric axioms:
+	\begin{itemize}
+		\item Non-negativity: $$|x-y|\geq 0, \quad |x-y|=0 \iff x=y.$$
+		\item Symmetry: $$|x-y|=|y-x|.$$
+		\item Triangle inequality: for all $x,y,z \in \mathbb{R}$,
+		$$
+		|x-z| \leq |x-y| + |y-z|.
+		$$
+	\end{itemize}
+	
+	Hence $(\mathbb{R},|\cdot|)$ is a metric space.
+	
+	---
+	
+	\section*{Mental Map}
+	
+	A metric space can be visualized as a ``world of points'' equipped with a rule $d$ that measures the distance between any two points.
+	
+	\begin{itemize}
+		\item \textbf{Self-distance:} every point is distance $0$ from itself.
+		\item \textbf{Symmetry:} distance from $A$ to $B$ equals the distance from $B$ to $A$.
+		\item \textbf{Triangle inequality:} travelling directly from $A$ to $C$ is never longer than travelling via an intermediate point $B$.
+	\end{itemize}
+	
+	On the number line, the metric is simply the absolute difference.  
+	On the plane $\mathbb{R}^2$, the familiar Euclidean metric is
+	$$
+	d\big((x_1,y_1),(x_2,y_2)\big) = \sqrt{(x_1-x_2)^2+(y_1-y_2)^2}.
+	$$
+	
+	Thus the concept of a metric generalizes our everyday notion of distance to abstract settings.
+	
+\end{document}

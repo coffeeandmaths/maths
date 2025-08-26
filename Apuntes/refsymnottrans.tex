@@ -1,0 +1,165 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+
+% Page setup
+\geometry{margin=1in}
+
+\title{Catalogue of Reflexive, Symmetric but not Transitive Relations}
+\author{}
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	
+	
+	
+	We recall the definitions:  
+	- A relation $R$ on a set $X$ is \emph{reflexive} if $\forall a\in X,\; aRa$.  
+	- It is \emph{symmetric} if $aRb \implies bRa$.  
+	- It is \emph{transitive} if $aRb \wedge bRc \implies aRc$.  
+	
+	The following examples are reflexive and symmetric, but not transitive.
+	
+	\begin{enumerate}[label=\textbf{\arabic*.}]
+		\item \textbf{Distance bound on $\mathbb{R}$}.  
+		Domain: $\mathbb{R}$. Define
+		$$
+		aRb \iff |a-b|\leq 1.
+		$$
+		Reflexive: $|a-a|=0\leq 1$.  
+		Symmetric: $|a-b|=|b-a|$.  
+		Not transitive: $0R1$ and $1R2$ hold, but $0R2$ fails since $|0-2|=2$.  
+		
+		\item \textbf{Non-empty intersection of sets}.  
+		Domain: $\mathcal{P}(X)$ for some set $X$. Define
+		$$
+		A R B \iff A\cap B \neq \varnothing.
+		$$
+		Reflexive: $A\cap A=A\neq \varnothing$.  
+		Symmetric: intersection is symmetric.  
+		Not transitive: $\{1\}R\{1,2\}$ and $\{1,2\}R\{2\}$ hold, but $\{1\}$ and $\{2\}$ are disjoint.  
+		
+		\item \textbf{Graph adjacency}.  
+		Domain: vertices of an undirected graph. Define
+		$$
+		aRb \iff (a=b) \text{ or there is an edge } \{a,b\}.
+		$$
+		Reflexive: $a=a$.  
+		Symmetric: edges are undirected.  
+		Not transitive: if $a$ is adjacent to $b$, and $b$ to $c$, $a$ need not be adjacent to $c$.  
+		
+		\item \textbf{Arithmetic closeness (difference $0$ or $1$)}.  
+		Domain: $\mathbb{Z}$. Define
+		$$
+		aRb \iff |a-b| \in \{0,1\}.
+		$$
+		Reflexive: difference $0$.  
+		Symmetric: $|a-b|=|b-a|$.  
+		Not transitive: $0R1$ and $1R2$ hold, but $0R2$ fails since $|0-2|=2$.  
+		
+		\item \textbf{Overlapping intervals}.  
+		Domain: closed intervals $[a,b]\subset \mathbb{R}$. Define
+		$$
+		I R J \iff I\cap J \neq \varnothing.
+		$$
+		Reflexive: $I\cap I=I\neq \varnothing$.  
+		Symmetric: intersection is symmetric.  
+		Not transitive: $[0,1]R[1,2]$ and $[1,2]R[2,3]$, but $[0,1]$ and $[2,3]$ are disjoint.  
+		
+		\item \textbf{Adjacency on a circle}.  
+		Domain: vertices of a polygon arranged in a cycle. Define
+		$$
+		aRb \iff (a=b) \text{ or $a$ and $b$ are adjacent on the cycle}.
+		$$
+		Reflexive: $a=a$.  
+		Symmetric: adjacency is symmetric.  
+		Not transitive: if $a$ is adjacent to $b$, and $b$ to $c$, then $a$ need not be adjacent to $c$.  
+	\end{enumerate}
+	
+	\bigskip
+	\noindent
+	\textbf{General recipe:}  
+	Take a notion of ``closeness'' (metric threshold, graph adjacency, set overlap).  
+	It is automatically reflexive and symmetric, but chaining two such conditions does not guarantee a global connection, so transitivity fails.
+	
+	\section*{Closeness Relations: Reflexive, Symmetric, not Transitive}
+	
+	\subsection*{Formal Definitions}
+	
+	1. **Metric threshold**  
+	Let $(X,d)$ be a metric space and $\varepsilon > 0$. Define
+	$$
+	aRb \iff d(a,b) \leq \varepsilon.
+	$$
+	
+	2. **Graph adjacency**  
+	Let $G=(V,E)$ be an undirected graph. Define
+	$$
+	aRb \iff (a=b) \;\; \text{or} \;\; \{a,b\}\in E.
+	$$
+	
+	3. **Set overlap**  
+	Let $\mathcal{P}(X)$ be the power set of a non-empty set $X$. Define
+	$$
+	A R B \iff A \cap B \neq \varnothing.
+	$$
+	
+	---
+	
+	\subsection*{Detailed Explanations and Examples}
+	
+	\paragraph{1. Metric threshold (distance closeness).}  
+	- Reflexive: $d(a,a)=0 \leq \varepsilon$.  
+	- Symmetric: $d(a,b)=d(b,a)$.  
+	- Not transitive: distances can add up beyond $\varepsilon$.  
+	
+	**Example:** On $\mathbb{R}$ with $d(x,y)=|x-y|$, take $\varepsilon=1$:  
+	$$
+	xRy \iff |x-y| \leq 1.
+	$$
+	Then $0R1$ and $1R2$ hold, but $0 \not R 2$ since $|0-2|=2$.  
+	\emph{Intuition:} Being within $1$ unit is mutual, but chaining can overshoot.
+	
+	---
+	
+	\paragraph{2. Graph adjacency (link closeness).}  
+	- Reflexive: we add $a=a$ by convention.  
+	- Symmetric: edges are undirected.  
+	- Not transitive: a path of length $2$ is not the same as a direct edge.  
+	
+	**Example:** Graph with vertices $\{a,b,c\}$ and edges $\{\{a,b\},\{b,c\}\}$.  
+	$$
+	aRb, \quad bRc, \quad \text{but } a \not R c.
+	$$
+	\emph{Intuition:} “Direct neighbours” are not automatically neighbours of neighbours.
+	
+	---
+	
+	\paragraph{3. Set overlap (intersection closeness).}  
+	- Reflexive: $A \cap A = A \neq \varnothing$.  
+	- Symmetric: $A\cap B = B\cap A$.  
+	- Not transitive: overlap through a middle set does not ensure $A$ and $C$ overlap.  
+	
+	**Example:** In $X=\{1,2\}$:  
+	$$
+	A=\{1\},\; B=\{1,2\},\; C=\{2\}.
+	$$
+	We have $A R B$ and $B R C$, but $A \not R C$ since $\{1\}\cap\{2\}=\varnothing$.  
+	\emph{Intuition:} Sharing with the middle does not guarantee sharing across extremes.
+	
+	---
+	
+	\subsection*{General Recipe}
+	To build relations that are reflexive and symmetric but not transitive:
+	- Pick a structure with a local notion of \emph{closeness} (metric, adjacency, overlap).  
+	- Define $R$ as “within the local bound,” “directly connected,” or “sharing something.”  
+	- Reflexivity comes from trivial self-connection, symmetry from the nature of distance/edges/intersection.  
+	- Transitivity fails because chaining two local links can lose the direct connection.
+	
+	
+\end{document}
