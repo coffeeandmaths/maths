@@ -41,16 +41,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "real/Peano Axiom.md",
+                "file": "control/Control Theory and signal theory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Peano Axiom"
+              "title": "Control Theory and signal theory"
+            }
+          },
+          {
+            "id": "490a6dd06cfc6884",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Control New Approach.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Control New Approach"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -198,19 +212,20 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9d24d049b59f896f",
+  "active": "490a6dd06cfc6884",
   "lastOpenFiles": [
+    "control/Control Theory and signal theory.md",
+    "Control New Approach.md",
+    "control/Control.md",
+    "real/Peano Axiom.md",
     "real/realmot.md",
     "real/rananalysis.md",
-    "real/Peano Axiom.md",
     "real/div.md",
     "ODE.md",
     "Retrace Analysis.md",
     "algebra/Types of relation.md",
     "Done.md",
     "eNGA/Personal Statement.md",
-    "control/Control Theory and signal theory.md",
-    "control/Control.md",
     "algebra/Canonical Decomposition.md",
     "algebra/congruences.md",
     "algebra/Categories.md",
@@ -224,7 +239,6 @@
     "algebra/algebramot.md",
     "algebra/symmetricg.md",
     "Raw-Diehdral.md",
-    "notes/Future Goal.md",
-    "notes/Proofs ch1.md"
+    "notes/Future Goal.md"
   ]
 }
