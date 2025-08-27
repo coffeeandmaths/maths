@@ -1,0 +1,220 @@
+\documentclass[10pt]{article}
+
+% --------- Minimal page and spacing setup ---------
+\usepackage[margin=2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.05} % tighter than default
+\usepackage{parskip}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+
+% --------- Math and Fonts ----------
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathrsfs}  % for script letters
+\usepackage{eucal}     % elegant calligraphic fonts
+\usepackage{microtype} % better spacing
+
+% --------- Section Style ----------
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+% --------- Header (optional) ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{\small Notes}
+\fancyhead[R]{\small \today}
+\fancyfoot[C]{\thepage}
+
+% --------- Document Starts ----------
+\begin{document}
+	
+\section*{Introduction}
+
+Mathematics begins with the natural numbers, denoted by $\mathbb{N}$. These are the primary objects from which all other number systems are constructed. The existence of $0$ and $1$ is taken as axiomatic, and through the Peano axioms we obtain the successor operation and, in turn, the definitions of addition and multiplication. From this starting point, richer structures such as the integers, rationals, reals, and complex numbers are systematically built. The natural numbers thus provide the base upon which the entirety of arithmetic and analysis rests, and their properties, such as divisibility and factorization, reveal the first deep laws governing the structure of mathematics.
+
+
+\subsection*{Existence of $0$ and $1$}
+
+The natural numbers are formally grounded in the Peano axioms, introduced by Giuseppe Peano in 1889. In their standard formulation, these consist of five axioms that characterize the structure of $\mathbb{N}$ through the notions of $0$, the successor function, and the principle of induction. The first axiom asserts the existence of a distinguished element, denoted by $0$, which serves as the starting point of the natural numbers. The second axiom introduces the successor function $S(n)$, which assigns to each $n \in \mathbb{N}$ a unique successor. By definition, we denote the successor of $0$ as $1$, that is, 
+$$1 := S(0).$$ 
+Thus the existence of $0$ is axiomatic, while the existence of $1$ follows from the successor axiom.
+
+The element $0$ is taken to represent the additive identity, satisfying the property that for every $n \in \mathbb{N}$, 
+$$n + 0 = n.$$ 
+The element $1$, as the successor of $0$, serves as the multiplicative identity, satisfying the property that for every $n \in \mathbb{N}$, 
+$$n \cdot 1 = n.$$ 
+Together, $0$ and $1$ anchor the construction of $\mathbb{N}$: $0$ provides the foundation from which the successor operation generates all other numbers, while $1$ ensures the consistency of multiplication. From these two distinguished elements, the arithmetic of the natural numbers begins.
+
+\subsection*{Divisibility and Factorization}
+
+Before introducing divisibility, we recall the Axiom of Induction, which underlies the recursive definitions of addition and multiplication in $\mathbb{N}$. 
+
+\textbf{Axiom of Induction.} If $P(n)$ is a property of natural numbers such that 
+$$P(0) \ \text{is true}, \qquad P(n) \Rightarrow P(S(n)) \ \text{for all } n \in \mathbb{N},$$ 
+then $P(n)$ holds for all $n \in \mathbb{N}.$
+
+This axiom guarantees that operations defined by recursion extend consistently to all natural numbers. In particular, multiplication is defined by 
+$$a \cdot 0 = 0, \qquad a \cdot S(b) = a \cdot b + a,$$ 
+and induction ensures closure: for any $a,b \in \mathbb{N}$, the product $a \cdot b \in \mathbb{N}.$ With multiplication secured, we may now define divisibility: for $a,b \in \mathbb{N}$ with $b \neq 0$, we say that $b$ divides $a$, written $b \mid a$, if there exists $k \in \mathbb{N}$ such that 
+$$a = b \cdot k.$$ 
+If no such $k$ exists, we write $b \nmid a$. Divisibility captures the idea that $a$ can be obtained by multiplying $b$ by some natural number. Building on this, a factorization of $n \in \mathbb{N}$ with $n > 1$ is a representation of $n$ as a product of natural numbers greater than $1$, 
+$$n = a_1 a_2 \cdots a_k, \qquad a_i > 1,$$ 
+which need not be unique in form; for instance, 
+$$12 = 3 \cdot 4 = 2 \cdot 6.$$
+
+\subsection*{Peano Axioms}
+
+The natural numbers $\mathbb{N}$ are formally characterized by the Peano axioms, introduced by Giuseppe Peano in 1889. These axioms describe $\mathbb{N}$ in terms of the distinguished element $0$, the successor function $S$, and the principle of induction. We list them below with illustrative examples.
+
+\begin{itemize}
+	\item \textbf{Axiom 1 (Existence of $0$).}  
+	$0 \in \mathbb{N}$.  
+	\textit{Example:} This axiom establishes the starting point of the natural numbers. If we represent $\mathbb{N}$ as $\{0,1,2,3,\dots\}$, then $0$ is explicitly included as the first element.
+	
+	\item \textbf{Axiom 2 (Successor Axiom).}  
+	Every $n \in \mathbb{N}$ has a successor $S(n) \in \mathbb{N}$.  
+	\textit{Example:} If $n=3$, then $S(3)=4$. This axiom guarantees the infinite progression of the natural numbers.
+	
+	\item \textbf{Axiom 3 (Zero is not a successor).}  
+	There is no $n \in \mathbb{N}$ such that $S(n)=0$.  
+	\textit{Example:} It is impossible to find an $n$ for which the successor operation “wraps around” to $0$. This ensures $\mathbb{N}$ has no cycles; $0$ is the unique starting element.
+	
+	\item \textbf{Axiom 4 (Injectivity of the successor).}  
+	If $S(m)=S(n)$, then $m=n$.  
+	\textit{Example:} If $S(2)=S(5)$, then necessarily $2=5$. This axiom prevents two different numbers from sharing the same successor, ensuring the sequence $0,1,2,3,\dots$ never collapses.
+	
+	\item \textbf{Axiom 5 (Induction Axiom).}  
+	If $P(n)$ is a property of natural numbers such that $P(0)$ is true and for every $n \in \mathbb{N}$, $P(n) \Rightarrow P(S(n))$, then $P(n)$ holds for all $n \in \mathbb{N}$.  
+	\textit{Example:} Let $P(n)$ be the property “$n+0=n$.”  
+	- Base case: $P(0)$ is true because $0+0=0$.  
+	- Inductive step: Assume $n+0=n$. Then $S(n)+0=S(n+0)=S(n)$. Thus $P(S(n))$ holds.  
+	By the Induction Axiom, $P(n)$ is true for all $n \in \mathbb{N}$. This is a formal proof that $0$ acts as the additive identity.
+\end{itemize}
+
+Together, these five axioms rigorously define the structure of $\mathbb{N}$: $0$ provides the base, the successor generates the infinite progression, non-cyclicity and injectivity ensure that this progression is well-ordered and unambiguous, and induction allows definitions and proofs to extend to all natural numbers.
+
+\section*{From $\mathbb{N}$ to $\mathbb{R}$: Structural Growth of Number Systems}
+
+We construct the number systems in stages, each step solving a specific algebraic or analytic deficiency in the previous one. This approach begins with $\mathbb{N}$ as a generated monoid and culminates in $\mathbb{R}$ as a complete ordered field.
+
+\subsection*{1. $\mathbb{N}$ as a Commutative Monoid}
+
+Let $(\mathbb{N}, +, 0)$ be a commutative monoid, with:
+
+- Identity element: $0 \in \mathbb{N}$
+- Operation: $+: \mathbb{N} \times \mathbb{N} \to \mathbb{N}$ defined recursively by:
+$$
+\begin{aligned}
+	& n + 0 := n \\
+	& n + S(m) := S(n + m)
+\end{aligned}
+$$
+- Generator: $1 \in \mathbb{N}$
+- Successor function: 
+$$
+S(n) := n + 1
+$$
+
+\textbf{Induction as Closure:} Define a subset $A \subseteq \mathbb{N}$. If:
+$$
+0 \in A \quad \text{and} \quad n \in A \Rightarrow S(n) \in A
+$$
+then $A = \mathbb{N}$. This mirrors the definition of $\mathbb{N}$ as the \emph{submonoid generated by 1}:
+$$
+\mathbb{N} = \left\{\, \sum_{i=1}^{k} 1 \,\middle|\, k \in \mathbb{N} \cup \{0\} \,\right\}
+$$
+
+\subsection*{2. $\mathbb{Z}$ as Group Completion of $\mathbb{N}$}
+
+To introduce subtraction, we construct the \textbf{Grothendieck group}:
+$$
+\mathbb{Z} := \mathbb{N} \times \mathbb{N} \big/ \sim
+$$
+with the equivalence relation:
+$$
+(a, b) \sim (c, d) \iff a + d = b + c
+$$
+
+This defines $\mathbb{Z}$ as a set of equivalence classes $[(a, b)]$, where:
+$$
+[(a, b)] := a - b
+$$
+
+\textbf{Examples:}
+\begin{itemize}
+	\item $(3, 0) \sim (5, 2)$ both represent $3$
+	\item $(0, 4) \sim (-4)$ (as an inverse class)
+	\item $(k, k) \sim 0$ for all $k$
+\end{itemize}
+
+Group operation:
+$$
+[(a, b)] + [(c, d)] := [(a + c, b + d)]
+$$
+
+Inverse:
+$$
+-[(a, b)] := [(b, a)]
+$$
+
+\subsection*{3. $\mathbb{Q}$ as Field of Fractions of $\mathbb{Z}$}
+
+To support division (except by zero), we define:
+$$
+\mathbb{Q} := \left\{\, \frac{a}{b} \,\middle|\, a \in \mathbb{Z},\ b \in \mathbb{Z} \setminus \{0\} \,\right\}
+$$
+
+Here, $\mathbb{Q}$ forms a field. However, it is still \textbf{not complete} — it has "gaps".
+
+\subsection*{4. Ordered Fields and the Construction of $\mathbb{R}$}
+
+To develop limits and analysis, we need an \textbf{ordered field}. An \textbf{ordered field} $(F, +, \cdot, <)$ satisfies:
+
+- Total order: for all $a, b \in F$, exactly one of $a < b$, $a = b$, or $b < a$ holds.
+- Compatibility:
+$$
+\begin{aligned}
+	& a < b \Rightarrow a + c < b + c \\
+	& 0 < a,\ 0 < b \Rightarrow 0 < a \cdot b
+\end{aligned}
+$$
+
+\subsection*{5. Completeness: Final Axiom of $\mathbb{R}$}
+
+The real numbers $\mathbb{R}$ are defined as the \textbf{unique complete ordered field}, where:
+
+\begin{itemize}
+	\item \textbf{Dedekind Completeness:} Every nonempty set $A \subseteq \mathbb{R}$ that is bounded above has a least upper bound:
+	$$
+	\sup A \in \mathbb{R}
+	$$
+	\item \textbf{Cauchy Completeness (Equivalent):} Every Cauchy sequence in $\mathbb{R}$ converges to a limit in $\mathbb{R}$.
+\end{itemize}
+
+\textbf{This is the defining property that $\mathbb{Q}$ lacks.}
+
+\subsection*{6. Summary Table: Algebraic Growth to $\mathbb{R}$}
+
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	\textbf{Structure} & \textbf{Fixes} & \textbf{New Capability} & \textbf{Still Lacking} \\
+	\hline
+	$\mathbb{N}$ & -- & Addition, identity & No subtraction \\
+	$\mathbb{Z}$ & Group completion & Subtraction, inverses & No division \\
+	$\mathbb{Q}$ & Field of fractions & Division (nonzero) & No completeness \\
+	$\mathbb{R}$ & Completion & Supremum, limits, Cauchy sequences & Fully ready for analysis \\
+	\hline
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{Conclusion:} Each number system is constructed to resolve a specific deficiency in the previous one. The real numbers $\mathbb{R}$ emerge not as a given, but as the terminal object in a sequence of algebraic completions — the only structure rich enough to support continuity, convergence, and the full apparatus of Real Analysis.
+
+
+
+
+
+
+
+\end{document}
