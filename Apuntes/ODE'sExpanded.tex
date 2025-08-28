@@ -1,0 +1,322 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+	
+	\subsection*{Common Derivative Notations in Differential Equations}
+	
+	For an unknown function $y = y(x)$, the derivative with respect to $x$ can be written in several equivalent ways:
+	
+	\begin{itemize}
+		\item Leibniz notation:
+		$$
+		\frac{dy}{dx}
+		$$
+		emphasizes the rate of change of $y$ with respect to $x$.
+		
+		\item Lagrange notation:
+		$$
+		y'
+		$$
+		is a compact form widely used in ODEs.
+		
+		\item Newton notation (common in physics, when $x$ represents time $t$):
+		$$
+		\dot{y}
+		$$
+		denotes $\dfrac{dy}{dt}$.
+	\end{itemize}
+	
+	\paragraph{Example.}  
+	The differential equation
+	$$
+	y' = f(x,y)
+	$$
+	is equivalently written as
+	$$
+	\frac{dy}{dx} = f(x,y),
+	$$
+	or, if $x=t$ represents time,
+	$$
+	\dot{y} = f(t,y).
+	$$
+	
+	All three forms describe the same relationship: a rule for the derivative of the unknown function $y$ in terms of the variables $(x,y)$.
+	
+	
+	\subsection*{Normal Notation for a Differential Equation}
+	
+	In common notation a first--order ODE is written as
+	$$
+	y' = f(x,y).
+	$$
+	
+	Formally:
+	\begin{itemize}
+		\item $y = y(x)$ is the unknown function (solution).
+		\item $y' = \dfrac{dy}{dx}$ is its derivative with respect to the independent variable $x$.
+		\item $f : D \subseteq \mathbb{R}^2 \;\longrightarrow\; \mathbb{R}$ in the real case, or 
+		$$f : D \subseteq \mathbb{R} \times \mathbb{C} \;\longrightarrow\; \mathbb{C}$$
+		in the complex case.
+		\item $D$ is the domain of $f$, i.e.\ the set of all pairs $(x,y)$ where $f(x,y)$ is defined.
+	\end{itemize}
+	
+	Thus the equation
+	$$
+	y' = f(x,y)
+	$$
+	means: \emph{find a function $y : I \to \mathbb{C}$ such that for every $x \in I$, the derivative $y'(x)$ equals $f(x,y(x))$, where $(x,y(x)) \in D$.}
+	
+	
+	\section*{Complex--Valued Functions and ODE Notation}
+	
+	\subsection*{Pedantic Notation}
+	
+	Let $I \subseteq \mathbb{R}$ be an interval.  
+	A \emph{complex--valued function of a real variable} is a mapping
+	$$
+	\theta : I \longrightarrow \mathbb{C}.
+	$$
+	Every such function can be decomposed as
+	$$
+	\theta(x) = u(x) + i v(x), \qquad u,v : I \to \mathbb{R}.
+	$$
+	
+	\paragraph{Examples.}
+	\begin{itemize}
+		\item Purely real:  
+		$$
+		\theta(x) = x^2 = x^2 + i \cdot 0.
+		$$
+		\item Purely imaginary:  
+		$$
+		\theta(x) = i e^x = 0 + i e^x.
+		$$
+		\item General case:  
+		$$
+		\theta(x) = e^{ix} = \cos x + i \sin x.
+		$$
+	\end{itemize}
+	
+	\subsection*{Pedantic Notation for Differential Equations}
+	
+	A first--order ordinary differential equation is formally written as
+	$$
+	\theta'(x) = f\bigl(x, \theta(x)\bigr), \qquad x \in I,
+	$$
+	where
+	$$
+	f : D \subseteq I \times \mathbb{C} \;\longrightarrow\; \mathbb{C}.
+	$$
+	
+	Here:
+	\begin{itemize}
+		\item $I \subseteq \mathbb{R}$ is the interval of the independent variable.
+		\item $D \subseteq I \times \mathbb{C}$ is the domain of $f$, consisting of all ordered pairs $(x,y)$ with $x \in I$ and $y \in \mathbb{C}$.
+		\item $f(x,y) \in \mathbb{C}$ gives the derivative at the point where $\theta(x) = y$.
+	\end{itemize}
+	
+	Thus, $D$ can be visualized as the set of all possible states $(x,y)$ where the equation is defined.
+	
+	\paragraph{Example.}  
+	If $I = \mathbb{R}$ and
+	$$
+	f(x,y) = xy,
+	$$
+	then
+	$$
+	D = \mathbb{R} \times \mathbb{C}, \qquad f : D \to \mathbb{C},
+	$$
+	and the differential equation reads
+	$$
+	\theta'(x) = x \, \theta(x).
+	$$
+	
+	\subsection*{Equivalence with Standard Notation}
+	
+	In practice, the same relation is usually written in the shorthand form
+	$$
+	y' = f(x,y),
+	$$
+	with the understanding that
+	$$
+	y = y(x), \qquad y'(x) = \frac{dy}{dx}, \qquad y(x) \in \mathbb{C}.
+	$$
+	
+	Thus, the pedantic formulation
+	$$
+	\theta'(x) = f(x,\theta(x))
+	$$
+	is entirely equivalent to the standard shorthand
+	$$
+	y' = f(x,y).
+	$$
+	
+	The difference lies only in notation:
+	\begin{itemize}
+		\item Pedantic form emphasizes $\theta$ as a mapping $I \to \mathbb{C}$.
+		\item Standard form suppresses this, using $y$ for the function and its values.
+	\end{itemize}
+	
+	\section*{Pedantic vs. Normal ODE Notation}
+	
+	\subsection*{Pedantic Formulation}
+	
+	Let $I \subseteq \mathbb{R}$ be an interval.  
+	A first--order ODE is written as
+	$$
+	\theta'(x) = f\bigl(x,\theta(x)\bigr), \qquad x \in I,
+	$$
+	where
+	$$
+	f : D \subseteq I \times \mathbb{C} \;\longrightarrow\; \mathbb{C}.
+	$$
+	
+	Here:
+	\begin{itemize}
+		\item $I$ is the interval of the independent variable $x$.
+		\item $D$ is a subset of $I \times \mathbb{C}$, consisting of pairs $(x,y)$ where the formula for $f(x,y)$ is defined.
+		\item $\theta : I \to \mathbb{C}$ is the unknown function to be determined.
+	\end{itemize}
+	
+	\paragraph{Example (Pedantic).}  
+	$$
+	I = \mathbb{R}, \quad 
+	D = I \times \mathbb{C}, \quad
+	f(x,y) = x y,
+	$$
+	so the equation is
+	$$
+	\theta'(x) = x \, \theta(x).
+	$$
+	
+	\subsection*{Normal Shorthand Formulation}
+	
+	The same ODE is usually written as
+	$$
+	y' = f(x,y),
+	$$
+	with the understanding that
+	$$
+	y = y(x), \qquad y'(x) = \frac{dy}{dx}.
+	$$
+	
+	In this shorthand,
+	\begin{itemize}
+		\item $f$ is viewed simply as a function of two variables,
+		$$
+		f : D \subseteq \mathbb{R}^2 \;\longrightarrow\; \mathbb{R}
+		$$
+		in the purely real case, or
+		$$
+		f : D \subseteq \mathbb{R} \times \mathbb{C} \;\longrightarrow\; \mathbb{C}
+		$$
+		in the complex case.
+		\item $D$ is the domain of definition of $f(x,y)$, i.e. the set of all pairs $(x,y)$ where $f$ is defined.
+	\end{itemize}
+	
+	\paragraph{Example (Shorthand).}  
+	$$
+	y' = xy, \qquad f(x,y) = xy,
+	$$
+	with
+	$$
+	D = \mathbb{R}^2.
+	$$
+	
+	\subsection*{Equivalence}
+	
+	Thus:
+	\begin{align*}
+		\text{Pedantic: } & \theta'(x) = f\bigl(x,\theta(x)\bigr), 
+		\quad f : D \subseteq I \times \mathbb{C} \to \mathbb{C}, \\[6pt]
+		\text{Normal: } & y' = f(x,y), 
+		\quad f : D \subseteq \mathbb{R}^2 \to \mathbb{R} \; \text{ or } \; f : D \subseteq \mathbb{R} \times \mathbb{C} \to \mathbb{C}.
+	\end{align*}
+	
+	Both notations describe the same situation.  
+	The difference is that the pedantic version highlights $\theta$ as a function $I \to \mathbb{C}$ and makes $D \subseteq I \times \mathbb{C}$ explicit, while the shorthand suppresses these details.
+	
+	\subsection*{Role of the Domain $D$}
+	
+	In the differential equation
+	$$
+	\theta'(x) = f\bigl(x,\theta(x)\bigr),
+	$$
+	the right--hand side $f$ depends on two variables: the independent variable $x \in I$ and the dependent variable $y = \theta(x) \in \mathbb{C}$.  
+	Therefore we write
+	$$
+	f : D \subseteq I \times \mathbb{C} \;\longrightarrow\; \mathbb{C},
+	$$
+	where $D$ is the set of all pairs $(x,y)$ for which $f(x,y)$ is defined.  
+	In this way, $D$ specifies the valid region of the $(x,y)$--plane on which the ODE is meaningful.
+	
+	\paragraph{Example.}
+	If
+	$$
+	f(x,y) = \frac{y}{x},
+	$$
+	then $x$ cannot be zero. Hence the domain is
+	$$
+	D = \{(x,y) \in \mathbb{R} \times \mathbb{C} : x \neq 0 \}.
+	$$
+	The ODE reads
+	$$
+	\theta'(x) = \frac{\theta(x)}{x}, \qquad x \neq 0.
+	$$
+	Thus, $D$ excludes the vertical line $x=0$ in the $(x,y)$--plane, and the differential equation is only defined on regions where $x \neq 0$.
+	\subsection*{Examples in Both Notations}
+	
+	\paragraph{Example 1: Linear Growth.}
+	
+	\emph{Pedantic notation:}
+	$$
+	\theta'(x) = f\bigl(x,\theta(x)\bigr), \qquad 
+	f(x,y) = y, \quad D = \mathbb{R} \times \mathbb{C}.
+	$$
+	That is,
+	$$
+	\theta'(x) = \theta(x).
+	$$
+	The solution is
+	$$
+	\theta(x) = C e^x, \qquad C \in \mathbb{C}.
+	$$
+	
+	\emph{Normal shorthand:}
+	$$
+	y' = f(x,y) = y, \qquad D = \mathbb{R}^2,
+	$$
+	with the same solution
+	$$
+	y(x) = C e^x.
+	$$
+	
+	\bigskip
+	
+	\paragraph{Example 2: Division by $x$.}
+	
+	\emph{Pedantic notation:}
+	$$
+	\theta'(x) = f\bigl(x,\theta(x)\bigr), \qquad 
+	f(x,y) = \frac{y}{x}, \quad D = \{ (x,y) \in \mathbb{R} \times \mathbb{C} : x \neq 0 \}.
+	$$
+	That is,
+	$$
+	\theta'(x) = \frac{\theta(x)}{x}, \qquad x \neq 0.
+	$$
+	The solution is
+	$$
+	\theta(x) = Cx, \qquad C \in \mathbb{C}.
+	$$
+	
+	\emph{Normal shorthand:}
+	$$
+	y' = f(x,y) = \frac{y}{x}, \qquad D = \{(x,y) \in \mathbb{R}^2 : x \neq 0\},
+	$$
+	with the same solution
+	$$
+	y(x) = Cx.
+	$$
+	
+\end{document}
