@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Control New Approach.md",
+                "file": "Control Project.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Control New Approach"
+              "title": "Control Project"
             }
           }
         ],
@@ -215,7 +215,7 @@
   "active": "490a6dd06cfc6884",
   "lastOpenFiles": [
     "control/Control Theory and signal theory.md",
-    "Control New Approach.md",
+    "Control Project.md",
     "control/Control.md",
     "real/Peano Axiom.md",
     "real/realmot.md",

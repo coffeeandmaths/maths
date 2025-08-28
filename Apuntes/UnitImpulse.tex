@@ -1,0 +1,218 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+	\section*{Kroncker Delta Sequence}
+	
+	
+	The sequence $\delta[n-n_0]$ is called the \emph{Kronecker delta sequence}. It is a function from $\mathbb{Z}$ to $\{0,1\}$ which takes the value $1$ exactly at the index $n=n_0$ and the value $0$ at all other indices. In particular, the \emph{unit impulse} corresponds to $n_0=0$:
+	$$
+	\delta[n] =
+	\begin{cases}
+		1, & n=0, \\
+		0, & n \neq 0.
+	\end{cases}
+	$$
+	
+	The sequence is bounded, since
+	$$
+	|\delta[n-n_0]| \leq 1 \quad \text{for all } n \in \mathbb{Z}.
+	$$
+	$$
+	\textbf{Shifted Kronecker delta.}\qquad
+	\delta[n-n_0]=
+	\begin{cases}
+		1, & n = n_0, \\
+		0, & n \neq n_0 ,
+	\end{cases}
+	\qquad n,n_0 \in \mathbb{Z}.
+	$$
+	\textbf{Bounding property.}\qquad
+	$$
+	|\delta[n-n_0]| \leq 1 \quad \text{for all } n\in\mathbb{Z}.
+	$$
+	
+	$$
+	\textbf{Example (shift).}\quad
+	\delta[n-3]=
+	\begin{cases}
+		1, & n=3,\\
+		0, & n\neq 3,
+	\end{cases}
+	\quad \Rightarrow \quad
+	|\delta[n-3]| \leq 1.
+	$$
+	
+	$$
+	\text{Even after shifting the spike from }n=0\text{ to }n=3,
+	\text{the values are still only }0\text{ or }1,\text{ so the bound does not change.}
+	$$
+	
+	
+	It is also convergent in both directions. As $n \to +\infty$ and $n \to -\infty$,
+	$$
+	\lim_{n \to \pm \infty} \delta[n-n_0] = 0.
+	$$
+	
+	Thus the Kronecker delta is a bounded sequence which converges to $0$ at infinity, while being equal to $1$ at a single index.\\ \quad
+	
+	$$
+	\textbf{Shifted Kronecker delta.}\qquad
+	\delta[n-n_0]=
+	\begin{cases}
+		1, & n = n_0, \\
+		0, & n \neq n_0 ,
+	\end{cases}
+	\qquad n,n_0 \in \mathbb{Z}.
+	$$
+	
+	$$
+	\textbf{Bounding property.}\qquad
+	|\delta[n-n_0]| \leq 1 \quad \text{for all } n\in\mathbb{Z}.
+	$$
+	
+	$$
+	\textbf{Example (shift).}\quad
+	\delta[n-3]=
+	\begin{cases}
+		1, & n=3,\\
+		0, & n\neq 3,
+	\end{cases}
+	\quad \Rightarrow \quad
+	|\delta[n-3]| \leq 1.
+	$$
+	
+	\[
+	\begin{array}{c|cccccc}
+		n & -1 & 0 & 1 & 2 & 3 & 4 \\ \hline
+		\delta[n]     & 0 & 1 & 0 & 0 & 0 & 0 \\
+		\delta[n-3]   & 0 & 0 & 0 & 0 & 1 & 0
+	\end{array}
+	\]
+	
+	$$
+	\text{Shifting moves the spike from }n=0\text{ to }n=3,\ 
+	\text{but the bound }|\delta[n-n_0]| \leq 1\text{ remains unchanged.}
+	$$
+	
+	$$
+	\textbf{Bounding inequality.}\qquad
+	|\delta[n-n_0]| \leq 1 
+	\quad \text{for all } n \in \mathbb{Z}.
+	$$
+	
+	$$
+	\textbf{Set of values.}\qquad
+	\{\delta[n-n_0] : n \in \mathbb{Z}\} = \{0,1\}.
+	$$
+	
+	$$
+	\textbf{Supremum formulation (Abbott).}\qquad
+	\sup_{n \in \mathbb{Z}} |\delta[n-n_0]| = 1.
+	$$
+	
+	$$
+	\text{Thus the least upper bound of the values of the shifted delta is }1,
+	\text{ so the inequality bound is sharp.}
+	$$
+	\textbf{Continuous impulse (Dirac delta).}\qquad
+	$$
+	\delta(t) =
+	\begin{cases}
+		\infty, & t=0, \\
+		0, & t \neq 0,
+	\end{cases}
+	\qquad
+	\int_{-\infty}^{\infty} \delta(t)\,dt = 1.
+	$$
+\textbf{Discrete impulse (Kronecker delta).}\qquad	
+	$$
+	\delta[n] =
+	\begin{cases}
+		1, & n=0, \\
+		0, & n \neq 0,
+	\end{cases}
+	\qquad
+	|\delta[n]| \leq 1 \quad \text{for all } n\in\mathbb{Z}.
+	$$
+	\textbf{Modeling interpretation.}\qquad
+	$$
+	\begin{aligned}
+		&\text{In continuous time: the spike is ``infinitely high'' but has total area }1. \\
+		&\text{In discrete time: the spike is ``unit height'' and never exceeds }1. \\
+		&\text{The inequality }|\delta[n]| \leq 1\text{ captures this universal bound,} \\
+		&\text{while the equality }|\delta[n]|=1\text{ holds only at the spike index.}
+	\end{aligned}
+	$$
+	
+	
+	\section*{The Unit Impulse, the Unit Step, and Convolution}
+	
+	In discrete--time analysis the fundamental building block is the \emph{unit impulse} (or Kronecker delta) defined by
+	$$
+	\delta[n] =
+	\begin{cases}
+		1, & n = 0, \\
+		0, & n \neq 0.
+	\end{cases}
+	$$
+	The impulse is not a signal in the ordinary sense but a mathematical device: it acts as a selector that extracts the value of a sequence at a single index. This property is called the \emph{sifting property}. For any sequence $x[n]$ we have
+	$$
+	\sum_{m=-\infty}^{\infty} x[m]\,\delta[n-m] = x[n].
+	$$
+	Only the term with $m=n$ contributes, while all other terms vanish. The impulse therefore provides the most elementary representation of time localisation in discrete systems.
+	
+	From the unit impulse we define the \emph{unit step} as its running sum. Formally,
+	$$
+	u[n] = \sum_{m=-\infty}^{n} \delta[m].
+	$$
+	This representation emphasizes the historical accumulation of impulses: the unit step is equal to zero for $n<0$, because no impulse has yet occurred, and equal to one for $n\geq 0$, because the unique impulse at $m=0$ has been included. In this form $n=0$ is interpreted as the reference epoch, the instant at which the system is excited or the observation begins. Before this index the step vanishes, and from this index onward it remains active.
+	
+	It is often convenient to perform a change of variable in the running sum. Let $k=n-m$, so that $m=n-k$. As $m$ ranges from $-\infty$ to $n$, the new index $k$ ranges from $\infty$ down to $0$, and the sum can be written as
+	$$
+	u[n] = \sum_{k=0}^{\infty} \delta[n-k].
+	$$
+	This form is algebraically equivalent to the original definition, but it shifts the perspective. Whereas the $m$--form highlights accumulation of impulses from the infinite past, the $k$--form highlights the construction of the step as a superposition of shifted impulses $\delta[n-k]$ starting at $k=0$. In this sense the step appears not only as an accumulated history but also as a structural composition of basic building blocks.
+	
+	The dual representations are not accidental. In fact, they anticipate the central operation of discrete--time linear systems: convolution. Given an input signal $x[n]$ and an impulse response $h[n]$, the output of a linear, time--invariant system is defined by
+	$$
+	y[n] = (x*h)[n] = \sum_{m=-\infty}^{\infty} x[m]\,h[n-m].
+	$$
+	Here the pattern $\delta[n-k]$ reappears: each sample $x[m]$ multiplies a shifted copy of the impulse response $h[n-m]$, and the output is obtained by summing all these contributions. If the system is causal, then $h[n]=0$ for $n<0$ and only present and past values of $x[m]$ influence the current output. If the system were noncausal, contributions from $h[n]$ at negative indices would imply dependence on future inputs.
+	
+	The connection with the unit step is immediate. Since
+	$$
+	u[n] = \sum_{k=0}^{\infty} \delta[n-k],
+	$$
+	we may view $u[n]$ as the convolution of the unit sample sequence with itself, accumulating the single event at $n=0$ into a lasting effect. The step therefore exemplifies both interpretations: it is the cumulative record of all past impulses, and at the same time a signal expressible as a sum of shifted impulses, ready for convolution with any impulse response. This dual role explains the change of variable in Oppenheim’s presentation: by rewriting the step in terms of $\delta[n-k]$, the text anticipates the convolution framework in which all signals are represented and all system responses are computed.
+	
+	example: \\
+	\quad
+	
+	$$
+	\textbf{Discrete sampling with deltas.}\qquad
+	x[n] = \sum_{k=0}^{N} \sin(k)\,\delta[n-k].
+	$$
+	
+	$$
+	\text{Each shifted delta } \delta[n-k] \text{ ``selects'' the sample } \sin(k),
+	\text{ so the sequence is built from weighted spikes.}
+	$$
+	
+	$$
+	\textbf{Convolution with delta.}\qquad
+	(x * \delta)[n] = \sum_{m=-\infty}^{\infty} x[m]\,\delta[n-m] = x[n].
+	$$
+	
+	$$
+	\textbf{Shift property.}\qquad
+	(x * \delta[n-k])[n] = \sum_{m=-\infty}^{\infty} x[m]\,\delta[n-m-k] = x[n-k].
+	$$
+	
+	$$
+	\text{Thus convolution with }\delta[n]\text{ leaves the sequence unchanged,}
+	\quad \text{while convolution with }\delta[n-k]\text{ produces a shift by }k.
+	$$
+	
+	
+\end{document}
