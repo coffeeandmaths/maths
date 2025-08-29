@@ -3,6 +3,103 @@
 
 \begin{document}
 	
+	
+	We consider a general first-order ordinary differential equation written in the compact form
+	$$
+	\frac{dy}{dx} = F(x,y).
+	$$
+	Here $y=y(x)$ is the unknown function, and $F$ is a mapping
+	$$
+	F : D \subseteq \mathbb{R}^2 \to \mathbb{R}, \qquad (x,y) \mapsto F(x,y),
+	$$
+	that assigns to each point $(x,y)$ a real number representing the slope of $y$ at that point.
+	
+	The use of a capital $F$ is conventional to emphasize that the function may depend on two variables.  
+	Special cases occur when the right-hand side depends only on $x$ or only on $y$:
+	$$
+	\frac{dy}{dx} = f(x) \quad \text{or} \quad \frac{dy}{dx} = f(y),
+	$$
+	where $f$ is a single-variable function. The general notation $F(x,y)$ unifies all possibilities.
+	
+	Examples:
+	
+	1. If
+	$$
+	\frac{dy}{dx} = \frac{k}{x},
+	$$
+	then
+	$$
+	F(x,y) = \frac{k}{x},
+	$$
+	a case where $F$ depends only on $x$. The solution is
+	$$
+	y(x) = k \ln |x| + C.
+	$$
+	
+	2. If
+	$$
+	\frac{dy}{dx} = \frac{y}{x},
+	$$
+	then
+	$$
+	F(x,y) = \frac{y}{x},
+	$$
+	which depends on both variables. This equation is separable:
+	$$
+	\frac{dy}{y} = \frac{dx}{x},
+	$$
+	leading to
+	$$
+	y(x) = Cx.
+	$$
+	
+	3. More generally, if
+	$$
+	\frac{dy}{dx} = y^2 + \sin(x),
+	$$
+	then
+	$$
+	F(x,y) = y^2 + \sin(x),
+	$$
+	with genuine dependence on both $x$ and $y$.
+	
+	Thus the notation
+	$$
+	y' = F(x,y)
+	$$
+	is a compact template for all first-order differential equations. In any specific case, $F$ is simply the concrete expression on the right-hand side of the given equation.
+	
+	In applications, the notation
+	$$
+	\frac{dy}{dx} = F(x,y)
+	$$
+	appears naturally. The variable $x$ represents the independent variable (often time or position), and $y$ the dependent variable (the quantity evolving).
+	
+	1. Example where $F$ depends only on $x$ (independent forcing):
+	$$
+	\frac{dT}{dt} = -k\,(T - T_{\text{env}}(t)),
+	$$
+	where $T$ is the temperature of an object and $T_{\text{env}}(t)$ is the ambient temperature.  
+	Here
+	$$
+	F(t,T) = -k\,(T - T_{\text{env}}(t)),
+	$$
+	and the right-hand side depends explicitly on $t$ through $T_{\text{env}}(t)$.
+	
+	2. Example where $F$ depends on both $x$ and $y$ (population growth with resources):
+	$$
+	\frac{dP}{dt} = r P\left(1 - \frac{P}{K(t)}\right),
+	$$
+	where $P$ is the population, $r$ is the growth rate, and $K(t)$ is a carrying capacity depending on time $t$.  
+	Here
+	$$
+	F(t,P) = r P\left(1 - \frac{P}{K(t)}\right),
+	$$
+	and the right-hand side depends both on the independent variable $t$ and on the dependent variable $P$.
+	
+	Thus, in practice the function $F(x,y)$ encodes the physical law or rule that prescribes how $y$ changes with respect to $x$.
+	
+	
 	\subsection*{Common Derivative Notations in Differential Equations}
 	
 	For an unknown function $y = y(x)$, the derivative with respect to $x$ can be written in several equivalent ways:
