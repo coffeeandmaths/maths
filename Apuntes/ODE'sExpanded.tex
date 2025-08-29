@@ -318,5 +318,165 @@
 	$$
 	y(x) = Cx.
 	$$
+	\section*{First-Order Ordinary Differential Equations: Main Classes}
 	
+	A first-order ODE has the general form
+	$$
+	\frac{dy}{dx} = F(x,y).
+	$$
+	
+	Different solution methods apply depending on the structure of $F(x,y)$.
+	
+	---
+	
+	\subsection*{1. Separable Equations}
+	
+	An equation is \textbf{separable} if it can be written as
+	$$
+	\frac{dy}{dx} = f(x)\,g(y).
+	$$
+	
+	\textbf{Method:}
+	\[
+	\frac{dy}{g(y)} = f(x)\,dx,
+	\]
+	integrate both sides.
+	
+	\textbf{Example:}
+	\[
+	y' = 3y, \qquad y(0) = 5.7.
+	\]
+	Separate:
+	\[
+	\frac{dy}{y} = 3\,dx \quad \Rightarrow \quad \ln|y| = 3x + C.
+	\]
+	Hence
+	\[
+	y(x) = Ce^{3x}, \qquad y(0)=5.7 \implies C=5.7.
+	\]
+	\textbf{Solution:} $y(x) = 5.7e^{3x}$.
+	
+	---
+	
+	\subsection*{2. Linear Equations}
+	
+	A first-order ODE is \textbf{linear} if it has the form
+	$$
+	y' + P(x)y = Q(x).
+	$$
+	
+	\textbf{Method:} Use the \textbf{integrating factor}
+	\[
+	\mu(x) = e^{\int P(x)\,dx}.
+	\]
+	Then
+	\[
+	\frac{d}{dx}\big( \mu(x)y \big) = \mu(x) Q(x).
+	\]
+	
+	\textbf{Example:}
+	\[
+	y' + y = e^x.
+	\]
+	Here $P(x)=1$, $Q(x)=e^x$, so $\mu(x) = e^{\int 1 dx} = e^x$.
+	\[
+	\frac{d}{dx}\!\left(e^x y\right) = e^x e^x = e^{2x}.
+	\]
+	Integrate:
+	\[
+	e^x y = \tfrac{1}{2} e^{2x} + C \quad \Rightarrow \quad y(x) = \tfrac{1}{2} e^x + C e^{-x}.
+	\]
+	
+	---
+	
+	\subsection*{3. Exact Equations}
+	
+	An equation of the form
+	$$
+	M(x,y)\,dx + N(x,y)\,dy = 0
+	$$
+	is \textbf{exact} if
+	$$
+	\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}.
+	$$
+	
+	\textbf{Method:} Find a potential function $\Phi(x,y)$ such that
+	\[
+	\frac{\partial \Phi}{\partial x} = M(x,y), \qquad \frac{\partial \Phi}{\partial y} = N(x,y).
+	\]
+	Then the solution is $\Phi(x,y) = C$.
+	
+	\textbf{Example:}
+	\[
+	(2xy)\,dx + (x^2)\,dy = 0.
+	\]
+	Here $M=2xy$, $N=x^2$.
+	Check:
+	\[
+	\frac{\partial M}{\partial y} = 2x, \quad \frac{\partial N}{\partial x} = 2x.
+	\]
+	Exact! Integrate $M$:
+	\[
+	\Phi(x,y) = \int 2xy\,dx = x^2 y + h(y).
+	\]
+	Differentiate wrt $y$:
+	\[
+	\frac{\partial \Phi}{\partial y} = x^2 + h'(y).
+	\]
+	This must equal $N = x^2$, so $h'(y)=0$, hence $h(y)=C$.
+	\[
+	\textbf{Solution: } x^2 y = C.
+	\]
+	
+	---
+	
+	\subsection*{4. Bernoulli Equations}
+	
+	A Bernoulli equation has the form
+	$$
+	y' + P(x)y = Q(x)y^n, \qquad n \neq 0,1.
+	$$
+	
+	\textbf{Method:} Use substitution $z = y^{1-n}$, which reduces it to a linear equation in $z$.
+	
+	\textbf{Example:}
+	\[
+	y' + y = y^2.
+	\]
+	Divide by $y^2$:
+	\[
+	\frac{y'}{y^2} + \frac{1}{y} = 1.
+	\]
+	Let $z = 1/y \implies z' = -y'/y^2$.
+	So
+	\[
+	-z' + z = 1 \quad \Rightarrow \quad z' - z = -1.
+	\]
+	This is linear; solve with integrating factor $e^{-\int 1 dx}=e^{-x}$:
+	\[
+	\frac{d}{dx}(e^{-x} z) = -e^{-x}.
+	\]
+	Integrate:
+	\[
+	e^{-x} z = e^{-x} + C \quad \Rightarrow \quad z = 1 + Ce^x.
+	\]
+	Recall $z=1/y$:
+	\[
+	y(x) = \frac{1}{1+Ce^x}.
+	\]
+	
+	---
+	
+	\section*{Summary Table}
+	
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Class} & \textbf{Form} & \textbf{Method} \\
+		\hline
+		Separable & $y' = f(x)g(y)$ & Separate and integrate \\
+		Linear & $y' + P(x)y = Q(x)$ & Integrating factor $\mu(x)$ \\
+		Exact & $M(x,y)dx+N(x,y)dy=0$ & Potential function $\Phi(x,y)=C$ \\
+		Bernoulli & $y' + P(x)y = Q(x)y^n$ & Substitution $z=y^{1-n}$ \\
+		\hline
+	\end{tabular}
 \end{document}
