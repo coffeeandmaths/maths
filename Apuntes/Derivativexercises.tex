@@ -1,0 +1,115 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+
+\title{Derivative Exercises}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\section*{Instructions}
+	Each exercise asks you to compute the derivative of the given function.
+	Alongside each problem is a short note on its meaning or where it arises
+	in mathematics and electrical engineering.
+	
+	\bigskip
+	
+	\section{Exponential with Modulation}
+	Differentiate
+	$$
+	f(t) = e^{-2t}\cos(3t).
+	$$
+	\textbf{Meaning:} a damped oscillation.  
+	\textbf{Application:} system response in signals and control.
+	
+	\section{Rational + Exponential (Laplace Domain)}
+	Differentiate
+	$$
+	F(s) = \frac{s\,e^{-s}}{s^2+4}.
+	$$
+	\textbf{Meaning:} a transfer function with exponential delay.  
+	\textbf{Application:} Laplace transform models in control theory.
+	
+	\section{Norm of a Vector Function}
+	If
+	$$
+	\vec{r}(t) = (e^t,\, t^2,\, \sin t),
+	$$
+	find
+	$$
+	\frac{d}{dt}\|\vec{r}(t)\|^2.
+	$$
+	\textbf{Meaning:} rate of change of squared magnitude.  
+	\textbf{Application:} signal energy growth.
+	
+	\section{Logarithmic Derivative (Bode Slope)}
+	Differentiate
+	$$
+	G(\omega) = 20\log_{10}\!\Bigg(\sqrt{1+\frac{1}{\omega^2}}\Bigg).
+	$$
+	\textbf{Meaning:} slope of a magnitude curve.  
+	\textbf{Application:} Bode plots in frequency analysis.
+	
+	\section{Polynomial $\times$ Trigonometric}
+	Differentiate
+	$$
+	y(t) = t^2 \sin(5t).
+	$$
+	\textbf{Meaning:} polynomially weighted oscillation.  
+	\textbf{Application:} Fourier series terms, vibration analysis.
+	
+	\section{Derivative of an Integral (Leibniz Rule)}
+	Differentiate
+	$$
+	h(t) = \int_0^t e^{-(t-\tau)}\sin(\tau)\,d\tau.
+	$$
+	\textbf{Meaning:} convolution kernel.  
+	\textbf{Application:} system responses in linear time-invariant systems.
+	
+	\section{Diode Current Model}
+	For
+	$$
+	I(V) = I_s\Big(e^{\tfrac{qV}{kT}} - 1\Big),
+	$$
+	compute
+	$$
+	\frac{dI}{dV}.
+	$$
+	\textbf{Meaning:} slope of the diode $I$-$V$ curve.  
+	\textbf{Application:} small-signal resistance in circuits.
+	
+	\section{Higher-Order Derivative}
+	Find $y''(t)$ for
+	$$
+	y(t) = e^{2t}\sin(t).
+	$$
+	\textbf{Meaning:} second derivative of a damped oscillation.  
+	\textbf{Application:} solving linear differential equations.
+	
+	\section{Complex Exponential (Phasor Form)}
+	Differentiate
+	$$
+	z(t) = e^{(2+3i)t}.
+	$$
+	\textbf{Meaning:} exponential growth with sinusoidal rotation.  
+	\textbf{Application:} phasors in AC circuit analysis.
+	
+	\section{Implicit Differentiation}
+	Given
+	$$
+	x^2 + y^2 = e^y,
+	$$
+	find
+	$$
+	\frac{dy}{dx}.
+	$$
+	\textbf{Meaning:} slope of an implicitly defined curve.  
+	\textbf{Application:} nonlinear systems and phase diagrams.
+	
+\end{document}

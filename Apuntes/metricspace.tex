@@ -12,6 +12,95 @@
 \begin{document}
 	
 	\maketitle
+	\section*{Formal Definition of a Field}
+	
+	A \emph{field} $\mathbb{F}$ is a set equipped with two operations:
+	\begin{itemize}
+		\item \textbf{Addition:} $+: \mathbb{F} \times \mathbb{F} \to \mathbb{F}$,
+		\item \textbf{Multiplication:} $\cdot: \mathbb{F} \times \mathbb{F} \to \mathbb{F}$,
+	\end{itemize}
+	satisfying the following axioms:
+	
+	\begin{enumerate}
+		\item \textbf{Additive structure:} $(\mathbb{F},+)$ is an abelian group.
+		\begin{itemize}
+			\item Associativity: $(a+b)+c = a+(b+c)$
+			\item Commutativity: $a+b = b+a$
+			\item Existence of identity: there exists $0 \in \mathbb{F}$ with $a+0=a$
+			\item Existence of inverses: for each $a \in \mathbb{F}$ there exists $-a \in \mathbb{F}$ such that $a+(-a)=0$
+		\end{itemize}
+		
+		\item \textbf{Multiplicative structure:} $(\mathbb{F}\setminus\{0\},\cdot)$ is an abelian group.
+		\begin{itemize}
+			\item Associativity: $(ab)c = a(bc)$
+			\item Commutativity: $ab = ba$
+			\item Existence of identity: there exists $1 \in \mathbb{F}, 1\neq 0$, with $a\cdot 1=a$
+			\item Existence of inverses: for each $a \in \mathbb{F}, a\neq 0$, there exists $a^{-1} \in \mathbb{F}$ with $a\cdot a^{-1}=1$
+		\end{itemize}
+		
+		\item \textbf{Distributivity:} for all $a,b,c \in \mathbb{F}$,
+		$$
+		a\cdot(b+c) = ab + ac, \qquad (a+b)\cdot c = ac + bc.
+		$$
+	\end{enumerate}
+	
+	---
+	
+	\textbf{Examples:}
+	\begin{itemize}
+		\item The rational numbers $\mathbb{Q}$,
+		\item The real numbers $\mathbb{R}$,
+		\item The complex numbers $\mathbb{C}$,
+		\item Finite fields $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$ for prime $p$.
+	\end{itemize}
+	
+	\section*{General Concept of a Space}
+	
+	In mathematics, a \emph{space} is a set $X$ together with additional structure that allows one to study its elements using specified rules or operations. 
+	Formally, a space is usually presented as a pair $(X,\mathcal{S})$, where:
+	
+	\begin{itemize}
+		\item $X$ is a nonempty set, whose elements are the \emph{points} of the space,
+		\item $\mathcal{S}$ is a collection of operations, relations, or functions imposed on $X$ that satisfy certain axioms.
+	\end{itemize}
+	
+	Different choices of structure $\mathcal{S}$ give rise to different kinds of spaces:
+	
+	\begin{itemize}
+		\item If $\mathcal{S}$ is a metric $d : X \times X \to \mathbb{R}_{\geq 0}$, then $(X,d)$ is a \emph{metric space}.
+		\item If $\mathcal{S}$ is vector addition and scalar multiplication over a field $\mathbb{F}$, then $(X,+,\cdot)$ is a \emph{vector space}.
+		\item If $\mathcal{S}$ is a norm $\|\cdot\|: X \to \mathbb{R}_{\geq 0}$ compatible with a vector space structure, then $(X,\|\cdot\|)$ is a \emph{normed space}.
+		\item If $\mathcal{S}$ is a collection of subsets satisfying open set axioms, then $(X,\tau)$ is a \emph{topological space}.
+	\end{itemize}
+	
+	Thus, the word ``space'' always denotes a set endowed with additional structure that makes its elements comparable, measurable, or operable according to the context.
+	
+	\section*{Evolution of Spaces from a Field}
+	
+	The development of spaces can be seen as a hierarchy of added structure, starting from a field:
+	
+	\[
+	\mathbb{F} 
+	\;\;\longrightarrow\;\;
+	(V,+,\cdot) \text{ : Vector Space over } \mathbb{F}
+	\;\;\longrightarrow\;\;
+	(V,\|\cdot\|) \text{ : Normed Space}
+	\;\;\longrightarrow\;\;
+	(V,d) \text{ : Metric Space with } d(u,v)=\|u-v\|
+	\;\;\longrightarrow\;\;
+	(V,\tau) \text{ : Topological Vector Space}.
+	\]
+	
+	\begin{itemize}
+		\item \textbf{Field $\mathbb{F}$:} scalars with addition and multiplication.
+		\item \textbf{Vector Space $(V,+,\cdot)$:} vectors with addition and scalar multiplication by elements of $\mathbb{F}$.
+		\item \textbf{Normed Space $(V,\|\cdot\|)$:} a vector space endowed with a norm measuring vector length.
+		\item \textbf{Metric Space $(V,d)$:} the norm induces a distance function $d(u,v)=\|u-v\|$.
+		\item \textbf{Topological Vector Space $(V,\tau)$:} a vector space with a topology $\tau$ compatible with vector operations.
+	\end{itemize}
+	
+	Thus, fields provide the algebraic foundation, and by enriching vector spaces with additional structure, one obtains increasingly sophisticated spaces.
+	
 	
 	\section*{Definition of a Metric Space}
 	
@@ -79,5 +168,138 @@
 	$$
 	
 	Thus the concept of a metric generalizes our everyday notion of distance to abstract settings.
+	
+	\section*{Normed Spaces}
+	
+	A \emph{normed space} is a vector space $V$ over a field $\mathbb{F}$ (where $\mathbb{F}=\mathbb{R}$ or $\mathbb{C}$) equipped with a function 
+	$$
+	\|\cdot\| : V \to \mathbb{R}_{\geq 0},
+	$$
+	called a \emph{norm}, such that for all $u,v \in V$ and $\alpha \in \mathbb{F}$:
+	
+	\begin{enumerate}
+		\item \textbf{Positive definiteness:}
+		$$
+		\|v\| \geq 0, \quad \|v\| = 0 \iff v=0.
+		$$
+		
+		\item \textbf{Homogeneity (absolute scalability):}
+		$$
+		\|\alpha v\| = |\alpha| \, \|v\|.
+		$$
+		
+		\item \textbf{Triangle inequality:}
+		$$
+		\|u+v\| \leq \|u\| + \|v\|.
+		$$
+	\end{enumerate}
+	
+	The norm naturally induces a metric on $V$ via
+	$$
+	d(u,v) = \|u-v\|.
+	$$
+	
+	Thus every normed space is a metric space, but not every metric space arises from a norm.
+	
+	---
+	
+	\section*{Example: Euclidean Space}
+	
+	Let $V = \mathbb{R}^n$ with the norm
+	$$
+	\|x\|_2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}, \quad x=(x_1,\dots,x_n).
+	$$
+	
+	This is the Euclidean norm, and it defines the usual Euclidean distance on $\mathbb{R}^n$:
+	$$
+	d(x,y) = \|x-y\|_2.
+	$$
+	
+	Hence $(\mathbb{R}^n,\|\cdot\|_2)$ is a normed space.
+	
+	---
+	
+	\section*{Formal Definition of a Vector Space}
+	
+	A \emph{vector space} over a field $\mathbb{F}$ is a set $V$ equipped with two operations:
+	\begin{itemize}
+		\item \textbf{Vector addition:} $+: V \times V \to V$, written $(u,v) \mapsto u+v$,
+		\item \textbf{Scalar multiplication:} $\cdot: \mathbb{F} \times V \to V$, written $(\alpha,v) \mapsto \alpha v$,
+	\end{itemize}
+	satisfying the following axioms for all $u,v,w \in V$ and $\alpha,\beta \in \mathbb{F}$:
+	
+	\begin{enumerate}
+		\item $(u+v)+w = u+(v+w)$ \hfill (Associativity of addition)
+		\item $u+v = v+u$ \hfill (Commutativity of addition)
+		\item There exists $0 \in V$ such that $u+0=u$ \hfill (Existence of additive identity)
+		\item For each $u \in V$, there exists $-u \in V$ such that $u+(-u)=0$ \hfill (Existence of additive inverse)
+		\item $\alpha(u+v) = \alpha u + \alpha v$ \hfill (Distributivity over vector addition)
+		\item $(\alpha+\beta)u = \alpha u + \beta u$ \hfill (Distributivity over field addition)
+		\item $(\alpha \beta)u = \alpha(\beta u)$ \hfill (Compatibility with field multiplication)
+		\item $1 \cdot u = u$ where $1$ is the multiplicative identity in $\mathbb{F}$ \hfill (Identity element of scalar multiplication)
+	\end{enumerate}
+	
+	---
+	\section*{Normed Spaces}
+	
+	A \emph{normed space} is a vector space $V$ over a field $\mathbb{F}$ (commonly $\mathbb{R}$ or $\mathbb{C}$) equipped with a function
+	$$
+	\|\cdot\| : V \to \mathbb{R}_{\geq 0},
+	$$
+	called a \emph{norm}, such that for all $u,v \in V$ and $\alpha \in \mathbb{F}$:
+	
+	\begin{enumerate}
+		\item \textbf{Positive definiteness:}
+		$$
+		\|v\| \geq 0, \qquad \|v\|=0 \iff v=0.
+		$$
+		
+		\item \textbf{Homogeneity:}
+		$$
+		\|\alpha v\| = |\alpha| \, \|v\|.
+		$$
+		
+		\item \textbf{Triangle inequality:}
+		$$
+		\|u+v\| \leq \|u\| + \|v\|.
+		$$
+	\end{enumerate}
+	
+	The norm induces a natural metric on $V$:
+	$$
+	d(u,v) = \|u-v\|.
+	$$
+	Hence every normed space is a metric space, but not every metric space arises from a norm.
+	
+	---
+	
+	\subsection*{Meaning of ``Over a Field''}
+	
+	When we say that $V$ is a vector space \emph{over a field} $\mathbb{F}$, we mean that the scalars used for scalar multiplication come from $\mathbb{F}$. 
+	
+	\begin{itemize}
+		\item If $\mathbb{F}=\mathbb{R}$, we scale vectors by real numbers.
+		\item If $\mathbb{F}=\mathbb{C}$, we scale vectors by complex numbers.
+		\item More generally, the field $\mathbb{F}$ specifies the arithmetic universe in which the vector space is defined.
+	\end{itemize}
+	
+	---
+	
+	\subsection*{Examples}
+	
+	\begin{itemize}
+		\item $(\mathbb{R}^n,\|\cdot\|_2)$ with the Euclidean norm
+		$$
+		\|x\|_2 = \sqrt{x_1^2+x_2^2+\cdots+x_n^2}, \quad x \in \mathbb{R}^n,
+		$$
+		is a normed space over $\mathbb{R}$.
+		
+		\item $(\mathbb{C}^n,\|\cdot\|_2)$ with the norm
+		$$
+		\|z\|_2 = \sqrt{|z_1|^2+|z_2|^2+\cdots+|z_n|^2}, \quad z \in \mathbb{C}^n,
+		$$
+		is a normed space over $\mathbb{C}$.
+	\end{itemize}
+	
 	
 \end{document}

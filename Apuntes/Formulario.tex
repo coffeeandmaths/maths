@@ -1,0 +1,155 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccsc}{arccsc}
+
+\title{Derivative Rules Quick Reference (Chain Rule Perspective)}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\section*{Core Principle: Chain Rule}
+	For a composition
+	$$
+	y = f(g(t)),
+	$$
+	the derivative is
+	$$
+	\frac{dy}{dt} = f'(g(t)) \cdot g'(t).
+	$$
+	
+	More generally, if
+	$$
+	y = F\big(u_1(t),u_2(t),\dots,u_n(t)\big),
+	$$
+	then
+	$$
+	\frac{dy}{dt} = \sum_{k=1}^n \frac{\partial F}{\partial u_k}\,u_k'(t).
+	$$
+	
+	\bigskip
+	
+	\section*{Special Cases and Common Functions}
+	
+	\subsection*{1. Basic Algebraic Rules}
+	\[
+	\frac{d}{dt}\,c = 0, \quad
+	\frac{d}{dt}\,[t] = 1.
+	\]
+	
+	\subsection*{2. Power Rule}
+	Let $y = t^n$ with $n \in \mathbb{R}$.
+	\[
+	\frac{dy}{dt} = n t^{\,n-1}.
+	\]
+	
+	(From chain rule with $f(u)=u^n$, $g(t)=t$.)
+	
+	\subsection*{3. Exponential Functions}
+	\[
+	\frac{d}{dt}\,e^t = e^t, \qquad
+	\frac{d}{dt}\,a^t = a^t \ln a.
+	\]
+	
+	(More generally: if $y=e^{g(t)}$, then $y' = e^{g(t)} g'(t)$.)
+	
+	\subsection*{4. Logarithmic Functions}
+	\[
+	\frac{d}{dt}\,\ln t = \frac{1}{t}, \qquad
+	\frac{d}{dt}\,\log_a t = \frac{1}{t\ln a}.
+	\]
+	
+	(More generally: if $y=\ln(g(t))$, then $y'=\tfrac{g'(t)}{g(t)}$.)
+	
+	\subsection*{5. Trigonometric Functions}
+	\[
+	\begin{aligned}
+		\frac{d}{dt}\,\sin t &= \cos t, \\
+		\frac{d}{dt}\,\cos t &= -\sin t, \\
+		\frac{d}{dt}\,\tan t &= \sec^2 t, \\
+		\frac{d}{dt}\,\cot t &= -\csc^2 t, \\
+		\frac{d}{dt}\,\sec t &= \sec t \tan t, \\
+		\frac{d}{dt}\,\csc t &= -\csc t \cot t.
+	\end{aligned}
+	\]
+	
+	(More generally: for $y=\sin(g(t))$, $y'=\cos(g(t))\,g'(t)$, etc.)
+	
+	\subsection*{6. Inverse Trigonometric Functions}
+	\[
+	\begin{aligned}
+		\frac{d}{dt}\,\arcsin t &= \frac{1}{\sqrt{1-t^2}}, \\
+		\frac{d}{dt}\,\arccos t &= -\frac{1}{\sqrt{1-t^2}}, \\
+		\frac{d}{dt}\,\arctan t &= \frac{1}{1+t^2}, \\
+		\frac{d}{dt}\,\arccot t &= -\frac{1}{1+t^2}, \\
+		\frac{d}{dt}\,\arcsec t &= \frac{1}{|t|\sqrt{t^2-1}}, \\
+		\frac{d}{dt}\,\arccsc t &= -\frac{1}{|t|\sqrt{t^2-1}}.
+	\end{aligned}
+	\]
+	
+	\subsection*{7. Hyperbolic Functions}
+	\[
+	\begin{aligned}
+		\frac{d}{dt}\,\sinh t &= \cosh t, \\
+		\frac{d}{dt}\,\cosh t &= \sinh t, \\
+		\frac{d}{dt}\,\tanh t &= \operatorname{sech}^2 t, \\
+		\frac{d}{dt}\,\coth t &= -\operatorname{csch}^2 t, \\
+		\frac{d}{dt}\,\operatorname{sech} t &= -\operatorname{sech} t \tanh t, \\
+		\frac{d}{dt}\,\operatorname{csch} t &= -\operatorname{csch} t \coth t.
+	\end{aligned}
+	\]
+	
+	\subsection*{8. Inverse Hyperbolic Functions}
+	\[
+	\begin{aligned}
+		\frac{d}{dt}\,\operatorname{arsinh} t &= \frac{1}{\sqrt{1+t^2}}, \\
+		\frac{d}{dt}\,\operatorname{arcosh} t &= \frac{1}{\sqrt{t^2-1}}, \\
+		\frac{d}{dt}\,\operatorname{artanh} t &= \frac{1}{1-t^2}, \\
+		\frac{d}{dt}\,\operatorname{arcoth} t &= \frac{1}{1-t^2}.
+	\end{aligned}
+	\]
+	
+	\subsection*{9. Product Rule}
+	For $y(t)=u(t)v(t)$:
+	\[
+	\frac{dy}{dt} = u'(t)v(t) + u(t)v'(t).
+	\]
+	
+	\subsection*{10. Quotient Rule}
+	For $y(t)=\dfrac{u(t)}{v(t)}$:
+	\[
+	\frac{dy}{dt} = \frac{u'(t)v(t)-u(t)v'(t)}{v(t)^2}.
+	\]
+	
+	\subsection*{11. General Leibniz Rule (derivative of an integral)}
+	For
+	$$
+	H(t) = \int_{a(t)}^{b(t)} f(t,\tau)\,d\tau,
+	$$
+	we have
+	$$
+	\frac{d}{dt}H(t) = f(t,b(t))\,b'(t) - f(t,a(t))\,a'(t)
+	+ \int_{a(t)}^{b(t)} \frac{\partial f}{\partial t}(t,\tau)\,d\tau.
+	$$
+	
+	---
+	
+	\section*{Summary}
+	All differentiation rules are consequences of the general chain rule:
+	$$
+	\frac{dy}{dt} = \sum_k \frac{\partial F}{\partial u_k}\,u_k'(t).
+	$$
+	
+	- **Power, exponential, log, trig, hyperbolic**: take $F(u)$ as the outer function, $u=g(t)$.  
+	- **Product, quotient**: take $F(u,v)=uv$ or $F(u,v)=u/v$.  
+	- **Leibniz rule**: treat the integral operator as the outer function.
+	
+\end{document}

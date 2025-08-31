@@ -1,0 +1,183 @@
+\documentclass[11pt,a4paper]{article}
+
+% Minimal, pdflatex-friendly setup
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{verbatim} % for code blocks
+
+\title{SageMath Quick Notes: Derivatives, Rendering to LaTeX, and Basic Plotting}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	To start it :
+	
+	\begin{verbatim}
+		sage -n jupyter
+	\end{verbatim}
+	
+	\section*{Conventions}
+	We use capital $I$ for the imaginary unit in Sage, i.e.\ $I=\sqrt{-1}$. 
+	If you prefer engineering $j$, you can alias \verb|j = I|.
+	
+	\section{Variables and Basic Expressions}
+	\begin{verbatim}
+		# Declare symbols
+		t, x, s, w = var('t x s w')
+		
+		# Define a few expressions
+		f  = exp(-2*t)*cos(3*t)              # e^{-2t} cos(3t)
+		g  = 20*log(sqrt(1 + 1/w^2), 10)     # 20 log_10(sqrt(1 + 1/w^2))
+		z  = exp((2 + 3*I)*t)                # e^{(2+3i)t}
+	\end{verbatim}
+	
+	Displayed mathematics we are modeling with Sage:
+	$$
+	f(t)=e^{-2t}\cos(3t),\qquad
+	G(\omega)=20\log_{10}\Big(\sqrt{1+\tfrac{1}{\omega^2}}\Big),\qquad
+	z(t)=e^{(2+3i)t}.
+	$$
+	
+	\section{Derivatives (warm-up)}
+	\begin{verbatim}
+		df_dt   = diff(f, t)                 # derivative of f w.r.t. t
+		d2z_dt2 = diff(z, t, 2)              # second derivative of z
+		dG_dw   = diff(g, w)                 # derivative of G with respect to w
+	\end{verbatim}
+	
+	Example target form:
+	$$
+	\frac{d}{dt}\big(e^{-2t}\cos 3t\big)
+	= e^{-2t}\big(-2\cos(3t) - 3\sin(3t)\big).
+	$$
+	
+	\section{Logs and Bases}
+	Natural log is $\ln x$ via \verb|log(x)|. 
+	Base-10 is $\log_{10}x$ via \verb|log(x,10)|.
+	\begin{verbatim}
+		lnx   = log(x)        # ln(x)
+		lgx   = log(x, 10)    # log_10(x)
+		lgb   = log(x, 2)     # log_2(x)
+	\end{verbatim}
+	In maths:
+	$$
+	\log x \equiv \ln x,\qquad \log_{10}x = \frac{\ln x}{\ln 10}.
+	$$
+	
+	\section{Complex Unit: I (and alias j)}
+	Sage uses $I$. You can alias $j$ to look like EE notes:
+	\begin{verbatim}
+		j = I
+		zj = exp((2 + 3*j)*t)  # identical to using I under the hood
+	\end{verbatim}
+	Mathematically:
+	$$
+	\frac{d}{dt}e^{(2+3i)t}=(2+3i)e^{(2+3i)t}.
+	$$
+	
+	\section{Pretty Rendering vs. LaTeX Source}
+	Use \verb|show(expr)| for nicely rendered maths inside Sage/Jupyter.  
+	Use \verb|latex(expr)| to get the LaTeX code you can paste into your document.
+	
+	\subsection*{Examples}
+	\begin{verbatim}
+		# Pretty in-notebook display
+		show(f)        # shows e^{-2 t} cos(3 t) typeset
+		show(df_dt)    # shows derivative typeset
+		show(z)
+		
+		# Get LaTeX source strings (copy-paste into your .tex)
+		latex_f    = latex(f)       
+		latex_dfdt = latex(df_dt)
+		latex_z    = latex(z)
+		
+		print(latex_f)
+		print(latex_dfdt)
+		print(latex_z)
+	\end{verbatim}
+	
+	Expected outputs:
+	$$
+	\texttt{latex(f)}:\ e^{-2 t}\cos(3 t),\qquad
+	\texttt{latex(z)}:\ e^{(2 + 3 i) t}.
+	$$
+	
+	\section{Basic Plotting (2D)}
+	\subsection*{Single function}
+	\begin{verbatim}
+		p1 = plot(f, (t, -2, 2), axes_labels=('t','f(t)'), legend_label='f(t)')
+		p1.show()
+	\end{verbatim}
+	
+	\subsection*{Overlay multiple curves}
+	\begin{verbatim}
+		df_dt = diff(f, t)
+		p2 = plot(f, (t, -2, 2), legend_label='f(t)')
+		p3 = plot(df_dt, (t, -2, 2), color='red', legend_label="f'(t)")
+		(p2 + p3).show()
+	\end{verbatim}
+	
+	\subsection*{Bode-like magnitude}
+	For $G(\omega)=20\log_{10}(\sqrt{1+1/\omega^2})$:
+	\begin{verbatim}
+		pG = plot(20*log(sqrt(1 + 1/w^2), 10), (w, 0.1, 10),
+		axes_labels=('w','G(w) [dB]'), legend_label='G(w)')
+		pG.show()
+	\end{verbatim}
+	
+	\section{Real and Imag Parts of Complex Signals}
+	Let $z(t)=e^{(2+3i)t}=e^{2t}(\cos 3t + i\sin 3t)$.  
+	\begin{verbatim}
+		Re = real_part(z)   # e^(2*t)*cos(3*t)
+		Im = imag_part(z)   # e^(2*t)*sin(3*t)
+		
+		pR = plot(Re, (t, 0, 2), legend_label='Re z(t)')
+		pI = plot(Im, (t, 0, 2), color='green', legend_label='Im z(t)')
+		(pR + pI).show()
+	\end{verbatim}
+	In maths:
+	$$
+	\Re z(t)=e^{2t}\cos(3t),\qquad \Im z(t)=e^{2t}\sin(3t).
+	$$
+	
+	\section{End-to-End Workflow}
+	Goal: differentiate $f(t)=e^{-2t}\cos(3t)$, render nicely, and plot with its derivative.
+	\begin{verbatim}
+		# 1) Define
+		t = var('t')
+		f = exp(-2*t)*cos(3*t)
+		
+		# 2) Differentiate
+		df = diff(f, t)
+		
+		# 3) Pretty-display and LaTeX source
+		show(f); show(df)
+		print(latex(f))
+		print(latex(df))
+		
+		# 4) Plot
+		pf  = plot(f,  (t, -2, 2), legend_label='f(t)')
+		pdf = plot(df, (t, -2, 2), color='red', legend_label="f'(t)")
+		(pf + pdf).show()
+	\end{verbatim}
+	
+	Expected derivative:
+	$$
+	f'(t)=e^{-2t}\big(-2\cos(3t)-3\sin(3t)\big).
+	$$
+	
+	\bigskip
+	\noindent\textbf{Notes.}
+	\begin{itemize}
+		\item Use \verb|simplify_trig()| or \verb|full_simplify()| when expressions look messy.
+		\item Prefer \verb|show(expr)| for quick rendering; use \verb|latex(expr)| when you need to paste into documents.
+		\item For engineering style, alias \verb|j = I|.
+	\end{itemize}
+	
+\end{document}
+\right) 
