@@ -1,0 +1,233 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath, amssymb}
+
+\begin{document}
+	
+	\section*{Laplace Transform and Bode Plots}
+	
+	The Laplace transform of a causal function $f(t)$ is defined as
+	
+	$$
+	F(s) = \int_{0}^{\infty} f(t)\, e^{-st}\, dt, 
+	\qquad s = \sigma + j\omega.
+	$$
+	
+	Here the complex variable $s$ has two components:
+	\begin{itemize}
+		\item $\sigma$ (real part) controls exponential growth or decay.
+		\item $j\omega$ (imaginary part) represents oscillation at frequency $\omega$.
+	\end{itemize}
+	
+	\subsection*{Restriction to the Imaginary Axis}
+	
+	If we are interested only in the steady--state sinusoidal response of a system, 
+	we set $\sigma = 0$. Thus
+	
+	$$
+	s = j\omega,
+	$$
+	
+	and the Laplace transform reduces to
+	
+	$$
+	F(j\omega) = \int_{0}^{\infty} f(t)\, e^{-j\omega t}\, dt,
+	$$
+	
+	which is exactly the Fourier transform of $f(t)$.  
+	This corresponds to evaluating the Laplace transform along the \emph{imaginary axis} of the $s$--plane.
+	
+	\subsection*{Transfer Functions and Frequency Response}
+	
+	For a linear time--invariant (LTI) system with input $x(t)$ and output $y(t)$, 
+	the transfer function is defined as
+	
+	$$
+	H(s) = \frac{Y(s)}{X(s)}.
+	$$
+	
+	To study the frequency response, we evaluate
+	
+	$$
+	H(j\omega).
+	$$
+	
+	The two quantities of interest for Bode analysis are:
+	\begin{itemize}
+		\item Magnitude: 
+		$$
+		|H(j\omega)|,
+		$$
+		which gives amplitude scaling.
+		\item Phase: 
+		$$
+		\arg \big( H(j\omega) \big),
+		$$
+		which gives phase shift.
+	\end{itemize}
+	
+	\subsection*{Bode Plots}
+	
+	The Bode plots are defined as
+	$$
+	20 \log_{10} |H(j\omega)| \quad \text{(dB magnitude plot)},
+	$$
+	and
+	$$
+	\arg \big( H(j\omega) \big) \quad \text{(phase plot)}.
+	$$
+	
+	Thus, Bode plots are simply the magnitude and phase of the transfer function 
+	evaluated on the imaginary axis of the Laplace domain.
+	
+	\subsection*{Interpretation}
+	
+	\begin{itemize}
+		\item The \textbf{Laplace domain} ($s$--plane) describes both transient and steady--state behavior.
+		\item Restricting to the line $s=j\omega$ isolates \textbf{pure frequency response}.
+		\item This restriction is mathematically a \emph{slice} of the $s$--plane, corresponding to the Fourier transform.
+	\end{itemize}
+	
+	\section*{Example: First-Order RC Low-Pass Filter}
+	
+	\subsection*{1. Circuit Equation (Time Domain)}
+	
+	For a resistor $R$ and capacitor $C$ in series with input $x(t)$ applied across both
+	and output $y(t)$ taken across the capacitor, we have
+	
+	$$
+	v_{in}(t) = v_{R}(t) + v_{C}(t).
+	$$
+	
+	Using Ohm’s law and the capacitor law,
+	$$
+	v_{R}(t) = R i(t), 
+	\qquad 
+	i(t) = C \frac{dv_{C}(t)}{dt}.
+	$$
+	
+	Thus
+	$$
+	v_{in}(t) = RC \frac{dv_{C}(t)}{dt} + v_{C}(t).
+	$$
+	
+	\subsection*{2. Input--Output Relation}
+	
+	Let $x(t) = v_{in}(t)$ and $y(t) = v_{C}(t)$. Then
+	$$
+	x(t) = RC \frac{dy(t)}{dt} + y(t).
+	$$
+	
+	\subsection*{3. Laplace Transform}
+	
+	Applying the Laplace transform (assuming zero initial conditions):
+	$$
+	X(s) = RC \, s Y(s) + Y(s).
+	$$
+	
+	\subsection*{4. Transfer Function}
+	
+	The transfer function is
+	$$
+	H(s) = \frac{Y(s)}{X(s)} = \frac{1}{1 + RCs}.
+	$$
+	
+	\subsection*{5. Frequency Response}
+	
+	Evaluating on the imaginary axis $s=j\omega$:
+	$$
+	H(j\omega) = \frac{1}{1 + j \omega RC}.
+	$$
+	
+	Magnitude:
+	$$
+	|H(j\omega)| = \frac{1}{\sqrt{1 + (\omega RC)^2}}.
+	$$
+	
+	Phase:
+	$$
+	\arg \big( H(j\omega) \big) = -\tan^{-1}(\omega RC).
+	$$
+	
+	\subsection*{6. Bode Plot Interpretation}
+	
+	\begin{itemize}
+		\item Low frequencies ($\omega \ll 1/RC$): 
+		$|H(j\omega)| \approx 1$, phase $\approx 0^\circ$. 
+		\hfill (Passes low frequencies)
+		\item High frequencies ($\omega \gg 1/RC$): 
+		$|H(j\omega)| \approx 1/(\omega RC)$, phase $\approx -90^\circ$. 
+		\hfill (Attenuates high frequencies)
+	\end{itemize}
+	
+	The cutoff frequency (at $-3$ dB) is
+	$$
+	\omega_c = \frac{1}{RC}.
+	$$
+	
+	\section*{Example: Mechanical Low-Pass (Spring--Damper in Parallel)}
+	
+	\subsection*{Analogy}
+	Electrical $\leftrightarrow$ Mechanical correspondence:
+	$$
+	\begin{aligned}
+		\text{Voltage} &\;\leftrightarrow\; \text{Force}, \\
+		\text{Current} &\;\leftrightarrow\; \text{Velocity}, \\
+		\text{Resistor }(R) &\;\leftrightarrow\; \text{Damper }(b), \\
+		\text{Capacitor }(C) &\;\leftrightarrow\; \text{Spring }(k).
+	\end{aligned}
+	$$
+	
+	
+	\subsection*{1. Governing Equation (Time Domain)}
+	A damper (coefficient $b$) and spring (stiffness $k$) in parallel are driven by an external force input $x(t)$.
+	Let the output be the displacement $y(t)$ (same for both parallel elements). Force balance gives
+	$$
+	x(t) = b\,\frac{dy(t)}{dt} + k\,y(t).
+	$$
+	
+	\subsection*{2. Laplace Transform}
+	Assuming zero initial conditions,
+	$$
+	X(s) = b\,s\,Y(s) + k\,Y(s).
+	$$
+	
+	\subsection*{3. Transfer Function}
+	$$
+	H(s) \;=\; \frac{Y(s)}{X(s)} \;=\; \frac{1}{b s + k}.
+	$$
+	
+	\subsection*{4. Frequency Response}
+	Evaluating on the imaginary axis $s=j\omega$:
+	$$
+	H(j\omega) = \frac{1}{k + j\omega b}.
+	$$
+	Magnitude:
+	$$
+	\big|H(j\omega)\big| = \frac{1}{\sqrt{k^2 + (\omega b)^2}}.
+	$$
+	Phase:
+	$$
+	\arg\!\big(H(j\omega)\big) = -\tan^{-1}\!\left(\frac{\omega b}{k}\right).
+	$$
+	
+	\subsection*{5. Bode Interpretation and Cutoff}
+	Low frequency ($\omega \ll k/b$): spring dominates, $\;|H(j\omega)| \approx 1/k,\; \arg \approx 0^\circ.$
+	
+	High frequency ($\omega \gg k/b$): damper dominates, $\;|H(j\omega)| \approx 1/(\omega b),\; \arg \approx -90^\circ.$
+	
+	Cutoff (–3 dB) frequency:
+	$$
+	\omega_c = \frac{k}{b}.
+	$$
+	
+	\subsection*{6. Parameter Mapping to RC Filter}
+	Matching the RC form $H(s)=\dfrac{1}{1 + RC\,s}$ via factorization,
+	$$
+	H(s) = \frac{1}{k}\,\frac{1}{1 + \left(\frac{b}{k}\right) s}
+	\quad\Longleftrightarrow\quad
+	\text{gain } \frac{1}{k},\;\; \text{time constant } \tau = \frac{b}{k}
+	\;\;(\text{cf. } \tau_{\text{RC}}=RC).
+	$$
+	
+	
+\end{document}
