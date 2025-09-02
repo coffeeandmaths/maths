@@ -1,0 +1,156 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath,amssymb}
+
+\begin{document}
+	
+	\section*{Rationals, Irrationals, and Completeness}
+	
+	The real numbers are the union of rationals and irrationals:
+	\[
+	\mathbb{R} = \mathbb{Q} \,\cup\, (\mathbb{R} \setminus \mathbb{Q}),
+	\]
+	where $\mathbb{Q} = \left\{ \tfrac{p}{q} : p,q \in \mathbb{Z}, \; q \neq 0 \right\}$ and  
+	$\mathbb{R} \setminus \mathbb{Q}$ are the \emph{irrationals}.
+	
+	\bigskip
+	
+	\textbf{Intuition:}  
+	Inside $\mathbb{Q}$, certain numbers appear as ``holes.''  
+	For example,
+	\[
+	A = \{q \in \mathbb{Q} : q^2 < 2\}
+	\]
+	is bounded above, but in $\mathbb{Q}$ it has no supremum, since $\sqrt{2} \notin \mathbb{Q}$.
+	
+	\bigskip
+	
+	\textbf{Completeness:}  
+	The Axiom of Completeness ensures that in $\mathbb{R}$ every nonempty bounded set has a least upper bound.  
+	Thus,
+	\[
+	\sup \{x \in \mathbb{R} : x^2 < 2\} = \sqrt{2} \in \mathbb{R}.
+	\]
+	
+	\bigskip
+	
+	\textbf{Conclusion:}  
+	Irrationals are not merely ``holes we approach'' with rationals; by completeness they are genuine members of $\mathbb{R}$.  
+	This is what makes $\mathbb{R}$ continuous, unlike $\mathbb{Q}$.
+	
+		
+		\section*{Axiom of Completeness}
+		
+		\textbf{Formal statement (quantifiers):}
+		
+		If $A \subseteq \mathbb{R}$, $A \neq \varnothing$, and $A$ is bounded above, then
+		\[
+		\exists\, s \in \mathbb{R} \;\; \text{such that} \;\;
+		\begin{cases}
+			\forall a \in A, & a \leq s, \\[6pt]
+			\forall t < s, & \exists a \in A \;\; (t < a).
+		\end{cases}
+		\]
+		Here $s = \sup A$ is the \emph{least upper bound} of $A$.
+		
+		\bigskip
+		
+		\textbf{Examples:}
+		
+		\begin{itemize}
+			\item \textbf{Rational supremum:}
+			\[
+			B = \{x \in \mathbb{R} : x < 3\}, 
+			\qquad \sup B = 3 \in \mathbb{Q}.
+			\]
+			In interval notation:
+			\[
+			B = (-\infty, 3).
+			\]
+			
+			\item \textbf{Irrational supremum:}
+			\[
+			A = \{x \in \mathbb{R} : x^2 < 2\}, 
+			\qquad \sup A = \sqrt{2} \notin \mathbb{Q}.
+			\]
+			In interval notation:
+			\[
+			A = (-\sqrt{2}, \sqrt{2}).
+			\]
+		\end{itemize}
+		
+		\bigskip
+		
+		\textbf{Equivalence of Notations:}
+		
+		\[
+		(a,b) = \{x \in \mathbb{R} : a < x < b\}, \quad
+		[a,b] = \{x \in \mathbb{R} : a \leq x \leq b\}.
+		\]
+		
+		\[
+		[a,b) = \{x \in \mathbb{R} : a \leq x < b\}, \quad
+		(a,b] = \{x \in \mathbb{R} : a < x \leq b\}.
+		\]
+		
+% Irrational supremum
+\[
+A = \{q \in \mathbb{Q} : q^2 < 2\}, 
+\qquad 
+\boxed{\sup A = \sqrt{2} \in \mathbb{R}}
+\]
+
+% Rational supremum
+\[
+B = \{x \in \mathbb{R} : x < 3\}, 
+\qquad 
+\boxed{\sup B = 3 \in \mathbb{Q}}
+\]
+The Axiom of Completeness guarantees that every bounded set has a supremum in $\mathbb{R}$, whether it is rational or irrational. 
+
+\section*{Why We Use Sets in Analysis}
+
+\textbf{Reason 1: Generalization.}  
+Working with \emph{sets} allows us to handle whole families of numbers at once.
+For example, instead of a single number, we may consider the interval
+\[
+(0,1) = \{x \in \mathbb{R} : 0 < x < 1\}.
+\]
+This collection has many elements, and we can meaningfully speak about its
+infimum and supremum:
+\[
+\inf(0,1) = 0, \qquad \sup(0,1) = 1.
+\]
+
+\bigskip
+
+\textbf{Reason 2: Bounds and Limits.}  
+The language of sets is essential for stating results like the Axiom of Completeness:
+if $A \subseteq \mathbb{R}$ is nonempty and bounded above, then $\sup A$ exists in $\mathbb{R}$.
+This applies no matter how large or small $A$ is.
+
+\bigskip
+
+\textbf{Reason 3: Single Elements as Sets.}  
+Even an individual number can be represented as a set, called a \emph{singleton}:
+\[
+\{5\} = \{x \in \mathbb{R} : x = 5\}.
+\]
+In this case,
+\[
+\inf\{5\} = \sup\{5\} = 5.
+\]
+Thus a single element is just a very small set.
+
+\bigskip
+
+\textbf{Your View, Formalized.}  
+- If we want to study a whole collection, we place it inside a set and examine its limits and bounds.  
+- If we want to study a single element, we may also represent it as a set.  
+Both fit into the same formal framework:
+\[
+\text{Set = Collection of numbers (possibly just one).}
+\]
+
+	
+	
+\end{document}
