@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "control/Signals new approach.md",
+                "file": "algebra/relations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Signals new approach"
+              "title": "relations"
             }
           }
         ],
@@ -228,12 +228,15 @@
   },
   "active": "2b6b0169ec137870",
   "lastOpenFiles": [
+    "algebra/Canonical Decomposition.md",
+    "algebra/Canonical FInal.md",
+    "algebra/Canonical Decomposition (Group view).md",
+    "algebra/New Conceptual Framework.md",
+    "control/Signals new approach.md",
     "algebra/Canonical Updated.md",
     "algebra/congruences.md",
-    "algebra/New Conceptual Framework.md",
     "algebra/relations.md",
     "algebra/Types of relation.md",
-    "control/Signals new approach.md",
     "control/Control Theory and signal theory.md",
     "real/Retrace Analysis.md",
     "control/Control.md",
@@ -247,9 +250,6 @@
     "real/rananalysis.md",
     "real/div.md",
     "eNGA/Personal Statement.md",
-    "algebra/Canonical Decomposition.md",
-    "algebra/Canonical FInal.md",
-    "algebra/Canonical Decomposition (Group view).md",
     "Quotient.md",
     "algebra/algebramot.md",
     "algebra/symmetricg.md",

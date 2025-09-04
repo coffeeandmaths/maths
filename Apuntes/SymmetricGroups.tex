@@ -1,0 +1,317 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\begin{document}
+	\subsection*{Formal Definitions}
+	
+	\paragraph{Symmetric Group. $(S_n, \circ) $}  
+	Let $X$ be a finite set with $n$ elements, for example $X = \{1,2,\dots,n\}$.  
+	The \emph{symmetric group on $n$ letters}, denoted $S_n$, is defined as
+	$$
+	S_n = \{ \sigma : X \to X \;\mid\; \sigma \text{ is a bijection} \}.
+	$$
+	
+	The group operation is composition of functions:
+	$$
+	(\sigma \circ \tau)(x) = \sigma(\tau(x)), \quad x \in X.
+	$$
+	
+	The identity element is the identity map $\mathrm{id}_X$, and the inverse of $\sigma$ is the inverse bijection $\sigma^{-1}$.  
+	The cardinality is
+	$$
+	|S_n| = n!.
+	$$
+	
+	---
+	
+	\paragraph{Automorphism Group of $S_n$.}  
+	For a group $G$, an \emph{automorphism} is a bijective group homomorphism
+	$$
+	\varphi : G \to G, \qquad \varphi(xy) = \varphi(x)\varphi(y).
+	$$
+    
+    \subsection*{Two-Level Perspective on $S_n$}
+    
+    There are two levels involved when working with the symmetric group:
+    
+    \begin{itemize}
+    	\item \textbf{Level 1 (Set level):}  
+    	The underlying set is 
+    	$$
+    	X = \{1,2,\dots,n\}.
+    	$$
+    	At this level, a permutation is a bijection 
+    	$$
+    	\sigma : X \to X.
+    	$$
+    	
+    	\item \textbf{Level 2 (Group level):}  
+    	The elements of the group $S_n$ are the permutations themselves.  
+    	Thus
+    	$$
+    	S_n = \{\sigma : X \to X \;\mid\; \sigma \text{ is bijective}\}.
+    	$$
+    	The group operation is \emph{composition of permutations}:
+    	$$
+    	(\sigma \circ \tau)(x) = \sigma(\tau(x)), \qquad \sigma,\tau \in S_n.
+    	$$
+    \end{itemize}
+    
+    \noindent
+    Hence:
+    \begin{itemize}
+    	\item The \emph{basic elements} of $S_n$ are the permutations, not the numbers $1,\dots,n$.  
+    	\item The group operation is not a simple swap of numbers, but a \emph{composition of bijections}, producing new permutations.
+    \end{itemize}
+    
+	
+	The \emph{automorphism group of $S_n$} is defined as
+	$$
+	\mathrm{Aut}(S_n) = \{ \varphi : S_n \to S_n \;\mid\; \varphi \text{ is a bijective homomorphism} \}.
+	$$
+	
+	Elements of $\mathrm{Aut}(S_n)$ are bijections of $S_n$ onto itself that preserve the group law.  
+	Composition of automorphisms is the group operation.
+	
+	\medskip
+	
+	\noindent \textbf{Key fact:} For $n \neq 6$,
+	$$
+	\mathrm{Aut}(S_n) \cong S_n,
+	$$
+	since every automorphism is given by conjugation inside $S_n$.  
+	For $n=6$, $\mathrm{Aut}(S_6)$ is strictly larger due to the existence of outer automorphisms.
+	
+	\section*{Symmetric Groups and Automorphisms}
+	
+	\subsection*{Case $S_1$}
+	The symmetric group $S_n$ is defined as the group of all bijections (permutations) of the set
+	$$
+	\{1,2,\dots,n\}.
+	$$
+	
+	For $S_1$, the underlying set is $\{1\}$.  
+	There is only one bijection:
+	$$
+	\sigma : 1 \mapsto 1,
+	$$
+	so
+	$$
+	S_1 = \{\mathrm{id}_{\{1\}}\}.
+	$$
+	This is the trivial group.
+	
+	---
+	
+	\subsection*{Permutations vs Automorphisms of $S_n$}
+	- Each $\sigma \in S_n$ is a bijection of the underlying set $\{1,\dots,n\}$.  
+	- This makes it an \emph{automorphism of the set}.  
+	- But an \emph{automorphism of the group $S_n$} means a bijective group homomorphism
+	$$
+	\varphi : S_n \to S_n, \qquad \varphi(\sigma\tau) = \varphi(\sigma)\varphi(\tau).
+	$$
+	
+	So:
+	- $S_n$ = permutations of the set of $n$ elements.  
+	- $\mathrm{Aut}(S_n)$ = automorphisms of the group $S_n$ itself.  
+	
+	---
+	
+	\subsection*{Inner Automorphisms}
+	Most automorphisms of $S_n$ are given by conjugation:
+	$$
+	\varphi_g(\sigma) = g\sigma g^{-1}, \qquad g \in S_n.
+	$$
+	
+	- For $n \neq 6$: all automorphisms are inner, so $\mathrm{Aut}(S_n) \cong S_n$.  
+	- For $n=6$: there exist outer automorphisms, making $\mathrm{Aut}(S_6)$ larger.
+	
+	---
+	
+	\subsection*{Homomorphisms, Isomorphisms, Automorphisms}
+	- A group homomorphism: $\varphi: G \to H$, $\;\varphi(xy) = \varphi(x)\varphi(y)$.  
+	- An isomorphism: a bijective homomorphism.  
+	- An endomorphism: a homomorphism $G \to G$.  
+	- An automorphism: a bijective endomorphism.  
+	
+	Thus $\mathrm{Aut}(G)$ is a group under composition.
+	
+	---
+	
+	\subsection*{Case $S_2$}
+	Underlying set: $\{1,2\}$.  
+	Two bijections:
+	- Identity: $e: 1\mapsto 1, 2\mapsto 2$.  
+	- Transposition: $\tau: 1\mapsto 2, 2\mapsto 1$.
+	
+	So
+	$$
+	S_2 = \{ e, (12)\}.
+	$$
+	
+	Multiplication table:
+	$$
+	\begin{array}{c|cc}
+		\circ & e & (12) \\ \hline
+		e & e & (12) \\
+		(12) & (12) & e
+	\end{array}
+	$$
+	
+	Thus $S_2 \cong C_2$.  
+	Since $C_2$ is abelian of order 2, $\mathrm{Aut}(S_2)$ is trivial.
+	
+	---
+	
+	\subsection*{Interpretation: Labels vs Slots}
+	- As swapping \emph{labels}: $(12)$ relabels $1 \leftrightarrow 2$.  
+	- As swapping \emph{slots}: $(12)$ moves the element in slot 1 to slot 2 and vice versa.  
+	
+	Both interpretations represent the same permutation.
+	
+	---
+	
+	\subsection*{Case $S_3$}
+	Underlying set: $\{1,2,3\}$.  
+	
+	Elements:
+	$$
+	S_3 = \{ (1)(2)(3),\; (12),\; (13),\; (23),\; (123),\; (132)\}.
+	$$
+	
+	- Identity: $(1)(2)(3)$.  
+	- 3 transpositions: $(12),(13),(23)$.  
+	- 2 three-cycles: $(123),(132)$.  
+	
+	Non-abelian: for example,
+	$$
+	(12)(23) = (123), \qquad (23)(12) = (132).
+	$$
+	
+	Subgroups:
+	- $\langle (123)\rangle \cong C_3$.  
+	- Each transposition generates a $C_2$.  
+	
+	Automorphism group: $\mathrm{Aut}(S_3) \cong S_3$.
+	
+	---
+	
+	\subsection*{Formal Definition of a Cycle}
+	Let $X=\{1,\dots,n\}$ and $\sigma \in S_n$.  
+	An $r$-cycle is a permutation
+	$$
+	\sigma = (a_1\; a_2\; \dots\; a_r),
+	$$
+	with distinct $a_i \in X$, such that
+	$$
+	\sigma(a_1)=a_2,\; \sigma(a_2)=a_3,\;\dots,\;\sigma(a_r)=a_1,
+	$$
+	and $\sigma(x)=x$ for all $x \notin \{a_1,\dots,a_r\}$.
+	
+	Every permutation can be uniquely written (up to order) as a product of disjoint cycles.
+	
+	---
+	
+	\subsection*{Counting $r$-cycles}
+	Number of $r$-cycles in $S_n$:
+	$$
+	\binom{n}{r}(r-1)! = \frac{1}{r} \, {}_nP_r = \frac{n!}{r(n-r)!}.
+	$$
+	
+	Reason:  
+	- Choose $r$ elements: $\binom{n}{r}$.  
+	- Arrange them in a circle: $(r-1)!$ ways.  
+	- Equivalent to $\frac{1}{r} {}_nP_r$ since cycles are invariant under rotation.
+	
+	---
+	
+	\subsection*{Check in $S_3$}
+	- $r=1$: identity element.  
+	- $r=2$: $\frac{1}{2} {}_3P_2 = 3$ transpositions: $(12),(13),(23)$.  
+	- $r=3$: $\frac{1}{3} {}_3P_3 = 2$ three-cycles: $(123),(132)$.  
+	
+	Total: $1+3+2 = 6$ elements.
+	
+	---
+	
+	\subsection*{Cycles as Circular Permutations}
+	- Linear permutations: ${}_nP_r = \dfrac{n!}{(n-r)!}$.  
+	- Circular permutations: divide by $r$ (rotations are the same cycle).  
+	
+	Thus cycles in $S_n$ are exactly circular permutations of $r$ chosen elements.
+	
+	\subsection*{Observation on Cycle Notation}
+	
+	In cycle notation, the ordering of elements is relevant only up to rotation or reversal:
+	
+	\begin{itemize}
+		\item A cycle written with different starting points represents the \textbf{same} permutation:
+		$$
+		(1\,2\,3) = (2\,3\,1) = (3\,1\,2).
+		$$
+		\item Writing a cycle backwards gives its \textbf{inverse}:
+		$$
+		(1\,2\,3)^{-1} = (1\,3\,2).
+		$$
+		\item Disjoint cycles commute, so their order in a product is irrelevant:
+		$$
+		(12)(34) = (34)(12).
+		$$
+	\end{itemize}
+	
+	Therefore, when counting cycles, what matters is capturing all distinct \emph{combinations} of elements, without overcounting mere repetitions due to rotation. This is why the number of $r$-cycles in $S_n$ is given by
+	$$
+	\frac{1}{r}\, {}_nP_r = \frac{n!}{r (n-r)!}.
+	$$
+	
+	
+	---
+	
+	\subsection*{Geometric Model: $S_3$ as Symmetries of a Triangle}
+	Take an equilateral triangle with vertices labeled $1,2,3$.  
+	
+	\begin{itemize}
+		\item \textbf{Rotations}:
+		\begin{align*}
+			& (1)(2)(3) \quad (\text{identity}), \\
+			& (123) \quad (\text{rotation by } 120^\circ), \\
+			& (132) \quad (\text{rotation by } 240^\circ).
+		\end{align*}
+		\item \textbf{Reflections}:
+		\begin{align*}
+			& (12), \\
+			& (13), \\
+			& (23).
+		\end{align*}
+	\end{itemize}
+	
+	So
+	$$
+	\mathrm{Isom}(\triangle) \;\cong\; S_3 \;\cong\; D_6.
+	$$
+	
+	---
+	
+	\subsection*{Careful about Geometry}
+	Only \emph{isometries} (rigid motions) are allowed:
+	- rotations and reflections.  
+	- permutations that deform the triangle are not valid isometries.  
+	
+	For $n=3$: every permutation is an isometry, so $S_3 \cong D_6$.  
+	For $n \geq 4$: only $2n$ of the $n!$ permutations correspond to isometries.
+	
+	---
+	
+	\subsection*{General Case}
+	- $S_n$: all permutations of $n$ labels ($n!$ elements).  
+	- $D_{2n}$: isometry group of a regular $n$-gon ($2n$ elements).  
+	
+	Thus:
+	$$
+	S_3 \cong D_6, \qquad
+	D_{2n} \subset S_n \;\text{ for } n \geq 4.
+	$$
+	
+	---
+	
+\end{document}
