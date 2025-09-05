@@ -1,0 +1,8 @@
+* RC step response
+V1 in 0 PULSE(0 5 0 1n 1n 1ms 2ms)   ; a step from 0→5 V
+R1 in out 1k
+C1 out 0 1u
+
+.tran 0.1ms 10ms
+.plot tran V(in) V(out)
+.end

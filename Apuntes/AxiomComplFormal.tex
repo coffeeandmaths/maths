@@ -151,6 +151,112 @@ Both fit into the same formal framework:
 \text{Set = Collection of numbers (possibly just one).}
 \]
 
+\section*{Density and Completeness}
+
+\subsection*{Density of the Rationals}
+
+A subset \(A \subseteq \mathbb{R}\) is called \textbf{dense} in \(\mathbb{R}\) if for all \(a,b \in \mathbb{R}\) with \(a < b\), there exists some \(x \in A\) such that
+$$
+a < x < b.
+$$
+
+\textbf{Theorem.} The set of rationals \(\mathbb{Q}\) is dense in \(\mathbb{R}\).
+
+\textit{Proof.}  
+Let \(a < b\) with \(a,b \in \mathbb{R}\). Choose \(n \in \mathbb{N}\) such that
+$$
+\frac{1}{n} < b - a.
+$$
+Then there exists \(k \in \mathbb{Z}\) with
+$$
+a < \frac{k}{n} < b.
+$$
+Since \(\tfrac{k}{n} \in \mathbb{Q}\), this proves density. \(\square\)
+
+\subsection*{Failure of Completeness in \(\mathbb{Q}\)}
+
+Although \(\mathbb{Q}\) is dense, it is not complete.  
+Consider the set
+$$
+S = \{ q \in \mathbb{Q} : q^2 < 2 \}.
+$$
+This set is bounded above in \(\mathbb{Q}\), but it has no least upper bound in \(\mathbb{Q}\), because
+$$
+\sqrt{2} \notin \mathbb{Q}.
+$$
+
+\subsection*{Completeness of \(\mathbb{R}\)}
+
+The \textbf{Axiom of Completeness} states that every nonempty set \(S \subseteq \mathbb{R}\) that is bounded above has a least upper bound (supremum) in \(\mathbb{R}\).  
+
+Thus, in \(\mathbb{R}\), the set
+$$
+S = \{ q \in \mathbb{Q} : q^2 < 2 \}
+$$
+does possess a supremum, namely
+$$
+\sup S = \sqrt{2}.
+$$
+
+\bigskip
+
+\textbf{Summary:}  
+- Density of \(\mathbb{Q}\) ensures rationals appear in every interval, no matter how small.  
+- Completeness of \(\mathbb{R}\) guarantees the existence of irrationals, filling the “holes” left by \(\mathbb{Q}\), and producing the full, continuous real line.
+
+\section*{Nested Interval Property}
+
+\subsection*{Formal Definition}
+Let $\{[a_n,b_n]\}_{n=1}^\infty$ be a sequence of closed intervals in $\mathbb{R}$ such that
+\[
+[a_1,b_1] \supseteq [a_2,b_2] \supseteq [a_3,b_3] \supseteq \cdots
+\]
+and
+\[
+\lim_{n \to \infty} (b_n - a_n) = 0.
+\]
+Then there exists a unique real number $c$ such that
+\[
+\bigcap_{n=1}^\infty [a_n,b_n] = \{c\}.
+\]
+
+\subsection*{Recipe: Trapping $\sqrt{2}$}
+We illustrate the property by constructing nested intervals around $\sqrt{2}$.
+
+\begin{enumerate}
+	\item \textbf{Start:} Since $1^2 = 1 < 2 < 4 = 2^2$, we know
+	$$
+	\sqrt{2} \in [1,2].
+	$$
 	
+	\item \textbf{Refine:} Take the midpoint $m = \tfrac{1+2}{2} = 1.5$.  
+	Since $1.5^2 = 2.25 > 2$, shrink the interval to
+	$$
+	[1,1.5].
+	$$
+	
+	\item \textbf{Next step:} Midpoint $m = \tfrac{1+1.5}{2} = 1.25$.  
+	Since $1.25^2 = 1.5625 < 2$, shrink to
+	$$
+	[1.25,1.5].
+	$$
+	
+	\item \textbf{Continue:} Midpoint $m = 1.375$, and $1.375^2 = 1.8906 < 2$, so shrink to
+	$$
+	[1.375,1.5].
+	$$
+	
+	\item \textbf{Repeat indefinitely:} Each step defines a nested interval
+	$$
+	[a_1,b_1] \supseteq [a_2,b_2] \supseteq \cdots
+	$$
+	with $\sqrt{2}$ always inside and $b_n - a_n \to 0$.
+	
+	\item \textbf{Conclusion:} By the Nested Interval Property,
+	$$
+	\bigcap_{n=1}^\infty [a_n,b_n] = \{\sqrt{2}\}.
+	$$
+\end{enumerate}
+
 	
 \end{document}

@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, geometry, tcolorbox}
+\geometry{margin=2cm}
+
+\begin{document}
+	
+	\section*{PSpice Crash-Sheet}
+	
+	\subsection*{General Netlist Structure}
+	\begin{tcolorbox}[colback=gray!5,colframe=black,title=Structure]
+		\begin{verbatim}
+			* Title line (comment)
+			Element lines
+			Analysis commands
+			.control (optional, not in classic PSpice)
+			... commands ...
+			.endc
+			.end
+		\end{verbatim}
+	\end{tcolorbox}
+	
+	\subsection*{Basic Elements}
+	\begin{align*}
+		Rxxx &:\ \texttt{Rname node1 node2 value} \quad \text{(Resistor)} \\
+		Cxxx &:\ \texttt{Cname node1 node2 value} \quad \text{(Capacitor)} \\
+		Lxxx &:\ \texttt{Lname node1 node2 value} \quad \text{(Inductor)} \\
+		Vxxx &:\ \texttt{Vname +node -node type} \quad \text{(Voltage source)} \\
+		Ixxx &:\ \texttt{Iname +node -node type} \quad \text{(Current source)}
+	\end{align*}
+	
+	Examples:
+	\begin{verbatim}
+		R1 in out 1k
+		C1 out 0 1u
+		V1 in 0 DC 5
+	\end{verbatim}
+	
+	\subsection*{Source Types}
+	\begin{itemize}
+		\item DC source: \verb|V1 in 0 DC 5|
+		\item AC source: \verb|V1 in 0 AC 1|
+		\item Sinusoidal: \verb|V1 in 0 SIN(0 1 1k)|  (offset, amplitude, frequency)
+		\item Pulse: \verb|V1 in 0 PULSE(0 5 0 1n 1n 10n 20n)|
+	\end{itemize}
+	
+	\subsection*{Analysis Commands}
+	\begin{itemize}
+		\item DC operating point: \verb|.op|
+		\item DC sweep: \verb|.dc V1 0 10 0.1| \quad (sweep V1 from 0 to 10 V step 0.1)
+		\item AC sweep: \verb|.ac dec 10 10 100k| \quad (decade sweep, 10 pts/dec, 10 Hz–100 kHz)
+		\item Transient: \verb|.tran 0.1ms 5ms| \quad (timestep 0.1 ms, simulate 5 ms)
+	\end{itemize}
+	
+	\subsection*{Output Commands}
+	\begin{itemize}
+		\item Print voltage: \verb|.print tran V(out)|
+		\item Print current: \verb|.print tran I(V1)|
+		\item Plot (in ngspice/PSpice postproc): \verb|.plot ac VDB(out)|
+	\end{itemize}
+	
+	\subsection*{Minimal Examples}
+	\paragraph{RC Low-Pass Filter (AC Sweep)}
+	\begin{verbatim}
+		* RC Low-pass
+		V1 in 0 AC 1
+		R1 in out 1k
+		C1 out 0 1u
+		.ac dec 10 10 100k
+		.print ac V(out)
+		.end
+	\end{verbatim}
+	
+	\paragraph{RC Step Response (Transient)}
+	\begin{verbatim}
+		* RC Step Response
+		V1 in 0 PULSE(0 5 0 1n 1n 1ms 2ms)
+		R1 in out 1k
+		C1 out 0 1u
+		.tran 0.1ms 10ms
+		.print tran V(out)
+		.end
+	\end{verbatim}
+	
+\end{document}

@@ -1,0 +1,249 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+
+\title{Superposition Principle, Thévenin's Theorem, and Norton's Theorem}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\section*{0. Superposition Principle (Purely Mathematical)}
+	
+	Consider a linear system
+	$$
+	\mathbf{A}\mathbf{x} = \mathbf{b},
+	$$
+	where $\mathbf{A} \in \mathbb{R}^{m \times m}$ is nonsingular, 
+	$\mathbf{x} \in \mathbb{R}^m$ is the unknown vector, 
+	and $\mathbf{b} \in \mathbb{R}^m$ is the excitation vector.  
+	
+	Suppose $\mathbf{b}$ can be decomposed as
+	$$
+	\mathbf{b} = \mathbf{b}_1 + \mathbf{b}_2 + \cdots + \mathbf{b}_n.
+	$$
+	
+	By linearity of matrix equations,
+	$$
+	\mathbf{x} = \mathbf{A}^{-1}\mathbf{b} 
+	= \mathbf{A}^{-1}\mathbf{b}_1 + \mathbf{A}^{-1}\mathbf{b}_2 + \cdots + \mathbf{A}^{-1}\mathbf{b}_n.
+	$$
+	
+	Defining $\mathbf{x}_k = \mathbf{A}^{-1}\mathbf{b}_k$, we obtain
+	$$
+	\mathbf{x} = \sum_{k=1}^n \mathbf{x}_k.
+	$$
+	
+	This is the \textbf{superposition principle}: the total response of a linear system is the sum of the responses to each input considered separately.  
+	
+	---
+	
+	\section*{1. Thévenin's Theorem}
+	
+	\subsection*{Formal Statement}
+	
+	Let a linear network $\mathcal{N}$ with terminals $A,B$ consist of independent sources and linear elements.  
+	For any external load $R_L$ connected at $A,B$, the network is equivalent to
+	$$
+	\mathcal{N}_{AB} \equiv V_{\text{th}} \;\; \text{in series with} \;\; R_{\text{th}},
+	$$
+	where $V_{\text{th}}$ is the open-circuit voltage and $R_{\text{th}}$ the Thévenin resistance.  
+	
+	\subsection*{Derivation Basis}
+	
+	Because the circuit is linear, the terminal voltage must be an affine function of the load current $I_L$:
+	$$
+	V_{AB} = V_{\text{th}} - R_{\text{th}} I_L.
+	$$
+	
+	This affine relation follows directly from superposition and the linearity of Kirchhoff's equations.
+	
+	\subsection*{Computational Formulae}
+	
+	1. Open-circuit voltage:
+	$$
+	V_{\text{th}} = V_{AB}\Big|_{I_L = 0}.
+	$$
+	
+	2. Thévenin resistance (two methods):
+	
+	(a) Deactivation method:
+	$$
+	R_{\text{th}} = R_{\text{eq}}(A,B) \quad \text{with independent sources set to zero}.
+	$$
+	
+	(b) Short-circuit method:
+	$$
+	R_{\text{th}} = \frac{V_{\text{th}}}{I_{\text{sc}}}.
+	$$
+	
+	3. Load response:
+	$$
+	I_L = \frac{V_{\text{th}}}{R_{\text{th}} + R_L}, 
+	\qquad
+	V_L = \frac{R_L}{R_{\text{th}} + R_L} V_{\text{th}}.
+	$$
+	
+	\subsection*{Special Case: Maximum Power Transfer}
+	
+	The power on the load is
+	$$
+	P_L = \frac{V_{\text{th}}^2}{(R_{\text{th}} + R_L)^2} \, R_L.
+	$$
+	
+	This is maximized when
+	$$
+	R_L = R_{\text{th}},
+	$$
+	with maximum power
+	$$
+	P_{L,\text{max}} = \frac{V_{\text{th}}^2}{4R_{\text{th}}}.
+	$$
+	
+	---
+	
+	\section*{2. Norton's Theorem}
+	
+	\subsection*{Formal Statement}
+	
+	Let a linear network $\mathcal{N}$ with terminals $A,B$ consist of independent sources and linear elements.  
+	Then, for any load $R_L$ connected across $A,B$, the network is equivalent to
+	$$
+	\mathcal{N}_{AB} \equiv I_{\text{N}} \;\; \text{in parallel with} \;\; R_{\text{N}},
+	$$
+	where $I_{\text{N}}$ is the short-circuit current at the terminals and $R_{\text{N}}$ the Norton resistance.
+	
+	\subsection*{Algebraic Relation to Thévenin}
+	
+	From Thévenin’s theorem we have
+	$$
+	V_{AB} = V_{\text{th}} - R_{\text{th}} I_L.
+	$$
+	
+	If the terminals are short-circuited, $V_{AB} = 0$, so
+	$$
+	I_{\text{sc}} = \frac{V_{\text{th}}}{R_{\text{th}}}.
+	$$
+	
+	Define
+	$$
+	I_{\text{N}} = I_{\text{sc}}, 
+	\qquad 
+	R_{\text{N}} = R_{\text{th}}.
+	$$
+	
+	Thus, the Norton form is
+	$$
+	\mathcal{N}_{AB} \equiv I_{\text{N}} \;\; \text{in parallel with} \;\; R_{\text{N}}.
+	$$
+	
+	\subsection*{Load Response in Norton Form}
+	
+	For a load $R_L$ connected in parallel:
+	$$
+	I_L = \frac{I_{\text{N}} R_{\text{N}}}{R_{\text{N}} + R_L}, 
+	\qquad
+	V_L = \frac{R_L}{R_{\text{N}} + R_L} I_{\text{N}} R_{\text{N}}.
+	$$
+	
+	\subsection*{Equivalence of Forms}
+	
+	Since
+	$$
+	V_{\text{th}} = I_{\text{N}} R_{\text{N}}, \qquad R_{\text{th}} = R_{\text{N}},
+	$$
+	the Thévenin and Norton models are algebraically dual and interchangeable.
+	
+	\section*{Example: Superposition Principle (Pure Algebraic Case)}
+	
+	Consider the linear system
+	$$
+	\begin{cases}
+		2x + y = b_1 + b_2, \\
+		x - y = c_1 + c_2.
+	\end{cases}
+	$$
+	
+	Here the right-hand side is the sum of two independent inputs 
+	$(b_1, c_1)$ and $(b_2, c_2)$.
+	
+	---
+	
+	\subsection*{Step 1. Decompose System}
+	
+	We split into two subsystems:
+	
+	1. With input $(b_1, c_1)$:
+	$$
+	\begin{cases}
+		2x + y = b_1, \\
+		x - y = c_1,
+	\end{cases}
+	$$
+	solution $(x_1, y_1)$.
+	
+	2. With input $(b_2, c_2)$:
+	$$
+	\begin{cases}
+		2x + y = b_2, \\
+		x - y = c_2,
+	\end{cases}
+	$$
+	solution $(x_2, y_2)$.
+	
+	---
+	
+	\subsection*{Step 2. Solve Each Subsystem}
+	
+	From $x - y = c_1$ we have $x = y + c_1$. Substituting into $2x + y = b_1$:
+	$$
+	2(y+c_1) + y = b_1 \;\;\implies\;\; 3y + 2c_1 = b_1.
+	$$
+	Thus
+	$$
+	y_1 = \frac{b_1 - 2c_1}{3}, 
+	\qquad
+	x_1 = \frac{b_1 - 2c_1}{3} + c_1.
+	$$
+	
+	Similarly, for $(b_2, c_2)$:
+	$$
+	y_2 = \frac{b_2 - 2c_2}{3}, 
+	\qquad
+	x_2 = \frac{b_2 - 2c_2}{3} + c_2.
+	$$
+	
+	---
+	
+	\subsection*{Step 3. Apply Superposition}
+	
+	By the superposition principle,
+	$$
+	x = x_1 + x_2, 
+	\qquad 
+	y = y_1 + y_2.
+	$$
+	
+	That is,
+	$$
+	x = \left(\frac{b_1 - 2c_1}{3} + c_1\right) 
+	+ \left(\frac{b_2 - 2c_2}{3} + c_2\right),
+	$$
+	$$
+	y = \frac{b_1 - 2c_1}{3} + \frac{b_2 - 2c_2}{3}.
+	$$
+	
+	---
+	
+	\subsection*{Step 4. Verification}
+	
+	Solving directly with combined input $(b_1+b_2,\,c_1+c_2)$ gives
+	$$
+	y = \frac{(b_1+b_2) - 2(c_1+c_2)}{3}, 
+	\qquad
+	x = y + (c_1+c_2),
+	$$
+	which agrees with the sum $(x_1+x_2,\, y_1+y_2)$. \qed
+	 
+	
+\end{document}
