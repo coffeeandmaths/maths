@@ -576,4 +576,88 @@
 		Bernoulli & $y' + P(x)y = Q(x)y^n$ & Substitution $z=y^{1-n}$ \\
 		\hline
 	\end{tabular}
+	
+	\section*{Integrating Factor Method}
+	
+	The integrating factor method is used to solve \textbf{first-order linear ODEs} of the form
+	$$
+	\frac{dy}{dx} + P(x)y = Q(x).
+	$$
+	
+	\subsection*{Conditions for Use}
+	- The equation must be \textbf{linear in $y$ and $y'$}:  
+	$y$ and $y'$ appear only to the first power.  
+	- $P(x)$ and $Q(x)$ are functions of $x$ only.  
+	
+	\textbf{Examples where it applies:}
+	$$
+	y' + 3y = \cos x, \qquad y' + \tfrac{1}{x}y = x^2.
+	$$
+	
+	\textbf{Examples where it does not apply:}
+	$$
+	y' + y^2 = x, \qquad y' + e^y = \sin x, \qquad y'y + x = 0.
+	$$
+	
+	\subsection*{Method}
+	1. Write the ODE in the standard form
+	$$
+	\frac{dy}{dx} + P(x)y = Q(x).
+	$$
+	2. Define the \textbf{integrating factor}
+	$$
+	\mu(x) = e^{\int P(x)\,dx}.
+	$$
+	3. Multiply the entire equation by $\mu(x)$:
+	$$
+	\mu(x)\frac{dy}{dx} + \mu(x)P(x)y = \mu(x)Q(x).
+	$$
+	The left-hand side becomes
+	$$
+	\frac{d}{dx}\big(\mu(x)y\big).
+	$$
+	4. Integrate both sides:
+	$$
+	\mu(x)y = \int \mu(x)Q(x)\,dx + C.
+	$$
+	5. Solve for $y(x)$:
+	$$
+	y(x) = \frac{1}{\mu(x)}\left(\int \mu(x)Q(x)\,dx + C\right).
+	$$
+	
+	\subsection*{Worked Example}
+	Solve
+	$$
+	\frac{dy}{dx} + 2y = e^{-x}.
+	$$
+	
+	\textbf{Step 1:} Identify $P(x) = 2$, $Q(x) = e^{-x}$.  
+	
+	\textbf{Step 2:} Compute the integrating factor
+	$$
+	\mu(x) = e^{\int 2\,dx} = e^{2x}.
+	$$
+	
+	\textbf{Step 3:} Multiply the equation by $e^{2x}$:
+	$$
+	e^{2x}\frac{dy}{dx} + 2e^{2x}y = e^x.
+	$$
+	This is
+	$$
+	\frac{d}{dx}(e^{2x}y) = e^x.
+	$$
+	
+	\textbf{Step 4:} Integrate both sides:
+	$$
+	e^{2x}y = \int e^x\,dx = e^x + C.
+	$$
+	
+	\textbf{Step 5:} Solve for $y$:
+	$$
+	y(x) = e^{-2x}(e^x + C) = e^{-x} + Ce^{-2x}.
+	$$
+	
+	\subsection*{Summary}
+	The integrating factor method works because multiplication by $\mu(x) = e^{\int P(x)\,dx}$ transforms the equation into an exact derivative. This relies on the equation being linear in $y$ and $y'$.  
+	
 \end{document}

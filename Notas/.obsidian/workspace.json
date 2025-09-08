@@ -8,77 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a50a9f81c1ecd25e",
+            "id": "3f6213d92e6e3530",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "real/rananalysis.md",
+                "file": "control/Theory Control Syllabus.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "rananalysis"
-            }
-          },
-          {
-            "id": "99c2337a15a790c4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "eNGA/Personal Statement.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Personal Statement"
-            }
-          },
-          {
-            "id": "9d24d049b59f896f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "control/Control Theory and signal theory.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Control Theory and signal theory"
-            }
-          },
-          {
-            "id": "490a6dd06cfc6884",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Signals new approach.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Signals new approach"
-            }
-          },
-          {
-            "id": "2b6b0169ec137870",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "real/Retrace Analysis.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Retrace Analysis"
+              "title": "Theory Control Syllabus"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -226,13 +169,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2b6b0169ec137870",
+  "active": "3f6213d92e6e3530",
   "lastOpenFiles": [
+    "control/Signals new approach.md",
+    "control/Control Theory and signal theory.md",
+    "appliedmaths/Mathematical Preliminaries.md",
+    "Dynamics & Relativity.md",
+    "Done.md",
+    "real/Retrace Analysis.md",
     "real/realmot.md",
     "real/rananalysis.md",
     "real/Peano Axiom.md",
-    "control/Control Theory and signal theory.md",
-    "control/Signals new approach.md",
     "algebra/relations.md",
     "algebra/Canonical Decomposition.md",
     "algebra/Canonical FInal.md",
@@ -241,18 +188,14 @@
     "algebra/Canonical Updated.md",
     "algebra/congruences.md",
     "algebra/Types of relation.md",
-    "real/Retrace Analysis.md",
     "control/Control.md",
     "control/Theory Control Syllabus.md",
     "algebra/Categories.md",
-    "Done.md",
     "Notas del.md",
     "ODE.md",
     "real/div.md",
     "eNGA/Personal Statement.md",
     "Quotient.md",
-    "algebra/algebramot.md",
-    "algebra/symmetricg.md",
-    "Raw-Diehdral.md"
+    "algebra/algebramot.md"
   ]
 }

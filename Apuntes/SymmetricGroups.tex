@@ -314,4 +314,161 @@
 	
 	---
 	
+	\subsection*{Convention on Composition in $S_n$}
+	
+	By definition of function composition,
+	$$
+	(\sigma \circ \tau)(x) = \sigma(\tau(x)),
+	$$
+	so the rightmost permutation acts first.
+	
+	\medskip
+	
+	\noindent\textbf{Example in $S_5$:}
+	\[
+	\sigma = (1\,5\,2\,4\,3) = (15)(52)(24)(43).
+	\]
+	
+	We compute step by step, applying the rightmost transposition first:
+	
+	\begin{itemize}
+		\item Start with $x=1$.
+		\begin{align*}
+			(43): &\; 1 \mapsto 1, \\
+			(24): &\; 1 \mapsto 1, \\
+			(52): &\; 1 \mapsto 1, \\
+			(15): &\; 1 \mapsto 5.
+		\end{align*}
+		So overall $1 \mapsto 5$.
+		
+		\item Start with $x=5$.
+		\begin{align*}
+			(43): &\; 5 \mapsto 5, \\
+			(24): &\; 5 \mapsto 5, \\
+			(52): &\; 5 \mapsto 2, \\
+			(15): &\; 2 \mapsto 2.
+		\end{align*}
+		So overall $5 \mapsto 2$.
+		
+		\item Start with $x=2$.
+		\begin{align*}
+			(43): &\; 2 \mapsto 2, \\
+			(24): &\; 2 \mapsto 4, \\
+			(52): &\; 4 \mapsto 4, \\
+			(15): &\; 4 \mapsto 4.
+		\end{align*}
+		So overall $2 \mapsto 4$.
+		
+		\item Start with $x=4$.
+		\begin{align*}
+			(43): &\; 4 \mapsto 3, \\
+			(24): &\; 3 \mapsto 3, \\
+			(52): &\; 3 \mapsto 3, \\
+			(15): &\; 3 \mapsto 3.
+		\end{align*}
+		So overall $4 \mapsto 3$.
+		
+		\item Start with $x=3$.
+		\begin{align*}
+			(43): &\; 3 \mapsto 4, \\
+			(24): &\; 4 \mapsto 2, \\
+			(52): &\; 2 \mapsto 5, \\
+			(15): &\; 5 \mapsto 1.
+		\end{align*}
+		So overall $3 \mapsto 1$.
+	\end{itemize}
+	
+	Putting this together, we recover the 5-cycle:
+	$$
+	1 \mapsto 5 \mapsto 2 \mapsto 4 \mapsto 3 \mapsto 1,
+	$$
+	that is,
+	$$
+	(15)(52)(24)(43) = (1\,5\,2\,4\,3).
+	$$
+	
+		
+		\section*{Analysis of the Symmetric Group $S_3$}
+		
+		\subsection*{1. Underlying Set}
+		
+		Let 
+		\[
+		X = \{1,2,3\}.
+		\]
+		The symmetric group on $X$ is defined as
+		\[
+		S_3 = Aut_{set}(X),
+		\]
+		where $Aut_{set}(X)$ denotes the set of all bijections $f: X \to X$.  
+		This is equivalent to $\mathrm{Sym}(X)$, the full permutation group of $X$.
+		
+		\subsection*{2. Group Operation}
+		
+		For $f,g \in S_3$, the group operation is composition of functions:
+		\[
+		(g \cdot f)(x) = g(f(x)), \qquad \forall x \in X.
+		\]
+		Thus, $(S_3,\cdot)$ is a group with identity the identity map $id_X$ and inverses given by $f^{-1}$ for each $f \in S_3$.
+		
+		\subsection*{3. Action of $f$ on $X$}
+		
+		Consider $f \in Aut_{set}(X)$ defined by
+		\[
+		f(1)=2, \quad f(2)=1, \quad f(3)=3.
+		\]
+		This bijection swaps $1$ and $2$ while fixing $3$.  
+		Applied to the ordered triple $(1,2,3)$, it produces
+		\[
+		(1,2,3) \mapsto (2,1,3).
+		\]
+		
+		\subsection*{4. Action of $g$ on $X$}
+		
+		Now consider $g \in Aut_{set}(X)$ defined by
+		\[
+		g(1)=3, \quad g(2)=1, \quad g(3)=2.
+		\]
+		This is a $3$-cycle, cycling the elements as $1 \mapsto 3 \mapsto 2 \mapsto 1$.  
+		Applied to $(1,2,3)$, it produces
+		\[
+		(1,2,3) \mapsto (3,1,2).
+		\]
+		
+		\subsection*{5. Composition $g \cdot f$}
+		
+		To compute the composition $g \cdot f$, apply $f$ first and then $g$:
+		
+		\[
+		\begin{aligned}
+			x=1: &\quad f(1)=2, \quad g(f(1))=g(2)=1, \\
+			x=2: &\quad f(2)=1, \quad g(f(2))=g(1)=3, \\
+			x=3: &\quad f(3)=3, \quad g(f(3))=g(3)=2.
+		\end{aligned}
+		\]
+		
+		Thus,
+		\[
+		(g \cdot f)(1)=1, \quad (g \cdot f)(2)=3, \quad (g \cdot f)(3)=2.
+		\]
+		
+		In tuple form:
+		\[
+		(g \cdot f) : (1,2,3) \mapsto (1,3,2).
+		\]
+		
+		\subsection*{6. Remarks on Arbitrariness}
+		
+		The choice of $f$ and $g$ is arbitrary: any bijection $X \to X$ is a valid element of $S_3$.  
+		What is fixed is the rule of the group operation:
+		\[
+		(g \cdot f)(x) = g(f(x)).
+		\]
+		Once $f$ and $g$ are specified, their composition is uniquely determined.  
+		
+		The “looping” observed arises naturally from the cycle structure of permutations. For example, $g=(1\,3\,2)$ means following the images of $1$, $3$, and $2$ leads back to the starting point, closing a cycle.
+		
+	\end{document}
+	
+	
 \end{document}
